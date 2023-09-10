@@ -12,8 +12,13 @@ public class PlayerDungeonController : Entity
 
     [SerializeField] private float moveSpeed;
 
-    [SerializeField] private float accelerationPercent;
-    [SerializeField] private float frictionPercent;
+    [SerializeField] private float accelerationPercent; //used for the player to speed up
+    [SerializeField] private float frictionPercent;     //used for the player to slow to 0
+
+    private Vector3 mousePos;
+    private Vector3 directionToFace;
+
+    [SerializeField] private bool useMouseToRotate;
 
     void Start()
     {
@@ -32,12 +37,16 @@ public class PlayerDungeonController : Entity
     private void FixedUpdate()
     {
         ApplyMovement();
+        ApplyRotation();
     }
 
     private void CheckUserInput() {
         inputDirection.x = Input.GetAxisRaw("Horizontal");
         inputDirection.y = Input.GetAxisRaw("Vertical");
 
+
+        Vector3 mousePosition = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10f));
         //Check for attacks/other inputs
     }
 
@@ -45,7 +54,7 @@ public class PlayerDungeonController : Entity
         //X Velocity
         if (inputDirection.x != 0)
         {
-            setVelocityVector.x = rigidbody.velocity.x + inputDirection.x * accelerationPercent * moveSpeed * (1 - frictionPercent);
+            setVelocityVector.x = rigidbody.velocity.x + inputDirection.x * accelerationPercent * moveSpeed;
         }
         else {
             setVelocityVector.x = rigidbody.velocity.x * (1 - frictionPercent);
@@ -54,7 +63,7 @@ public class PlayerDungeonController : Entity
         //Y Velocity
         if (inputDirection.y != 0)
         {
-            setVelocityVector.y = rigidbody.velocity.y + inputDirection.y * accelerationPercent * moveSpeed * (1 - frictionPercent);
+            setVelocityVector.y = rigidbody.velocity.y + inputDirection.y * accelerationPercent * moveSpeed;
         }
         else
         {
@@ -70,5 +79,26 @@ public class PlayerDungeonController : Entity
 
 
         rigidbody.velocity = setVelocityVector;
+    }
+
+    private void ApplyRotation() {
+        if (useMouseToRotate == true)
+        {
+            directionToFace = mousePos - transform.position;
+
+
+        }
+        else {
+            if (Input.GetKey(KeyCode.LeftShift) == false) { 
+                directionToFace = rigidbody.velocity;
+            }
+        }
+
+        if (directionToFace == Vector3.zero) return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
+        transform.rotation = targetRotation;
+
+
     }
 }
