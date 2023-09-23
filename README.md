@@ -25,3 +25,5 @@ A non-exhaustive list of what I would like to add beyond this
 Help from game designers, programmers, composers, artists, writers, gamblers, and playtesters will always be appreciated. If you are a member of the CPP game club, reach out to Seth on discord.
 Don't be shy if you are new to any of these, we all start somewhere and there is plenty to work on that is suitable for new comers.
 All I ask is that you are honest with your abilities and level of commitment.
+
+
