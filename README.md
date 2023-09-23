@@ -26,4 +26,6 @@ Help from game designers, programmers, composers, artists, writers, gamblers, an
 Don't be shy if you are new to any of these, we all start somewhere and there is plenty to work on that is suitable for new comers.
 All I ask is that you are honest with your abilities and level of commitment.
 
+Hehe
+
 
