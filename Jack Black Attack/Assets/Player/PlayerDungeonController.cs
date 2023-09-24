@@ -7,7 +7,7 @@ public class PlayerDungeonController : Entity
     // Start is called before the first frame update
     private Vector2 inputDirection;
 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     private Vector2 setVelocityVector;
 
     [SerializeField] private float moveSpeed;
@@ -15,22 +15,27 @@ public class PlayerDungeonController : Entity
     [SerializeField] private float accelerationPercent; //used for the player to speed up
     [SerializeField] private float frictionPercent;     //used for the player to slow to 0
 
+    [SerializeField] private Transform directionalArrow;
     private Vector3 mousePos;
     private Vector3 directionToFace;
 
     [SerializeField] private bool useMouseToRotate;
 
+    public Weapon activeWeapon;
+    private float attackOneTimer;
+
     void Start()
     {
         InitializeEntity();
         inputDirection = Vector2.zero;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckUserInput();
+        CheckAttacks();
         //check surroundings
     }
 
@@ -54,20 +59,20 @@ public class PlayerDungeonController : Entity
         //X Velocity
         if (inputDirection.x != 0)
         {
-            setVelocityVector.x = rigidbody.velocity.x + inputDirection.x * accelerationPercent * moveSpeed;
+            setVelocityVector.x = rb.velocity.x + inputDirection.x * accelerationPercent * moveSpeed;
         }
         else {
-            setVelocityVector.x = rigidbody.velocity.x * (1 - frictionPercent);
+            setVelocityVector.x = rb.velocity.x * (1 - frictionPercent);
         }
 
         //Y Velocity
         if (inputDirection.y != 0)
         {
-            setVelocityVector.y = rigidbody.velocity.y + inputDirection.y * accelerationPercent * moveSpeed;
+            setVelocityVector.y = rb.velocity.y + inputDirection.y * accelerationPercent * moveSpeed;
         }
         else
         {
-            setVelocityVector.y = rigidbody.velocity.y * (1 - frictionPercent);
+            setVelocityVector.y = rb.velocity.y * (1 - frictionPercent);
         }
         
         if (Mathf.Abs(setVelocityVector.x) < .1f) setVelocityVector.x = 0;
@@ -78,7 +83,7 @@ public class PlayerDungeonController : Entity
         }
 
 
-        rigidbody.velocity = setVelocityVector;
+        rb.velocity = setVelocityVector;
     }
 
     private void ApplyRotation() {
@@ -90,15 +95,34 @@ public class PlayerDungeonController : Entity
         }
         else {
             if (Input.GetKey(KeyCode.LeftShift) == false) { 
-                directionToFace = rigidbody.velocity;
+                directionToFace = rb.velocity;
             }
         }
 
         if (directionToFace == Vector3.zero) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
-        transform.rotation = targetRotation;
+        directionalArrow.rotation = targetRotation;
 
 
+    }
+
+    private void CheckAttacks() {
+        if (activeWeapon == null) {
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0)) {
+            attackOneTimer = 0;
+        }
+
+        if (Input.GetMouseButton(0)) {
+            attackOneTimer += Time.deltaTime;
+        }
+
+        if (Input.GetMouseButtonUp(0)) {
+            activeWeapon.UseAttackOne(attackOneTimer);
+            attackOneTimer = 0;
+        }
     }
 }
