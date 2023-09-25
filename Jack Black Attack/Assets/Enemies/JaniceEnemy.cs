@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JaniceEnemy : BaseEnemy
 {
+    private bool CanAttack = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,10 @@ public class JaniceEnemy : BaseEnemy
             //Move towards the player
 
             if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
-            { Debug.Log("Attack"); }
+            { CanAttack = true; }
+            else
+            { CanAttack = false; }
+            Debug.Log("Attack" + CanAttack);
             //Debug.Log("Attack") if the enemy can attack the player
 
             transform.up = player.transform.position - transform.position;
