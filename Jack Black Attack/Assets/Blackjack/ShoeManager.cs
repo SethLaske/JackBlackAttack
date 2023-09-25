@@ -73,9 +73,9 @@ public class ShoeManager : MonoBehaviour
         shoe.RemoveAt(_index);
         _cardDrawn.NumInDeck--;
         numberCardsInShoe--;
-        Debug.Log(_cardDrawn);
-        Debug.Log(_cardDrawn.NumInDeck);
-        Debug.Log(numberCardsInShoe);
+        Debug.Log("Card Drawn: " + _cardDrawn);
+        Debug.Log("Number of this card left: " + _cardDrawn.NumInDeck);
+        Debug.Log("Number of cards left in the shoe: " + numberCardsInShoe);
     }
 
     // Add a numberOfDecks to the shoe (Shoe needs to be reshuffled for cards to be in play)
