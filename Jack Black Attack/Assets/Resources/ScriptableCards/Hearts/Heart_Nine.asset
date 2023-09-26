@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead28df409e82ee44ad93b125d49b171, type: 3}
   m_Name: Heart_Nine
   m_EditorClassIdentifier: 
-  cardSuit: 2
-  cardRank: 9
-  cardValue: 9
+  CardSuit: 2
+  CardFace: 8
+  CardValue: 9
+  NumInDeck: 2

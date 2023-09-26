@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead28df409e82ee44ad93b125d49b171, type: 3}
   m_Name: Diamond_Ten
   m_EditorClassIdentifier: 
-  cardSuit: 3
-  cardRank: 10
-  cardValue: 10
+  CardSuit: 3
+  CardFace: 9
+  CardValue: 10
+  NumInDeck: 2

@@ -14,6 +14,12 @@ public class ShoeManager : MonoBehaviour
     private List<ScriptableCard> shoe;
     private int numberCardsInShoe;
 
+    public static ShoeManager Instance;
+    //Get static instance of ShoeManager
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         InititalizeCards();
@@ -39,14 +45,14 @@ public class ShoeManager : MonoBehaviour
         }
     }
 
-    // Draws a random card from the shoe and then removes it from the shoe
-    public bool DrawCard(out ScriptableCard _cardDrawn)
+    // Draws a random card from the shoe and then removes it from the shoe. Returns the card drawn
+    public ScriptableCard DrawCard()
     {
-        _cardDrawn = null;
+        ScriptableCard _cardDrawn = null;
 
         if(numberCardsInShoe <= 0)
         {
-            return false;
+            return null;
         }
 
 
@@ -56,28 +62,11 @@ public class ShoeManager : MonoBehaviour
         _cardDrawn.NumInDeck--;
         numberCardsInShoe--;
 
-        Debug.Log(_cardDrawn);
-        Debug.Log(_cardDrawn.NumInDeck);
-        Debug.Log(numberCardsInShoe);
-        return true;
-    }
-
-    public void DrawCard()
-    {
-        if (numberCardsInShoe <= 0)
-        {
-            return;
-        }
-        int _index = Random.Range(0, shoe.Count);
-        ScriptableCard _cardDrawn = shoe[_index];
-        shoe.RemoveAt(_index);
-        _cardDrawn.NumInDeck--;
-        numberCardsInShoe--;
         Debug.Log("Card Drawn: " + _cardDrawn);
         Debug.Log("Number of this card left: " + _cardDrawn.NumInDeck);
         Debug.Log("Number of cards left in the shoe: " + numberCardsInShoe);
+        return _cardDrawn;
     }
-
     // Add a numberOfDecks to the shoe (Shoe needs to be reshuffled for cards to be in play)
     private void AddDecks(int numberOfDecks)
     {

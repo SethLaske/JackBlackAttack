@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead28df409e82ee44ad93b125d49b171, type: 3}
   m_Name: Heart_Ace
   m_EditorClassIdentifier: 
-  cardSuit: 2
-  cardRank: 1
-  cardValue: 1
+  CardSuit: 2
+  CardFace: 0
+  CardValue: 11
+  NumInDeck: 2

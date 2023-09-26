@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead28df409e82ee44ad93b125d49b171, type: 3}
   m_Name: Club_Four
   m_EditorClassIdentifier: 
-  cardSuit: 0
-  cardRank: 4
-  cardValue: 4
+  CardSuit: 0
+  CardFace: 3
+  CardValue: 4
+  NumInDeck: 2
