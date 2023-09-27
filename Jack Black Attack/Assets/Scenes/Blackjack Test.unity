@@ -383,6 +383,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f998b3f7b3366274b985a5c81c0d600a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHand:
+    numSoftAces: 0
+    handValue: 0
+    cards: []
+  dealerHand:
+    numSoftAces: 0
+    handValue: 0
+    cards: []
 --- !u!1 &886088063
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,9 +475,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 872374847}
-        m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
-        m_MethodName: ShuffleShoe
+      - m_Target: {fileID: 872374848}
+        m_TargetAssemblyTypeName: BlackjackManager, Assembly-CSharp
+        m_MethodName: PlayerStand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -762,7 +770,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shuffle Cards
+  m_text: Stand
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1195,7 +1203,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 872374848}
         m_TargetAssemblyTypeName: BlackjackManager, Assembly-CSharp
-        m_MethodName: DealPlayerHand
+        m_MethodName: NewHand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -10,9 +10,11 @@ public class BlackjackManager : MonoBehaviour
 {
     [SerializeField]
     private Hand playerHand;
+    [SerializeField]
     private Hand dealerHand;
 
     private const int BUST_LIMIT = 21; // Maximum value that you can have before busting
+    private const int DEALER_HIT_LIMIT = 16; // Maximum value that dealer can hit on
 
     private void Start()
     {
@@ -20,6 +22,16 @@ public class BlackjackManager : MonoBehaviour
     }
 
     //Deals a new hand to the player
+
+
+    public void NewHand()
+    {
+        DealDealerHand();
+        DealPlayerHand();
+
+        Debug.Log(dealerHand.cards[1]);
+    }
+
     public void DealPlayerHand()
     {
         ClearHand(playerHand);
@@ -75,9 +87,23 @@ public class BlackjackManager : MonoBehaviour
         return;
     }
 
+    public void PlayerStand()
+    {
+        DealerTurn();
+    }
     public void PlayerHit()
     {
         Hit(playerHand);
+    }
+
+    private void DealerTurn()
+    {
+
+
+        while(dealerHand.handValue < DEALER_HIT_LIMIT)
+        {
+            Hit(dealerHand);
+        }
     }
 
     private void ClearHand(Hand _hand)
