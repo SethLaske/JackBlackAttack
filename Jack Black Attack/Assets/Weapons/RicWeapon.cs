@@ -17,7 +17,7 @@ public class RicWeapon : Weapon
     protected override void ChargedAttackOne()
     {
         StartCoroutine(PerformAttack());
-        Debug.Lob("Charge Attack");
+        Debug.Log("Charge Attack");
     }
 
     private IEnumerator PerformAttack()
