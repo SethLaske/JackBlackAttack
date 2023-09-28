@@ -63,6 +63,10 @@ public class BaseEnemy : Entity
     public override void Die()
     {
         //Trigger spawn tile that the enemy died
+        if (spawnTile != null) {
+            spawnTile.EnemyDied();
+        } 
+
         base.Die();
     }
 

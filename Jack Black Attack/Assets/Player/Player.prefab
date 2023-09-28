@@ -99,6 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackOneChargeTime: 1
   attackTwoChargeTime: 0
+  attackBox: {fileID: 0}
+  damage: 10
+  attackDuration: 0.2
 --- !u!1 &4391283237189502670
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,8 +179,8 @@ SpriteRenderer:
   m_SortingLayerID: -1408978947
   m_SortingLayer: 2
   m_SortingOrder: 5
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.31132078, g: 0.08634745, b: 0.26812378, a: 1}
+  m_Sprite: {fileID: 602764600, guid: 1a0156ddef2c09746a0c87597b5fa0eb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
