@@ -29,7 +29,7 @@ public class BlackjackManager : MonoBehaviour
         DealDealerHand();
         DealPlayerHand();
 
-        Debug.Log(dealerHand.cards[1]);
+        Debug.Log(dealerHand.cards[0]);
     }
 
     public void DealPlayerHand()
@@ -99,8 +99,8 @@ public class BlackjackManager : MonoBehaviour
     private void DealerTurn()
     {
 
-
-        while(dealerHand.handValue < DEALER_HIT_LIMIT)
+        // Dealer will hit on 16 and stand on 17
+        while (dealerHand.handValue <= DEALER_HIT_LIMIT) 
         {
             Hit(dealerHand);
         }
