@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDungeonController : Entity
+public class PlayerDungeonController : Character
 {
     // Start is called before the first frame update
     private Vector2 inputDirection;
 
-    private Rigidbody2D rb;
-    private Vector2 setVelocityVector;
+    //private Rigidbody2D rb;
+    //private Vector2 setVelocityVector;
 
-    [SerializeField] private float moveSpeed;
+    //[SerializeField] private float moveSpeed;
 
-    [SerializeField] private float accelerationPercent; //used for the player to speed up
-    [SerializeField] private float frictionPercent;     //used for the player to slow to 0
+    //[SerializeField] private float accelerationPercent; //used for the player to speed up
+    //[SerializeField] private float frictionPercent;     //used for the player to slow to 0
 
-    [SerializeField] private Transform directionalArrow;
+    //[SerializeField] private Transform directionalArrow;
     private Vector3 mousePos;
     private Vector3 directionToFace;
 
@@ -26,9 +26,9 @@ public class PlayerDungeonController : Entity
 
     void Start()
     {
-        InitializeEntity();
+        InitializeCharacter();
         inputDirection = Vector2.zero;
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -42,7 +42,7 @@ public class PlayerDungeonController : Entity
     private void FixedUpdate()
     {
         ApplyMovement();
-        ApplyRotation();
+        RotateArrow();
     }
 
     private void CheckUserInput() {
@@ -56,7 +56,9 @@ public class PlayerDungeonController : Entity
     }
 
     private void ApplyMovement() {
-        //X Velocity
+        Debug.Log("The user input direction is: " + inputDirection);
+        ApplyVelocity(inputDirection);
+        /*//X Velocity
         if (inputDirection.x != 0)
         {
             setVelocityVector.x = rb.velocity.x + inputDirection.x * accelerationPercent * moveSpeed;
@@ -83,10 +85,10 @@ public class PlayerDungeonController : Entity
         }
 
 
-        rb.velocity = setVelocityVector;
+        rb.velocity = setVelocityVector;*/
     }
 
-    private void ApplyRotation() {
+    private void RotateArrow() {
         if (useMouseToRotate == true)
         {
             directionToFace = mousePos - transform.position;
@@ -99,11 +101,11 @@ public class PlayerDungeonController : Entity
             }
         }
 
-        if (directionToFace == Vector3.zero) return;
+        /*if (directionToFace == Vector3.zero) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
-        directionalArrow.rotation = targetRotation;
-
+        directionalArrow.rotation = targetRotation;*/
+        ApplyRotation(directionToFace);
 
     }
 

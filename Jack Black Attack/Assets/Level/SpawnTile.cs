@@ -27,7 +27,7 @@ public class SpawnTile : MonoBehaviour
     //Method to spawn in gold
     public void spawnGold()
     {
-        Debug.Log("Spawning Gold");
+        //Debug.Log("Spawning Gold");
 
         int randInt = Random.Range(1, 2);
         Vector3 spawnPos = gameObject.transform.position;

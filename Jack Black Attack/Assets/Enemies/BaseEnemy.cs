@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemy : Entity
+public class BaseEnemy : Character
 {
     protected PlayerDungeonController player;
 
-    private Rigidbody2D rb;
+    //private Rigidbody2D rb;
     [SerializeField] protected SpawnTile spawnTile;
     [SerializeField] protected float fieldOfViewDegrees;
 
-    [SerializeField] protected float moveSpeed;
+    //[SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackRange;
 
-    [SerializeField] private float accelerationPercent; 
-    [SerializeField] private float frictionPercent;
+    //[SerializeField] private float accelerationPercent; 
+    //[SerializeField] private float frictionPercent;
 
-    [SerializeField] private Transform directionalArrow;
+    //[SerializeField] private Transform directionalArrow;
 
     protected void EnemyStart() {
-        InitializeEntity();
+        InitializeCharacter();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerDungeonController>();
-        rb = GetComponent<Rigidbody2D>();
+        
     }
 
 
@@ -29,7 +29,7 @@ public class BaseEnemy : Entity
         return (player != null);
     }
 
-    protected void ApplyVelocity(Vector2 desiredVelocity) {
+    /*protected void ApplyVelocity(Vector2 desiredVelocity) {
         if (desiredVelocity.x != 0)
         {
             desiredVelocity.x = rb.velocity.x + desiredVelocity.x * accelerationPercent * moveSpeed;
@@ -58,7 +58,7 @@ public class BaseEnemy : Entity
 
 
         rb.velocity = desiredVelocity;
-    }
+    }*/
 
     public override void Die()
     {
@@ -70,10 +70,5 @@ public class BaseEnemy : Entity
         base.Die();
     }
 
-    protected void ApplyRotation(Vector3 directionToFace) {
-        if (directionToFace == Vector3.zero) return;
-
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
-        directionalArrow.rotation = targetRotation;
-    }
+    
 }
