@@ -6357,6 +6357,7 @@ GameObject:
   - component: {fileID: 867836417}
   - component: {fileID: 867836419}
   - component: {fileID: 867836418}
+  - component: {fileID: 867836420}
   m_Layer: 0
   m_Name: makeShiftDoor
   m_TagString: Untagged
@@ -6457,6 +6458,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &867836420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867836416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe26ba407d07954bb56ad9d53329d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &873342635
 GameObject:
   m_ObjectHideFlags: 0

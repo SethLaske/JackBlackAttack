@@ -36,6 +36,4 @@ public class LevelManager : MonoBehaviour
     {
         GameObject door = Instantiate(DoorPrefab, doorLocation.position, Quaternion.identity);
     }
-
-
 }
