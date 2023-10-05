@@ -4447,7 +4447,8 @@ MonoBehaviour:
   frictionPercent: 0.1
   directionalArrow: {fileID: 1975435623}
   spawnTile: {fileID: 196681336}
-  fieldOfViewDegrees: 0
+  viewDistance: 8
+  fieldOfViewDegrees: 65
   attackRange: 2
 --- !u!58 &564211176
 CircleCollider2D:
@@ -6182,6 +6183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldValue: 1
+  sprite: {fileID: 0}
 --- !u!1 &1449543599
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,7 +6222,8 @@ MonoBehaviour:
   frictionPercent: 0.1
   directionalArrow: {fileID: 2113762902}
   spawnTile: {fileID: 1562771829}
-  fieldOfViewDegrees: 0
+  viewDistance: 8
+  fieldOfViewDegrees: 65
   attackRange: 2
 --- !u!58 &1449543601
 CircleCollider2D:

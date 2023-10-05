@@ -11,16 +11,19 @@ public class Character : Entity
     [SerializeField] private float accelerationPercent;
     [SerializeField] private float frictionPercent;
 
-    [SerializeField] private Transform directionalArrow;
+    [SerializeField] protected Transform directionalArrow;
     protected void InitializeCharacter()
     {
         InitializeEntity();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    protected void ApplyVelocity(Vector2 desiredVelocity)
+
+    //Added an organic and snap velocity field. This could be replaced by recombining the two methods, and adding a bool to determine snap or smooth
+
+    protected void OrganicVelocity(Vector2 desiredVelocity)
     {
-        Debug.Log("The desired Velocity is: " + desiredVelocity);
+        //Debug.Log("The desired Velocity is: " + desiredVelocity);
         //if (desiredVelocity == null) { return; }
 
         if (desiredVelocity.x != 0)
@@ -53,7 +56,17 @@ public class Character : Entity
         rb.velocity = desiredVelocity;
     }
 
-    protected void ApplyRotation(Vector3 directionToFace)
+    protected void SnapVelocity(Vector2 desiredVelocity)
+    {
+        rb.velocity = desiredVelocity;
+    }
+
+
+    protected void OrganicRotation(Vector3 directionToFace) { 
+        //TODO, add a rotation speed field and slowly turn
+    }
+
+    protected void SnapRotation(Vector3 directionToFace)
     {
         if (directionToFace == Vector3.zero) return;
 

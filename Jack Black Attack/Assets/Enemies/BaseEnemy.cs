@@ -8,6 +8,7 @@ public class BaseEnemy : Character
 
     //private Rigidbody2D rb;
     [SerializeField] protected SpawnTile spawnTile;
+    [SerializeField] protected float viewDistance;
     [SerializeField] protected float fieldOfViewDegrees;
 
     //[SerializeField] protected float moveSpeed;
@@ -26,40 +27,28 @@ public class BaseEnemy : Character
 
 
     protected bool CanSeePlayer() {
-        return (player != null);
+        if (player == null) {
+            return false;
+        }
+
+
+        float distanceToPlayer = (player.transform.position - transform.position).magnitude;
+
+        float angleToPlayer = Vector3.Angle(player.transform.position - transform.position, directionalArrow.up);
+        
+        //A third check will eventually be needed to ensure clean line of sight to player
+        //And if any form of invisibility/stealth is ever used, additional checks might also be added
+
+        if (distanceToPlayer < viewDistance && angleToPlayer < fieldOfViewDegrees)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    /*protected void ApplyVelocity(Vector2 desiredVelocity) {
-        if (desiredVelocity.x != 0)
-        {
-            desiredVelocity.x = rb.velocity.x + desiredVelocity.x * accelerationPercent * moveSpeed;
-        }
-        else
-        {
-            desiredVelocity.x = rb.velocity.x * (1 - frictionPercent);
-        }
-
-        if (desiredVelocity.y != 0)
-        {
-            desiredVelocity.y = rb.velocity.y + desiredVelocity.y * accelerationPercent * moveSpeed;
-        }
-        else
-        {
-            desiredVelocity.y = rb.velocity.y * (1 - frictionPercent);
-        }
-
-        if (Mathf.Abs(desiredVelocity.x) < .1f) desiredVelocity.x = 0;
-        if (Mathf.Abs(desiredVelocity.y) < .1f) desiredVelocity.y = 0;
-
-        if (desiredVelocity.magnitude > moveSpeed)
-        {
-            desiredVelocity = desiredVelocity.normalized * moveSpeed;
-        }
-
-
-        rb.velocity = desiredVelocity;
-    }*/
-
+    
     public override void Die()
     {
         //Trigger spawn tile that the enemy died

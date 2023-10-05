@@ -56,8 +56,8 @@ public class PlayerDungeonController : Character
     }
 
     private void ApplyMovement() {
-        Debug.Log("The user input direction is: " + inputDirection);
-        ApplyVelocity(inputDirection);
+        //Debug.Log("The user input direction is: " + inputDirection);
+        OrganicVelocity(inputDirection);
         /*//X Velocity
         if (inputDirection.x != 0)
         {
@@ -105,7 +105,7 @@ public class PlayerDungeonController : Character
 
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
         directionalArrow.rotation = targetRotation;*/
-        ApplyRotation(directionToFace);
+        SnapRotation(directionToFace);
 
     }
 
