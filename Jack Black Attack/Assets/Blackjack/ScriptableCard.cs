@@ -22,6 +22,8 @@ public class ScriptableCard : ScriptableObject
 
     public int NumInDeck;
 
+    public Sprite CardSprite;
+
     public enum Suit
     {
         Club,

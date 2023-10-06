@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class ShoeManager : MonoBehaviour
     private int numberCardsInShoe;
 
     public static ShoeManager Instance;
+    public event Action OnCardDraw;
     //Get static instance of ShoeManager
     private void Awake()
     {
@@ -56,7 +58,7 @@ public class ShoeManager : MonoBehaviour
         }
 
 
-        int _index = Random.Range(0, shoe.Count);
+        int _index = UnityEngine.Random.Range(0, shoe.Count);
         _cardDrawn = shoe[_index];
         shoe.RemoveAt(_index);
         _cardDrawn.NumInDeck--;
