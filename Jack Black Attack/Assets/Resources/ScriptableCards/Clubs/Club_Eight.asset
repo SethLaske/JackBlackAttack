@@ -16,3 +16,4 @@ MonoBehaviour:
   CardFace: 7
   CardValue: 8
   NumInDeck: 2
+  CardSprite: {fileID: 21300000, guid: 3b7e69a524a532b408cb390ab3ff1bf0, type: 3}

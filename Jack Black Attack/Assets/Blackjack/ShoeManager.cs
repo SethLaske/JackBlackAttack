@@ -16,7 +16,7 @@ public class ShoeManager : MonoBehaviour
     private int numberCardsInShoe;
 
     public static ShoeManager Instance;
-    public event Action OnCardDraw;
+   
     //Get static instance of ShoeManager
     private void Awake()
     {
@@ -54,7 +54,7 @@ public class ShoeManager : MonoBehaviour
 
         if(numberCardsInShoe <= 0)
         {
-            return null;
+            return _cardDrawn;
         }
 
 

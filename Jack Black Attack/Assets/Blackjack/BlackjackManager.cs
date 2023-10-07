@@ -8,6 +8,8 @@ using UnityEngine.Rendering.UI;
 
 public class BlackjackManager : MonoBehaviour
 {
+    public static BlackjackManager Instance;
+
     [SerializeField]
     private Hand playerHand;
     [SerializeField]
@@ -16,6 +18,15 @@ public class BlackjackManager : MonoBehaviour
     private const int BUST_LIMIT = 21; // Maximum value that you can have before busting
     private const int DEALER_HIT_LIMIT = 16; // Maximum value that dealer can hit on
 
+    public event Action OnPlayerCardDraw;
+
+    public event Action OnDealerInitialDraw;
+    public event Action OnDealerCardDraw;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         InitializeHands();
@@ -27,6 +38,7 @@ public class BlackjackManager : MonoBehaviour
     public void NewHand()
     {
         DealDealerHand();
+
         DealPlayerHand();
 
         Debug.Log(dealerHand.cards[0]);
@@ -37,6 +49,7 @@ public class BlackjackManager : MonoBehaviour
         ClearHand(playerHand);
         GetNewCard(playerHand);
         GetNewCard(playerHand);
+        OnPlayerCardDraw();
     }
 
     //Deals a new hand to the dealer
@@ -45,6 +58,8 @@ public class BlackjackManager : MonoBehaviour
         ClearHand(dealerHand);
         GetNewCard(dealerHand);
         GetNewCard(dealerHand);
+        OnDealerInitialDraw();
+
     }
     //Creates player and dealer hand instances
     private void InitializeHands()
@@ -94,15 +109,18 @@ public class BlackjackManager : MonoBehaviour
     public void PlayerHit()
     {
         Hit(playerHand);
+        OnPlayerCardDraw();
     }
 
     private void DealerTurn()
     {
+        OnDealerCardDraw();
 
         // Dealer will hit on 16 and stand on 17
         while (dealerHand.handValue <= DEALER_HIT_LIMIT) 
         {
             Hit(dealerHand);
+            OnDealerCardDraw();
         }
     }
 
@@ -112,6 +130,18 @@ public class BlackjackManager : MonoBehaviour
         _hand.handValue = 0;
         _hand.numSoftAces = 0;
     }
+
+
+    public List<ScriptableCard> GetPlayerHand()
+    {
+        return playerHand.cards;
+    }
+
+    public List<ScriptableCard> GetDealerHand()
+    {
+        return dealerHand.cards;
+    }
+
 }
 
 
