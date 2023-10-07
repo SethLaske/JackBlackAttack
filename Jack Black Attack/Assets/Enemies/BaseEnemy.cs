@@ -39,7 +39,7 @@ public class BaseEnemy : Character
         //A third check will eventually be needed to ensure clean line of sight to player
         //And if any form of invisibility/stealth is ever used, additional checks might also be added
 
-        if (distanceToPlayer < viewDistance && angleToPlayer < fieldOfViewDegrees)
+        if (distanceToPlayer < viewDistance && angleToPlayer < fieldOfViewDegrees/2)
         {
             return true;
         }
@@ -59,5 +59,20 @@ public class BaseEnemy : Character
         base.Die();
     }
 
-    
+    protected virtual void OnDrawGizmos()
+    {
+        Quaternion initialRotation = directionalArrow.rotation;
+
+        
+        Gizmos.color = Color.magenta;
+
+
+        Gizmos.DrawLine(transform.position, transform.position + (initialRotation * Quaternion.Euler(0f, 0f, -1 * (fieldOfViewDegrees/2)) * Vector3.up).normalized * viewDistance);
+        Gizmos.DrawLine(transform.position, transform.position + (initialRotation * Quaternion.Euler(0f, 0f, 1 * (fieldOfViewDegrees / 2)) * Vector3.up).normalized * viewDistance);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + viewDistance * (initialRotation * Quaternion.Euler(0f, 0f, 0f) * Vector3.up));
+
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
 }
