@@ -5,10 +5,14 @@ using UnityEngine;
 public class JaniceEnemy : BaseEnemy
 {
     private bool CanAttack = false;
+    private Rigidbody2D rb2d;
+
     // Start is called before the first frame update
     void Start()
     {
         EnemyStart();
+        rb2d = GetComponent<Rigidbody2D>();
+
     }
 
 
@@ -19,17 +23,19 @@ public class JaniceEnemy : BaseEnemy
         {
             //Do these things
 
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            rb2d.velocity = direction * moveSpeed;
             //Move towards the player
 
-            if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
-            { CanAttack = true; }
+            if (Vector2.Distance(transform.position, player.transform.position) <= attackRange)
+            { CanAttack = true;
+                rb2d.velocity = Vector2.zero; }
             else
             { CanAttack = false; }
             //Debug.Log("Attack" + CanAttack);
             //Debug.Log("Attack") if the enemy can attack the player
 
-            transform.up = player.transform.position - transform.position;
+            directionalArrow.transform.up = player.transform.position - transform.position;
             //rotate using ApplyRotation()
         }
     }
