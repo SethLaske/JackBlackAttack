@@ -22,7 +22,7 @@ public class SpikeTrap : MonoBehaviour
     {
         Character character = collision.GetComponent<Character>();
 
-        if (character != null) {
+        if (character != null && character.playerRoll == false) { // Checks if player rolled over trap
             character.TakeDamage(trapDamage);
             StartCoroutine(ResetTrap());
         }

@@ -11,6 +11,8 @@ public class Character : Entity
     [SerializeField] private float accelerationPercent;
     [SerializeField] private float frictionPercent;
 
+    public bool playerRoll = false;
+
     [SerializeField] protected Transform directionalArrow;
     protected void InitializeCharacter()
     {

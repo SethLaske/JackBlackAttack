@@ -36,6 +36,7 @@ public class PlayerDungeonController : Character
     {
         CheckUserInput();
         CheckAttacks();
+        CheckRoll();
         //check surroundings
     }
 
@@ -125,6 +126,14 @@ public class PlayerDungeonController : Character
         if (Input.GetMouseButtonUp(0)) {
             activeWeapon.UseAttackOne(attackOneTimer);
             attackOneTimer = 0;
+        }
+    }
+    private void CheckRoll()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRoll = true;
+            Debug.Log("Rolled");
         }
     }
 }
