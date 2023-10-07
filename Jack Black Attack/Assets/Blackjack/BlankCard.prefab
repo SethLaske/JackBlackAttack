@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5488159388439367531}
   - component: {fileID: 5488159388439367530}
   m_Layer: 0
-  m_Name: Clovers_4_white
+  m_Name: BlankCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 50c406fab3f6b8046966b3f56d92b531, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
