@@ -24,6 +24,8 @@ public class PlayerDungeonController : Character
     public Weapon activeWeapon;
     private float attackOneTimer;
 
+    private bool roll = false;
+
     void Start()
     {
         InitializeCharacter();
@@ -36,8 +38,10 @@ public class PlayerDungeonController : Character
     {
         CheckUserInput();
         CheckAttacks();
-        CheckRoll();
         //check surroundings
+
+        // Roll Function
+        CheckRoll();
     }
 
     private void FixedUpdate()
@@ -130,10 +134,36 @@ public class PlayerDungeonController : Character
     }
     private void CheckRoll()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && roll == false)
         {
-            playerRoll = true;
-            Debug.Log("Rolled");
+            roll = true;
+            Debug.Log("Roll Enabled");
+        }
+        if (Input.GetKeyDown(KeyCode.L) && roll == true)
+        {
+            roll = false;
+            Debug.Log("Roll Disabled");
         }
     }
+
+
+    public override bool TakeDamage(float damage)
+    {
+        if (roll == false)
+        {
+            HP -= damage;
+            return true;
+        }
+
+        if (roll == true)
+        {
+            return false;
+        }
+        if (HP <= 0)
+        {
+            Die();
+        }
+        return true;
+    }
+
 }
