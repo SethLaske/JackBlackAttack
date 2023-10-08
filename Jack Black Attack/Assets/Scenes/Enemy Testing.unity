@@ -4428,7 +4428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &564211174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4580,7 +4580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572281132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.31, y: 0.44, z: 0}
+  m_LocalPosition: {x: -1.85, y: 0.474, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5988,7 +5988,7 @@ GameObject:
   - component: {fileID: 693076140}
   m_Layer: 0
   m_Name: Spikes
-  m_TagString: Untagged
+  m_TagString: Spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6235,7 +6235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1449543600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6705,6 +6705,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391707738795716363, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 672738452491452288, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6717,6 +6721,10 @@ PrefabInstance:
       propertyPath: LaunchOffset
       value: 
       objectReference: {fileID: 572281133}
+    - target: {fileID: 1523295713604069990, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1523295713604069990, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: projectilePrefab
       value: 
@@ -6832,7 +6840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7741749881723052059, guid: 22a39c9ad0788dc46b0183a7266eb334, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22a39c9ad0788dc46b0183a7266eb334, type: 3}

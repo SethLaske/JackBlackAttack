@@ -57,15 +57,12 @@ public class RicWeapon : Weapon
         ProjectileBehavior projectileBehavior = projectile.GetComponent<ProjectileBehavior>();
         if (projectileBehavior != null)
         {
-            projectileBehavior.speed = projectileSpeed;
+            //projectileBehavior.speed = projectileSpeed;
             projectileBehavior.lifetime = projectileLifetime;
             projectileBehavior.damage = damage;
         }
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-        rb.velocity = transform.rotation*new Vector3(0, projectileSpeed, 0);
-        rb.isKinematic = true;
-        Destroy(projectile, projectileLifetime);
-
+        rb.velocity = transform.rotation * new Vector3(0, projectileSpeed, 0);
     }
 }
