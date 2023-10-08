@@ -24,12 +24,20 @@ public class PlayerDungeonController : Character
     public Weapon activeWeapon;
     private float attackOneTimer;
 
-    private bool roll = false;
+    // Roll Variables
+    [SerializeField] private bool roll = false;
+    [SerializeField] private bool canRoll = true;
+    [SerializeField] private float rollSpeed = 24f;
+    [SerializeField] private float rollCooldown = 2f;
+    [SerializeField] private float rollDuration = 0.11f;
+    private Vector2 rollDirection;
+    
 
     void Start()
     {
         InitializeCharacter();
         inputDirection = Vector2.zero;
+        rollDirection = Vector2.zero;
         //rb = GetComponent<Rigidbody2D>();
     }
 
@@ -39,9 +47,6 @@ public class PlayerDungeonController : Character
         CheckUserInput();
         CheckAttacks();
         //check surroundings
-
-        // Roll Function
-        CheckRoll();
     }
 
     private void FixedUpdate()
@@ -58,6 +63,14 @@ public class PlayerDungeonController : Character
         Vector3 mousePosition = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10f));
         //Check for attacks/other inputs
+
+        // Roll
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true)
+        {
+            rollDirection = inputDirection.normalized; // Set the roll direction based on input
+            Debug.Log("Roll Enabled");
+            StartCoroutine(Roll());
+        }
     }
 
     private void ApplyMovement() {
@@ -91,6 +104,10 @@ public class PlayerDungeonController : Character
 
 
         rb.velocity = setVelocityVector;*/
+        if (roll)
+        {
+            rb.velocity = rollDirection * rollSpeed;
+        }
     }
 
     private void RotateArrow() {
@@ -132,38 +149,34 @@ public class PlayerDungeonController : Character
             attackOneTimer = 0;
         }
     }
-    private void CheckRoll()
+ 
+    private IEnumerator Roll()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && roll == false)
-        {
-            roll = true;
-            Debug.Log("Roll Enabled");
-        }
-        if (Input.GetKeyDown(KeyCode.L) && roll == true)
-        {
-            roll = false;
-            Debug.Log("Roll Disabled");
-        }
+        canRoll = false;
+        roll = true;
+        yield return new WaitForSeconds(rollDuration); // Roll duration of 0.08
+        roll = false;
+        yield return new WaitForSeconds(rollCooldown); // Roll Cooldown of 2 Seconds
+        canRoll = true;
     }
 
 
     public override bool TakeDamage(float damage)
     {
-        if (roll == false)
+        
+        if (gameObject.tag == "Player" && roll == false)
         {
             HP -= damage;
-            return true;
-        }
-
-        if (roll == true)
-        {
-            return false;
-        }
-        if (HP <= 0)
+            if (HP <= 0)
         {
             Die();
         }
-        return true;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
