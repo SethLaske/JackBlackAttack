@@ -206,6 +206,7 @@ MonoBehaviour:
   moveSpeed: 5
   accelerationPercent: 0.1
   frictionPercent: 0.1
+  playerRoll: 0
   directionalArrow: {fileID: 4391283237415808121}
   useMouseToRotate: 0
   activeWeapon: {fileID: 1523295713604069990}
