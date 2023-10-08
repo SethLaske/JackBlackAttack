@@ -52,8 +52,6 @@ public class RicWeapon : Weapon
     {
 
         GameObject projectile = Instantiate(projectilePrefab, LaunchOffset.position, transform.rotation);
-        Debug.Log("Projectile");
-
         ProjectileBehavior projectileBehavior = projectile.GetComponent<ProjectileBehavior>();
         if (projectileBehavior != null)
         {
