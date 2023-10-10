@@ -209,6 +209,11 @@ MonoBehaviour:
   directionalArrow: {fileID: 4391283237415808121}
   useMouseToRotate: 0
   activeWeapon: {fileID: 1523295713604069990}
+  roll: 0
+  canRoll: 1
+  rollDistance: 5
+  rollCooldown: 2
+  rollDuration: 0.25
 --- !u!50 &4391283237189502668
 Rigidbody2D:
   serializedVersion: 4

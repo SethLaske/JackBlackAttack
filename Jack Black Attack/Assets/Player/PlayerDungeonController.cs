@@ -27,9 +27,9 @@ public class PlayerDungeonController : Character
     // Roll Variables
     [SerializeField] private bool roll = false;
     [SerializeField] private bool canRoll = true;
-    [SerializeField] private float rollSpeed = 24f;
-    [SerializeField] private float rollCooldown = 2f;
-    [SerializeField] private float rollDuration = 0.11f;
+    [SerializeField] private float rollDistance;
+    [SerializeField] private float rollCooldown;
+    [SerializeField] private float rollDuration;
     private Vector2 rollDirection;
     
 
@@ -65,7 +65,7 @@ public class PlayerDungeonController : Character
         //Check for attacks/other inputs
 
         // Roll
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true && inputDirection != Vector2.zero)
         {
             rollDirection = inputDirection.normalized;
             Debug.Log("Roll Enabled");
@@ -106,7 +106,7 @@ public class PlayerDungeonController : Character
         rb.velocity = setVelocityVector;*/
         if (roll)
         {
-            rb.velocity = rollDirection * rollSpeed;
+            rb.velocity = rollDirection * (rollDistance/rollDuration);
         }
     }
 
