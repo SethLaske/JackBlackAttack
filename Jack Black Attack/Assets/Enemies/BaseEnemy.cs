@@ -59,6 +59,10 @@ public class BaseEnemy : Character
         base.Die();
     }
 
+    public void SetSpawnTile(SpawnTile tile) {
+        spawnTile = tile;
+    }
+
     protected virtual void OnDrawGizmos()
     {
         Quaternion initialRotation = directionalArrow.rotation;
