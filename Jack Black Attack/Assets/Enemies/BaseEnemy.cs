@@ -79,4 +79,31 @@ public class BaseEnemy : Character
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
+    // freezes all movement, maybe move to baseEnemies script...
+    private void DisableEnemyMovement()
+    {
+        StartCoroutine(waitDisableMovement());
+        //moveSpeed = 0;
+        
+    }
+     private void EnableEnemyMovement()
+    {
+        //no code for now
+    }
+    private void OnEnable()
+    {
+        PlayerDungeonController.onPlayerDeath += DisableEnemyMovement;
+    }
+    private void OnDisable()
+    {
+        PlayerDungeonController.onPlayerDeath -= DisableEnemyMovement;
+    }
+
+    IEnumerator waitDisableMovement()
+    {   
+        yield return new WaitForSeconds(2);
+        moveSpeed = 0; //enemies dont freeze right away
+        //this freezes movement but not attacks
+    }
+
 }
