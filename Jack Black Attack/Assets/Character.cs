@@ -73,4 +73,31 @@ public class Character : Entity
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
         directionalArrow.rotation = targetRotation;
     }
+// freezes all movement, maybe move to baseEnemies script...
+    private void DisableCharacterMovement()
+    {
+        StartCoroutine(waitDisableMovement());
+        //moveSpeed = 0;
+        
+    }
+     private void EnableCharacterMovement()
+    {
+        //no code for now
+    }
+    private void OnEnable()
+    {
+        PlayerDungeonController.onPlayerDeath += DisableCharacterMovement;
+    }
+    private void OnDisable()
+    {
+        PlayerDungeonController.onPlayerDeath -= DisableCharacterMovement;
+    }
+
+    IEnumerator waitDisableMovement()
+    {   
+        yield return new WaitForSeconds(2);
+        moveSpeed = 0; //enemies dont freeze right away
+        //this freezes movement but not attacks
+    }
+
 }

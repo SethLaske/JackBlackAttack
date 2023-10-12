@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,9 +33,11 @@ public class PlayerDungeonController : Character
     [SerializeField] private float rollDuration;
     private Vector2 rollDirection;
     
-
+    public bool alive;
+    public static event Action onPlayerDeath;
     void Start()
     {
+        alive = true;//can set to false above any script we want to disable after death, like check attacks
         InitializeCharacter();
         inputDirection = Vector2.zero;
         rollDirection = Vector2.zero;
@@ -179,4 +182,28 @@ public class PlayerDungeonController : Character
         }
     }
 
+    public override void Die()
+    {
+        Debug.Log("YOU DIED");
+        onPlayerDeath?.Invoke();
+
+    }
+
+     private void DisablePlayerMovement()
+    {
+        alive = false;
+        moveSpeed = 0;
+    }
+     private void EnablePlayerMovement()
+    {
+        alive = true;
+    }
+    private void OnEnable()
+    {
+        PlayerDungeonController.onPlayerDeath += DisablePlayerMovement;
+    }
+    private void OnDisable()
+    {
+        PlayerDungeonController.onPlayerDeath -= DisablePlayerMovement;
+    }
 }
