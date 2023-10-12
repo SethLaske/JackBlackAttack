@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - Spikes
+  - Projectile
   layers:
   - Default
   - TransparentFX

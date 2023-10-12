@@ -5,8 +5,12 @@ using UnityEngine;
 public class RicWeapon : Weapon
 {
     public Collider2D attackBox;
+    public GameObject projectilePrefab;
     public float damage = 10.0f;
     public float attackDuration = 0.2f;
+    public float projectileSpeed = 6.0f;
+    public float projectileLifetime = 2.0f;
+    public Transform LaunchOffset;
 
     protected override void BaseAttackOne()
     {
@@ -19,13 +23,18 @@ public class RicWeapon : Weapon
         StartCoroutine(PerformAttack());
         Debug.Log("Charge Attack");
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ShootProjectile();
+        }
+    }
     private IEnumerator PerformAttack()
     {
         attackBox.enabled = true;
         yield return new WaitForSeconds(attackDuration);
         attackBox.enabled = false;
-
         Debug.Log("Attack Finished");
     }
 
@@ -37,5 +46,21 @@ public class RicWeapon : Weapon
         {
             enemyEntity.TakeDamage(damage);
         }
+    }
+
+    private void ShootProjectile()
+    {
+
+        GameObject projectile = Instantiate(projectilePrefab, LaunchOffset.position, transform.rotation);
+        ProjectileBehavior projectileBehavior = projectile.GetComponent<ProjectileBehavior>();
+        if (projectileBehavior != null)
+        {
+            //projectileBehavior.speed = projectileSpeed;
+            projectileBehavior.lifetime = projectileLifetime;
+            projectileBehavior.damage = damage;
+        }
+
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        rb.velocity = transform.rotation * new Vector3(0, projectileSpeed, 0);
     }
 }
