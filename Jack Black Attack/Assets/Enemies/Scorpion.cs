@@ -27,6 +27,7 @@ public class Scorpion : BaseEnemy
         EnemyStart();
         animator = gameObject.GetComponentInChildren<Animator>();
         state = ScorpionState.Idle;
+        SnapRotation(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)));    //Face a rando direction at the start
     }
 
 
@@ -36,6 +37,7 @@ public class Scorpion : BaseEnemy
 
         if (state == ScorpionState.PincerAttack)
         {
+            SnapVelocity(Vector2.zero);
             return;
         }
         
@@ -95,26 +97,10 @@ public class Scorpion : BaseEnemy
                 {
                     rotation = Random.Range(-1, 2) * 30;
                     Debug.Log("Something else infront");
+
                     break;
                 }
             }
-
-            /*Vector2 rayOrigin = transform.position;
-            Vector2 rayDirection = directionalArrow.rotation * Vector3.up;
-            float rayLength = 1f;
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, rayLength, Walls);
-           
-            if (hit.collider != null)
-            {
-                if (hit.collider.gameObject != gameObject)
-                {
-                    rotation = Random.Range(-1, 2) * 30;
-                    Debug.Log("Ray hit something other than the current GameObject.");
-                }
-                else {
-                    Debug.Log("Colliding with self");
-                }
-            }*/
 
             Vector3 wanderMove = (directionalArrow.rotation * Quaternion.Euler(0f, 0f, lastDirection * direction * rotation) * Vector3.up).normalized * (moveSpeed/2);
 

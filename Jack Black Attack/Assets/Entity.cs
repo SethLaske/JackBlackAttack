@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
         maxHealth = HP;
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual bool TakeDamage(float damage)
     {
         HP -= damage;
 
@@ -21,6 +21,8 @@ public class Entity : MonoBehaviour
             IsDead = true;
             Die();
         }
+
+        return true; // Return true if player has taken damage
     }
 
     //Changed by different units
