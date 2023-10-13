@@ -20,7 +20,7 @@ public class Scorpion : BaseEnemy
 
     private ScorpionState state;
 
-    private float lastDirection = 1;
+    private float turn = 0;
 
     void Start()
     {
@@ -83,29 +83,44 @@ public class Scorpion : BaseEnemy
         }
         else {
             //Wander
-            float direction = Mathf.Sign(Random.Range(-1, 16));     //1 in 15 chance to turn in a different direction
-            if (direction != 0) lastDirection = direction * lastDirection;
-            float rotation = Random.Range(0, 100);
-            if (rotation > 3) {
-                rotation = 0;
+
+            if (Mathf.Abs(turn) < 2) {
+                turn *= -1 * Random.Range(300, 550);
             }
+
+            
+
+            Vector3 wanderMove = (directionalArrow.rotation * Quaternion.Euler(0f, 0f, Mathf.Sign(turn) * 100f * Time.deltaTime) * Vector3.up).normalized * (moveSpeed / 2);
+            turn += -1 * Mathf.Sign(turn);
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + .5f * (directionalArrow.rotation * Vector3.up).normalized, .25f);
             foreach (Collider2D collider in colliders)
             {
                 if (collider.gameObject != gameObject)
                 {
-                    rotation = Random.Range(-1, 2) * 30;
-                    Debug.Log("Something else infront");
 
+                    wanderMove = Quaternion.Euler(0, 0, Mathf.Sign(turn) * 10) * wanderMove;
                     break;
                 }
             }
 
-            Vector3 wanderMove = (directionalArrow.rotation * Quaternion.Euler(0f, 0f, lastDirection * direction * rotation) * Vector3.up).normalized * (moveSpeed/2);
 
             OrganicVelocity(wanderMove);
             SnapRotation(wanderMove);
+
+            /*float direction = Mathf.Sign(Random.Range(-1, 16));     //1 in 15 chance to turn in a different direction
+            if (direction != 0) lastDirection = direction * lastDirection;
+            float rotation = Random.Range(0, 100);
+            if (rotation > 3) {
+                rotation = 0;
+            }
+
+            
+
+            Vector3 wanderMove = (directionalArrow.rotation * Quaternion.Euler(0f, 0f, lastDirection * direction * rotation) * Vector3.up).normalized * (moveSpeed/2);
+
+            OrganicVelocity(wanderMove);
+            SnapRotation(wanderMove);*/
         }
     }
 
