@@ -24,6 +24,13 @@ public class PlayerDungeonController : Character
 
     public Weapon activeWeapon;
     private float attackOneTimer;
+    private bool isBlocking;
+    private bool isHoldingShield;
+    private float shieldHoldDuration = 5.0f;
+    private bool shieldOnCooldown = false;
+    private float shieldCooldownDuration = 10.0f;
+    private float timeShieldHeld = 0.0f;
+
 
     // Roll Variables
     [SerializeField] private bool roll = false;
@@ -41,6 +48,7 @@ public class PlayerDungeonController : Character
         InitializeCharacter();
         inputDirection = Vector2.zero;
         rollDirection = Vector2.zero;
+        isBlocking = false;
         //rb = GetComponent<Rigidbody2D>();
     }
 
@@ -58,7 +66,8 @@ public class PlayerDungeonController : Character
         RotateArrow();
     }
 
-    private void CheckUserInput() {
+    private void CheckUserInput()
+    {
         inputDirection.x = Input.GetAxisRaw("Horizontal");
         inputDirection.y = Input.GetAxisRaw("Vertical");
 
@@ -74,9 +83,39 @@ public class PlayerDungeonController : Character
             Debug.Log("Roll Enabled");
             StartCoroutine(Roll());
         }
+        // Block
+        if (Input.GetMouseButtonDown(1) && !shieldOnCooldown)
+        {
+            isBlocking = true;
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            isBlocking = false;
+            isHoldingShield = false;
+            timeShieldHeld = 0.0f;
+        }
+        if (isBlocking)
+        {
+            isHoldingShield = true;
+            timeShieldHeld += Time.deltaTime;
+        }
+        if (timeShieldHeld >= shieldHoldDuration)
+        {
+            isBlocking = false;
+            isHoldingShield = false;
+            StartCoroutine(ShieldCooldown());
+        }
     }
 
     private void ApplyMovement() {
+        if (!isBlocking)
+        {
+            OrganicVelocity(inputDirection);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
         //Debug.Log("The user input direction is: " + inputDirection);
         OrganicVelocity(inputDirection);
         /*//X Velocity
@@ -166,20 +205,30 @@ public class PlayerDungeonController : Character
 
     public override bool TakeDamage(float damage)
     {
-        
-        if (gameObject.tag == "Player" && roll == false)
+
+        if (gameObject.tag == "Player" && !isBlocking && roll == false)
         {
             HP -= damage;
             if (HP <= 0)
-        {
-            Die();
-        }
+            {
+                Die();
+            }
             return true;
+        }
+        else if (isBlocking)
+        {
+            return false;
         }
         else
         {
             return false;
         }
+    }
+    private IEnumerator ShieldCooldown()
+    {
+        shieldOnCooldown = true;
+        yield return new WaitForSeconds(shieldCooldownDuration);
+        shieldOnCooldown = false;
     }
 
     public override void Die()
