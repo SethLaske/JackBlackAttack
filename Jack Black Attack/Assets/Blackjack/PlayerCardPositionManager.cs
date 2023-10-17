@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerCardPositionManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerCardPositionManager : MonoBehaviour
     public float CardSpace = 50f;
     public List<GameObject> Cards;
     public GameObject blankCard;
+    public TextMeshProUGUI handValueText;
 
 
     private void Start()
@@ -17,6 +19,8 @@ public class PlayerCardPositionManager : MonoBehaviour
     }
     private void DisplayCard()
     {
+        handValueText.text = BlackjackManager.Instance.playerHand.handValue.ToString();
+
         gameObject.transform.DestroyChildren();
 
         Cards.Clear();

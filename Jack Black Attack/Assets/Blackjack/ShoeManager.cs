@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class ShoeManager : MonoBehaviour
 {
     //Number of decks in play
     public int ShoeSize = 1;
+    public float shufflePercent = 0.75f;
 
     //Holds a reference to all cards
     private ScriptableCard[] cards;
@@ -63,6 +65,13 @@ public class ShoeManager : MonoBehaviour
         shoe.RemoveAt(_index);
         _cardDrawn.NumInDeck--;
         numberCardsInShoe--;
+
+
+        if(numberCardsInShoe <= Mathf.RoundToInt(ShoeSize * 52 * shufflePercent))
+        {
+            Debug.Log("Cards need to be shuffled");
+        }
+
         return _cardDrawn;
     }
     // Add a numberOfDecks to the shoe (Shoe needs to be reshuffled for cards to be in play)

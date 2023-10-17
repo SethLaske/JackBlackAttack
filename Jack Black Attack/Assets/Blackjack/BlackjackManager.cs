@@ -11,9 +11,9 @@ public class BlackjackManager : MonoBehaviour
     public static BlackjackManager Instance;
 
     [SerializeField]
-    private Hand playerHand;
+    public Hand playerHand { get; private set; }
     [SerializeField]
-    private Hand dealerHand;
+    public Hand dealerHand { get; private set; }
 
     private const int BUST_LIMIT = 21; // Maximum value that you can have before busting
     private const int DEALER_HIT_LIMIT = 16; // Maximum value that dealer can hit on
@@ -40,21 +40,27 @@ public class BlackjackManager : MonoBehaviour
         DealDealerHand();
 
         DealPlayerHand();
-
-        Debug.Log(dealerHand.cards[0]);
     }
 
     public void DealPlayerHand()
     {
+        playerHand.busted = false;
+
         ClearHand(playerHand);
         GetNewCard(playerHand);
         GetNewCard(playerHand);
         OnPlayerCardDraw();
+        if(playerHand.handValue == 21)
+        {
+            Debug.Log("PLAYER BLACKJACK!");
+        }
     }
 
     //Deals a new hand to the dealer
     public void DealDealerHand()
     {
+        dealerHand.busted = false;
+
         ClearHand(dealerHand);
         GetNewCard(dealerHand);
         GetNewCard(dealerHand);
@@ -98,7 +104,18 @@ public class BlackjackManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Player Busted");
+        _hand.busted = true;
+
+        if(_hand == playerHand)
+        {
+            Debug.Log("PLAYER BUST!");
+            //END ROUND
+        }
+        else
+        {
+            Debug.Log("DEALER BUST!");
+        }
+
         return;
     }
 
@@ -121,6 +138,15 @@ public class BlackjackManager : MonoBehaviour
         {
             Hit(dealerHand);
             OnDealerCardDraw();
+        }
+
+        if(playerHand.handValue > dealerHand.handValue && playerHand.busted == false)
+        {
+            Debug.Log("PLAYER WIN!");
+        }
+        else
+        {
+            Debug.Log("DEALER WIN!");
         }
     }
 
@@ -151,6 +177,7 @@ public class Hand
     public int numSoftAces;             // A soft ace is an ace that is worth 11
     public int handValue;
     public List<ScriptableCard> cards;
+    public bool busted;
     
 
     public Hand()
@@ -158,5 +185,6 @@ public class Hand
         cards = new List<ScriptableCard>();
         numSoftAces = 0;
         handValue = 0;
+        busted = false;
     }
 }

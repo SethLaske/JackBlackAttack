@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DealerCardPositionManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DealerCardPositionManager : MonoBehaviour
     public List<GameObject> Cards;
     public GameObject blankCard;
     public Sprite backOfCard;
+    public TextMeshProUGUI handValueText;
 
 
     private void Start()
@@ -19,6 +21,8 @@ public class DealerCardPositionManager : MonoBehaviour
     }
     private void DisplayCard()
     {
+        handValueText.text = BlackjackManager.Instance.dealerHand.handValue.ToString();
+
         gameObject.transform.DestroyChildren();
 
         Cards.Clear();
@@ -40,6 +44,8 @@ public class DealerCardPositionManager : MonoBehaviour
 
     private void DisplayFirstCards()
     {
+        handValueText.text = "?";
+
         gameObject.transform.DestroyChildren();
 
         Cards.Clear();
