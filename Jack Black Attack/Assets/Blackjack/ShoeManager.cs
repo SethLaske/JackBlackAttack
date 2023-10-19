@@ -17,6 +17,8 @@ public class ShoeManager : MonoBehaviour
     private List<ScriptableCard> shoe;
     private int numberCardsInShoe;
 
+    public bool needShuffle { get; private set; }
+
     public static ShoeManager Instance;
    
     //Get static instance of ShoeManager
@@ -69,7 +71,7 @@ public class ShoeManager : MonoBehaviour
 
         if(numberCardsInShoe <= Mathf.RoundToInt(ShoeSize * 52 * shufflePercent))
         {
-            Debug.Log("Cards need to be shuffled");
+            needShuffle = true;
         }
 
         return _cardDrawn;
@@ -94,5 +96,6 @@ public class ShoeManager : MonoBehaviour
                 numberCardsInShoe++;
             }
         }
+        needShuffle = false;
     }
 }

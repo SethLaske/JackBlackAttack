@@ -18,6 +18,8 @@ public class BlackjackManager : MonoBehaviour
     private const int BUST_LIMIT = 21; // Maximum value that you can have before busting
     private const int DEALER_HIT_LIMIT = 16; // Maximum value that dealer can hit on
 
+    private bool handIsActive = false;
+
     public event Action OnPlayerCardDraw;
 
     public event Action OnDealerInitialDraw;
@@ -37,9 +39,17 @@ public class BlackjackManager : MonoBehaviour
 
     public void NewHand()
     {
+        if(ShoeManager.Instance.needShuffle)
+        {
+            ShoeManager.Instance.ShuffleShoe();
+            Debug.Log("Shoe Shuffled");
+        }
+
         DealDealerHand();
 
         DealPlayerHand();
+
+        handIsActive = true;
     }
 
     public void DealPlayerHand()
@@ -108,12 +118,11 @@ public class BlackjackManager : MonoBehaviour
 
         if(_hand == playerHand)
         {
-            Debug.Log("PLAYER BUST!");
-            //END ROUND
+            EndGame(EndStates.PlayerBust);
         }
         else
         {
-            Debug.Log("DEALER BUST!");
+            EndGame(EndStates.DealerBust);
         }
 
         return;
@@ -125,8 +134,18 @@ public class BlackjackManager : MonoBehaviour
     }
     public void PlayerHit()
     {
+        if(!handIsActive)
+        {
+            Debug.Log("Please Start a new Hand");
+            return;
+        }
         Hit(playerHand);
         OnPlayerCardDraw();
+    }
+
+    private void RevealDealerCard()
+    {
+        OnDealerCardDraw();    // TEMP SOLUTION FIX LATER
     }
 
     private void DealerTurn()
@@ -142,11 +161,15 @@ public class BlackjackManager : MonoBehaviour
 
         if(playerHand.handValue > dealerHand.handValue && playerHand.busted == false)
         {
-            Debug.Log("PLAYER WIN!");
+            EndGame(EndStates.PlayerWin);
         }
-        else
+        if(dealerHand.handValue > playerHand.handValue && dealerHand.busted == false)
         {
-            Debug.Log("DEALER WIN!");
+            EndGame(EndStates.DealerWin);
+        }
+        if(dealerHand.handValue == playerHand.handValue)
+        {
+            EndGame(EndStates.Push);
         }
     }
 
@@ -155,6 +178,38 @@ public class BlackjackManager : MonoBehaviour
         _hand.cards.Clear();
         _hand.handValue = 0;
         _hand.numSoftAces = 0;
+    }
+
+    private void EndGame(EndStates _endState)
+    {
+        handIsActive = false;
+
+        switch(_endState)
+        {
+            default:
+                Debug.Log("No End State Determined");
+                break;
+
+            case EndStates.PlayerBlackjack:
+                Debug.Log("PlayerBlackjack");
+                break;
+            case EndStates.PlayerWin:
+                Debug.Log("PlayerWin");
+                break;
+            case EndStates.PlayerBust:
+                Debug.Log("PlayerBust");
+                RevealDealerCard();
+                break;
+            case EndStates.DealerWin:
+                Debug.Log("DealerWin");
+                break;
+            case EndStates.DealerBust:
+                Debug.Log("DealerBust");
+                break;
+            case EndStates.Push:
+                Debug.Log("DealerPush");
+                break;
+        }
     }
 
 
@@ -167,8 +222,14 @@ public class BlackjackManager : MonoBehaviour
     {
         return dealerHand.cards;
     }
+    private enum EndStates
+    {
+        PlayerBlackjack, PlayerWin, PlayerBust, DealerWin, DealerBust, Push
+    }
 
 }
+
+
 
 
 [Serializable]
