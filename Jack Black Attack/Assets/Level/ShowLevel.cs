@@ -35,10 +35,13 @@ public class ShowLevel : MonoBehaviour
         if (cameraTransform.transform.position.y > yEnd && move == true)
         {
             cameraDown();
-        } else {
+        }
+        else
+        {
             move = false;
             cameraTransform.position = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y, -10);
-            virtualCamera.m_Priority = 8;
+            //virtualCamera.Priority = 8;
+            virtualCamera.enabled = false;
         }
     }
 

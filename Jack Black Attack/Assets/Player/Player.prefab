@@ -246,6 +246,7 @@ MonoBehaviour:
   rollDistance: 5
   rollCooldown: 2
   rollDuration: 0.25
+  alive: 0
 --- !u!50 &4391283237189502668
 Rigidbody2D:
   serializedVersion: 4
