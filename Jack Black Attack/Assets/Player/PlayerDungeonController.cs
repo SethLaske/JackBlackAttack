@@ -177,18 +177,24 @@ public class PlayerDungeonController : Character
         if (activeWeapon == null) {
             return;
         }
+        if (!isBlocking)
+        {
 
-        if (Input.GetMouseButtonDown(0)) {
-            attackOneTimer = 0;
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                attackOneTimer = 0;
+            }
 
-        if (Input.GetMouseButton(0)) {
-            attackOneTimer += Time.deltaTime;
-        }
+            if (Input.GetMouseButton(0))
+            {
+                attackOneTimer += Time.deltaTime;
+            }
 
-        if (Input.GetMouseButtonUp(0)) {
-            activeWeapon.UseAttackOne(attackOneTimer);
-            attackOneTimer = 0;
+            if (Input.GetMouseButtonUp(0))
+            {
+                activeWeapon.UseAttackOne(attackOneTimer);
+                attackOneTimer = 0;
+            }
         }
     }
  
