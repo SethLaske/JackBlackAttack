@@ -39,7 +39,7 @@ public class SpawnTile : MonoBehaviour
     {
         Vector3 spawnPos = gameObject.transform.position;
 
-        GameObject goldSpawned = Instantiate(goldPrefab, spawnPos + Vector3.up, Quaternion.identity);
+        GameObject goldSpawned = Instantiate(goldPrefab, spawnPos + (.5f * Vector3.up), Quaternion.identity);
 
     }
 

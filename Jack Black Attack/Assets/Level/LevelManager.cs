@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private RoomGenerator roomGenerator;
     private int enemyCount;
     public bool hasSpawned = false;
 
@@ -17,8 +18,9 @@ public class LevelManager : MonoBehaviour
     {
         door.SetActive(false);
         //pass in card suit and number from given card, example rn is 4 of hearts
-        cardSuit = "Hearts";
-        cardNumber = 4; 
+        //cardSuit = "Hearts";
+        //cardNumber = 4; 
+        roomGenerator.StartRoomGeneration(Random.Range(1, 14));
     }
 
     // Update is called once per frame
@@ -41,6 +43,7 @@ public class LevelManager : MonoBehaviour
         enemyCount--;
         if (enemyCount == 0)
         {
+            roomGenerator.ClearTiles();
             SpawnDoor();
             hasSpawned = true;
         }

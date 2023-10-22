@@ -5237,6 +5237,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 810176391658513010, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 810176391658513010, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 810176391658513010, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134679082349673581, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134679082349673581, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6488493185893232480, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -9327,6 +9347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cd244129841488ba8641af1f1ef06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomGenerator: {fileID: 1852498267}
   hasSpawned: 0
   door: {fileID: 867836416}
   doorLocation: {fileID: 0}
@@ -9859,10 +9880,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4391283237189502669, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 494196774, guid: 04896a7fb98c8b1498a98c4069cfe52b, type: 3}
     - target: {fileID: 4391283237189502670, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_Name
       value: Player

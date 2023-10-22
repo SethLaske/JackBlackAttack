@@ -42,14 +42,19 @@ public class PlayerDungeonController : Character
     
     public bool alive;
     public static event Action onPlayerDeath;
-    void Start()
+    public static event Action<float> onTakeDamage;
+
+    private Animator animator;
+    private SpriteRenderer sr;
+    void Awake()
     {
         alive = true;//can set to false above any script we want to disable after death, like check attacks
         InitializeCharacter();
         inputDirection = Vector2.zero;
         rollDirection = Vector2.zero;
         isBlocking = false;
-        //rb = GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -64,6 +69,7 @@ public class PlayerDungeonController : Character
     {
         ApplyMovement();
         RotateArrow();
+        UpdateAnimator();
     }
 
     private void CheckUserInput()
@@ -215,6 +221,7 @@ public class PlayerDungeonController : Character
         if (gameObject.tag == "Player" && !isBlocking && roll == false)
         {
             HP -= damage;
+            onTakeDamage?.Invoke(HP);
             if (HP <= 0)
             {
                 Die();
@@ -260,5 +267,19 @@ public class PlayerDungeonController : Character
     private void OnDisable()
     {
         PlayerDungeonController.onPlayerDeath -= DisablePlayerMovement;
+    }
+
+    private void UpdateAnimator() {
+        animator.SetInteger("XMovement", (int)inputDirection.x);
+        animator.SetInteger("YMovement", (int)inputDirection.y);
+        
+        if (inputDirection.x < 0)
+        {
+            sr.flipX = true;
+            Debug.Log("Flipping sprite");
+        }
+        else {
+            sr.flipX = false;
+        }
     }
 }

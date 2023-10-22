@@ -7,6 +7,7 @@ TagManager:
   - enemy
   - Spikes
   - Projectile
+  - Gold
   layers:
   - Default
   - TransparentFX

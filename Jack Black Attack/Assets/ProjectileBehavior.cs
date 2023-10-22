@@ -35,7 +35,7 @@ public class ProjectileBehavior : MonoBehaviour
             hitSomething = true;
         }
 
-        if (other.CompareTag("Player") || (other.CompareTag("Spikes")) || (other.CompareTag("Projectile")))
+        if (other.CompareTag("Player") || other.CompareTag("Spikes") || other.CompareTag("Projectile") || other.CompareTag("Gold"))
         {
             return;
         }
