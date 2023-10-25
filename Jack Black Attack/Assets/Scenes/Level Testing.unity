@@ -9884,5 +9884,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4391283237189502671, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: roll
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391283237189502671, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: useMouseToRotate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
