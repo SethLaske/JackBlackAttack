@@ -8,7 +8,6 @@ public class deathUI : MonoBehaviour
 {
     public GameObject GameOverMenu;
     public TMP_Text coinsText;
-    public int coinCount;
     public float deathMenuDelay;
 
     public void Setup(int coins) //call setup with coin input later... unfinished
@@ -38,8 +37,8 @@ public class deathUI : MonoBehaviour
    IEnumerator waitDeathUi()
     {   
         yield return new WaitForSeconds(deathMenuDelay);
-        Setup(coinCount);
-        GameOverMenu.SetActive(true); //game over menu pops up after 3 seconds but player is frozen immediately
+        Setup(PlayerPrefs.GetInt("Player Gold"));
+        GameOverMenu.SetActive(true); //game over menu pops up after delay seconds but player is frozen immediately
     }
   
 }

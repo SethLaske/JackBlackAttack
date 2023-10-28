@@ -5249,6 +5249,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1422848263468785018, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: HealthBar
+      value: 
+      objectReference: {fileID: 1502879025}
     - target: {fileID: 6134679082349673581, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5260,6 +5264,10 @@ PrefabInstance:
     - target: {fileID: 6488493185893232480, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488493185893232481, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: deathMenuDelay
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6488493185893232493, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_Pivot.x
@@ -8915,6 +8923,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1502879025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2630553692685956963, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+  m_PrefabInstance: {fileID: 431152868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1562771829 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 711259673641007195, guid: 4d922b5c1e6c4e04f9647b6c2f96e739, type: 3}
