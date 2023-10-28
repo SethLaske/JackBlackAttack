@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
@@ -14,6 +15,8 @@ public class BlackjackManager : MonoBehaviour
     public Hand playerHand { get; private set; }
     [SerializeField]
     public Hand dealerHand { get; private set; }
+
+    [SerializeField] private TextMeshProUGUI endText;
 
     private const int BUST_LIMIT = 21; // Maximum value that you can have before busting
     private const int DEALER_HIT_LIMIT = 16; // Maximum value that dealer can hit on
@@ -39,6 +42,8 @@ public class BlackjackManager : MonoBehaviour
 
     public void NewHand()
     {
+        endText.text = "";
+
         if(ShoeManager.Instance.needShuffle)
         {
             ShoeManager.Instance.ShuffleShoe();
@@ -62,7 +67,16 @@ public class BlackjackManager : MonoBehaviour
         OnPlayerCardDraw();
         if(playerHand.handValue == 21)
         {
-            Debug.Log("PLAYER BLACKJACK!");
+            if(dealerHand.handValue == 21)
+            {
+                RevealDealerCard();
+                EndGame(EndStates.Push);
+            }
+            else
+            {
+                EndGame(EndStates.PlayerBlackjack);
+            }
+            
         }
     }
 
@@ -188,26 +202,34 @@ public class BlackjackManager : MonoBehaviour
         {
             default:
                 Debug.Log("No End State Determined");
+                endText.text = "No End State Determined";
                 break;
 
             case EndStates.PlayerBlackjack:
                 Debug.Log("PlayerBlackjack");
+                endText.text = "Player Blackjack";
+                RevealDealerCard();
                 break;
             case EndStates.PlayerWin:
                 Debug.Log("PlayerWin");
+                endText.text = "Player Win";
                 break;
             case EndStates.PlayerBust:
                 Debug.Log("PlayerBust");
+                endText.text = "Player Bust";
                 RevealDealerCard();
                 break;
             case EndStates.DealerWin:
                 Debug.Log("DealerWin");
+                endText.text = "Dealer Win";
                 break;
             case EndStates.DealerBust:
                 Debug.Log("DealerBust");
+                endText.text = "Dealer Bust";
                 break;
             case EndStates.Push:
-                Debug.Log("DealerPush");
+                Debug.Log("Push");
+                endText.text = "Push";
                 break;
         }
     }
