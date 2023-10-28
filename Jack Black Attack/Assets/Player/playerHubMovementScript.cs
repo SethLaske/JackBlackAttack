@@ -13,6 +13,9 @@ public class playerHubMovementScript : MonoBehaviour
     private const float detectionRadius = 0.2f;
     public LayerMask detectionlayer;
 
+    //Cacjed Trigger Object
+    public GameObject detectedObject;
+
     void Start()
     {
 
@@ -26,7 +29,7 @@ public class playerHubMovementScript : MonoBehaviour
         {
             if(InteractInput())
             {
-                Debug.Log("INTERACT");
+                detectedObject.GetComponent<Item>().Interact();
             }
         }
     }
@@ -56,7 +59,15 @@ public class playerHubMovementScript : MonoBehaviour
 
     bool DetectObject()
     {
-        return Physics2D.OverlapCircle(detectionPoint.position, detectionRadius, detectionlayer);
+        Collider2D obj = Physics2D.OverlapCircle(detectionPoint.position, detectionRadius, detectionlayer);
+        if(obj == null)
+        {
+            detectedObject = null;
+            return false;
+        } else {
+            detectedObject = obj.gameObject;
+            return true;
+        }
     }
 
     private void OnDrawGizmosSelected()
