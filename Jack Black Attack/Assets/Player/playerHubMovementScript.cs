@@ -15,6 +15,7 @@ public class playerHubMovementScript : MonoBehaviour
 
     //Cacjed Trigger Object
     public GameObject detectedObject;
+    
 
     void Start()
     {

@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 public class Item : MonoBehaviour
 {
 
-    public enum InteractionType {NONE, PickUp, Examine, Door};
+    public enum InteractionType {NONE, PickUp, Examine, Door, Bank};
     public InteractionType type; 
     public string nextScene;
+
+    public Canvas myCanvas;
 
     private void Reset()
     {
@@ -29,6 +31,10 @@ public class Item : MonoBehaviour
                 break;
             case InteractionType.Door:
                 SceneManager.LoadScene(nextScene);
+                break;
+            case InteractionType.Bank:
+                myCanvas.gameObject.SetActive(true);
+                Debug.Log("Bank");
                 break;
             default:
                 Debug.Log("NULL ITEM");
