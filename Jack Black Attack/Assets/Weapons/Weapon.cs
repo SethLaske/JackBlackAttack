@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public float attackOneChargeTime;
-    public float attackTwoChargeTime;
+    protected Animator weaponAnimator;
 
+    public float attackOneChargeTime;
+    public bool allowAttackOne;
+    public float attackTwoChargeTime;
+    public bool allowAttackTwo;
+
+    private void Start()
+    {
+        weaponAnimator = GetComponent<Animator>();
+    }
     public void UseAttackOne(float chargedTime) {
         if (chargedTime > attackOneChargeTime)
         {

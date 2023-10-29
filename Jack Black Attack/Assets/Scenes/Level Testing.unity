@@ -8462,6 +8462,11 @@ Transform:
   m_Father: {fileID: 879872275}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1281254739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4391283237415808121, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+  m_PrefabInstance: {fileID: 4391283238711615446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1327044347
 GameObject:
   m_ObjectHideFlags: 0
@@ -9318,6 +9323,17 @@ MonoBehaviour:
   spawnTile: {fileID: 711259673641007195, guid: 4d922b5c1e6c4e04f9647b6c2f96e739, type: 3}
   roomWidth: 16
   roomHeight: 24
+--- !u!114 &1881027040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5363233345156474419, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+  m_PrefabInstance: {fileID: 5363233344350509011}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0d48fd0a99ebb47a836792835ac816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1916919906
 GameObject:
   m_ObjectHideFlags: 0
@@ -9832,6 +9848,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391707738795716363, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: m_Name
+      value: Ric Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 391707738795716363, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1523295713604069990, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: attackBox
       value: 
@@ -9889,8 +9913,69 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502671, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: activeWeapon
+      value: 
+      objectReference: {fileID: 1881027040}
+    - target: {fileID: 4391283237189502671, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: useMouseToRotate
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+--- !u!1001 &5363233344350509011
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1281254739}
+    m_Modifications:
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474381, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363233345156474382, guid: e91206285ced9014385a6527e08e31a7, type: 3}
+      propertyPath: m_Name
+      value: Boomerang Weapon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e91206285ced9014385a6527e08e31a7, type: 3}
