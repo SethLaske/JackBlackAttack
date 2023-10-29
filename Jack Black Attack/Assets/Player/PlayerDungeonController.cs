@@ -276,7 +276,7 @@ public class PlayerDungeonController : Character
         if (inputDirection.x < 0)
         {
             sr.flipX = true;
-            Debug.Log("Flipping sprite");
+            //Debug.Log("Flipping sprite");
         }
         else {
             sr.flipX = false;

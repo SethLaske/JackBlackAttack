@@ -25,9 +25,6 @@ public class ShoeManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-    private void Start()
-    {
         InititalizeCards();
         ShuffleShoe();
     }
