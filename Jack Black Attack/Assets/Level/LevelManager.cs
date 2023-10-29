@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class LevelManager : MonoBehaviour
 
     public static int cardNumber;
     public static string cardSuit;
+    public event Action onWaveComplete;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class LevelManager : MonoBehaviour
         //pass in card suit and number from given card, example rn is 4 of hearts
         //cardSuit = "Hearts";
         //cardNumber = 4; 
-        roomGenerator.StartRoomGeneration(Random.Range(1, 14));
+        //roomGenerator.StartRoomGeneration(Random.Range(1, 14));
     }
 
     // Update is called once per frame
@@ -44,13 +46,18 @@ public class LevelManager : MonoBehaviour
         if (enemyCount == 0)
         {
             roomGenerator.ClearTiles();
-            SpawnDoor();
+            onWaveComplete();
             hasSpawned = true;
+
+            if(!BlackjackManager.Instance.handIsActive)
+            {
+                SpawnDoor();
+            }
         }
     }
 
 
-    private void SpawnDoor()
+    public void SpawnDoor()
     {
         door.SetActive(true);
     }

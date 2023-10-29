@@ -40,8 +40,8 @@ public class RoomGenerator : MonoBehaviour
         }
         SpawnTiles(allFormations[cardValue - 1]);
     }
+    public void SpawnTiles(CardFormation spawnFormation) {
 
-    private void SpawnTiles(CardFormation spawnFormation) {
         List<Vector2> spawnPositons = spawnFormation.GetSpawnPositions();
 
         foreach (Vector2 spawnPosition in spawnPositons) {

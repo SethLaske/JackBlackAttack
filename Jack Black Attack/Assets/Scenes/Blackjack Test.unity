@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fe721be632d3644ad0ff6525a065b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShoeSize: 1
+  ShoeSize: 2
   shufflePercent: 0.25
 --- !u!114 &872374848
 MonoBehaviour:
