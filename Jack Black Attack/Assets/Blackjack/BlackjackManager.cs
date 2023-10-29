@@ -22,7 +22,7 @@ public class BlackjackManager : MonoBehaviour
     [SerializeField] private GameObject newHandButton;
 
 
-
+    private int betAmount = 10;
     private const int BUST_LIMIT = 21; // Maximum value that you can have before busting
     private const int DEALER_HIT_LIMIT = 16; // Maximum value that dealer can hit on
 
@@ -48,6 +48,14 @@ public class BlackjackManager : MonoBehaviour
 
     public void NewHand()
     {
+        if(PlayerPrefs.GetInt("Player Gold") < betAmount)
+        {
+            Debug.Log("Not enough gold");
+        }
+
+        PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") - betAmount);
+        goldScript.OnGoldPickup();
+
         endText.text = "";
 
         if(ShoeManager.Instance.needShuffle)
@@ -198,7 +206,7 @@ public class BlackjackManager : MonoBehaviour
     {
         handIsActive = false;
 
-        
+        DisableButtons();
 
         switch(_endState)
         {
@@ -211,11 +219,15 @@ public class BlackjackManager : MonoBehaviour
                 Debug.Log("PlayerBlackjack");
                 endText.text = "Player Blackjack";
                 levelManager.SpawnDoor();
+                PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 5/2); // Pays money back + 3/2 of bet
+                goldScript.OnGoldPickup();
                 RevealDealerCard();
                 break;
             case EndStates.PlayerWin:
                 Debug.Log("PlayerWin");
                 endText.text = "Player Win";
+                PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 2);
+                goldScript.OnGoldPickup();
                 levelManager.SpawnDoor();
                 break;
             case EndStates.PlayerBust:
@@ -231,11 +243,15 @@ public class BlackjackManager : MonoBehaviour
             case EndStates.DealerBust:
                 Debug.Log("DealerBust");
                 endText.text = "Dealer Bust";
+                PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 2);
+                goldScript.OnGoldPickup();
                 levelManager.SpawnDoor();
                 break;
             case EndStates.Push:
                 Debug.Log("Push");
                 endText.text = "Push";
+                PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount);
+                goldScript.OnGoldPickup();
                 levelManager.SpawnDoor();
                 break;
         }
@@ -246,6 +262,12 @@ public class BlackjackManager : MonoBehaviour
         if(playerHand.cards.Count < 2)
         {
             PlayerHit();
+            return;
+        }
+
+        if(playerHand.cards.Count == 2 && playerHand.handValue == 21)
+        {
+            EndGame(EndStates.PlayerBlackjack);
             return;
         }
 

@@ -21,13 +21,18 @@ public class goldScript : MonoBehaviour
         {
             Debug.Log("Increasing gold score by: " + goldValue);
             PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + goldValue);
-            onGoldPickup?.Invoke();
+            OnGoldPickup();
             Destroy(gameObject);
         }
     }
 
     private void Despawn() {
         Destroy(gameObject);
+    }
+
+    public static void OnGoldPickup()
+    {
+        onGoldPickup?.Invoke();
     }
 
     
