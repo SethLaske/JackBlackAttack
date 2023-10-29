@@ -8,14 +8,17 @@ public class bankInteractionScript : MonoBehaviour
 {
     // Banking stuff
     private int goldValue;
-    private float balance;
+    private int balance;
 
     // Bank input
     public TMP_InputField withdrawField;
-    public TMP_Text withdrawFeedback;
+    public TextMeshProUGUI withdrawFeedback;
 
     public TMP_InputField depositField;
-    public TMP_Text depositFeedback;
+    public TextMeshProUGUI depositFeedback;
+
+    public TextMeshProUGUI balanceOutput;
+    public TextMeshProUGUI playerGold;
 
     public Canvas myCanvas;
 
@@ -27,67 +30,76 @@ public class bankInteractionScript : MonoBehaviour
     public void Start()
     {
         goldValue = PlayerPrefs.GetInt("Player Gold"); 
-        balance = PlayerPrefs.GetFloat("stored gold"); 
-        Debug.Log(goldValue);
+        balance = PlayerPrefs.GetInt("stored gold"); 
+        balanceOutput.SetText("Balance: " + balance);
+        playerGold.SetText("Player Gold: " + goldValue);
     }
 
     public void Deposit()
     {
         goldValue = PlayerPrefs.GetInt("Player Gold"); 
-        balance = PlayerPrefs.GetFloat("stored gold"); 
+        balance = PlayerPrefs.GetInt("stored gold"); 
 
-        Debug.Log("Deposit");
-        
         string depositAmountText = depositField.text;
 
         if (string.IsNullOrEmpty(depositAmountText))
         {
-            depositFeedback.text = "Please enter a number.";
+            depositField.text = ("");
+            depositFeedback.SetText("Enter value...");
         }
-        else if (!float.TryParse(depositAmountText, out float amount))
+        else if (!int.TryParse(depositAmountText, out int amount))
         {
-            depositFeedback.text = "Invalid input. Please enter a valid number.";
+            depositField.text = ("");
+            depositFeedback.SetText("Not a number - Enter value");
         }
-        else
+        else if(amount <= goldValue)
         {
-            depositFeedback.text = "Amount entered: " + amount;
+            depositField.text = ("");
+            depositFeedback.SetText("Deposited: " + amount + " - Enter value");
             balance += amount;
-            PlayerPrefs.SetFloat("stored gold", balance);
+            goldValue -= amount;
+            PlayerPrefs.SetInt("Player Gold", goldValue);
+            PlayerPrefs.SetInt("stored gold", balance);
+        } else {
+            depositField.text = ("");
+            depositFeedback.SetText("Failed to deposit - Enter value");
         }
-        depositField.text = depositFeedback.text;
-        Debug.Log(balance);
+        balanceOutput.SetText("Balance: " + balance);
+        playerGold.SetText("Player Gold: " + goldValue);
     }
 
     public void Withdraw()
     {
         goldValue = PlayerPrefs.GetInt("Player Gold"); 
-        balance = PlayerPrefs.GetFloat("stored gold"); 
-
-        Debug.Log("Withdraw");
+        balance = PlayerPrefs.GetInt("stored gold"); 
 
         string withdrawAmountText = withdrawField.text;
-        Debug.Log(withdrawAmountText);
+
         if (string.IsNullOrEmpty(withdrawAmountText))
         {
-            withdrawFeedback.text = "Please enter a number.";
+            withdrawField.text = ("");
+            withdrawFeedback.SetText("Enter value...");      
         }
-        else if (!float.TryParse(withdrawAmountText, out float amount))
+        else if (!int.TryParse(withdrawAmountText, out int amount))
         {
-            withdrawFeedback.text = "Invalid input. Please enter a valid number.";
+            withdrawField.text = ("");
+            withdrawFeedback.SetText("Not a number - Enter value");
+        }
+        else if (amount <= balance)
+        {
+            withdrawField.text = ("");       
+            withdrawFeedback.SetText("Withdrew: " + amount + " - Enter value");
+            balance -= amount;
+            goldValue += amount;         
+            PlayerPrefs.SetInt("Player Gold", goldValue);
+            PlayerPrefs.SetInt("stored gold", balance);
         }
         else
-        {
-            withdrawFeedback.text = "Amount entered: " + amount;
-            if (amount <= balance)
-            {
-                balance -= amount;
-                PlayerPrefs.SetFloat("stored gold", balance);
-            }
-            else
-            {
-                withdrawFeedback.text = "Insufficient balance.";
-            }
+        { 
+            withdrawField.text = ("");
+            withdrawFeedback.SetText("Failed to withdraw - Enter value");
         }
-        withdrawField.text = withdrawFeedback.text;
+        balanceOutput.SetText("Balance: " + balance);
+        playerGold.SetText("Player Gold: " + goldValue);
     }
 }
