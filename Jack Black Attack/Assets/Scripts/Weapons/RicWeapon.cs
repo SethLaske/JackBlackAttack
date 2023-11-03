@@ -31,6 +31,7 @@ public class RicWeapon : Weapon
 
     protected override void ChargedAttackOne()
     {
+        ShootProjectile();
         StartCoroutine(PerformAttack());
         Debug.Log("Charge Attack");
     }

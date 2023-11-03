@@ -9894,6 +9894,14 @@ PrefabInstance:
       propertyPath: attackBox
       value: 
       objectReference: {fileID: 2044380624}
+    - target: {fileID: 1584349571386928808, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584349571386928808, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_RootOrder
       value: 2
