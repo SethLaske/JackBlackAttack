@@ -12,10 +12,21 @@ public class RicWeapon : Weapon
     public float projectileLifetime = 2.0f;
     public Transform LaunchOffset;
 
+    public bool canAttack = true;
+    private Animator anim;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     protected override void BaseAttackOne()
     {
-        StartCoroutine(PerformAttack());
-        Debug.Log("Base Attack");
+        if(canAttack)
+        {
+            anim.SetTrigger("Attack");
+            StartCoroutine(PerformAttack());
+            Debug.Log("Base Attack");
+        }
+
     }
 
     protected override void ChargedAttackOne()
@@ -23,13 +34,7 @@ public class RicWeapon : Weapon
         StartCoroutine(PerformAttack());
         Debug.Log("Charge Attack");
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ShootProjectile();
-        }
-    }
+
     private IEnumerator PerformAttack()
     {
         attackBox.enabled = true;
