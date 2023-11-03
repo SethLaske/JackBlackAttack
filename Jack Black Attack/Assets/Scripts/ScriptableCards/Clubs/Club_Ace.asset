@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead28df409e82ee44ad93b125d49b171, type: 3}
+  m_Name: Club_Ace
+  m_EditorClassIdentifier: 
+  CardSuit: 0
+  CardFace: 0
+  CardValue: 11
+  NumInDeck: 2
+  CardSprite: {fileID: 21300000, guid: af63e9ba2175df945b5b530578215df5, type: 3}
+  CardFormation: {fileID: 7217246583332996678, guid: e25a2f4fb4598464ba913762609666ef, type: 3}

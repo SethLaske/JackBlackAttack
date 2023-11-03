@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead28df409e82ee44ad93b125d49b171, type: 3}
+  m_Name: Diamond_Jack
+  m_EditorClassIdentifier: 
+  CardSuit: 3
+  CardFace: 10
+  CardValue: 10
+  NumInDeck: 2
+  CardSprite: {fileID: 21300000, guid: b1f2e6afd5f10054a8ea6051da67e337, type: 3}
+  CardFormation: {fileID: 2724390137478800003, guid: 9457d91a1e6387749b91516480735440, type: 3}

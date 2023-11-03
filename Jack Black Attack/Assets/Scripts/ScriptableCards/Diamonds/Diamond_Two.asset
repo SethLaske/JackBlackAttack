@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead28df409e82ee44ad93b125d49b171, type: 3}
+  m_Name: Diamond_Two
+  m_EditorClassIdentifier: 
+  CardSuit: 3
+  CardFace: 1
+  CardValue: 2
+  NumInDeck: 2
+  CardSprite: {fileID: 21300000, guid: 3422867729a392a45919444b0a61f6bd, type: 3}
+  CardFormation: {fileID: 7958142320833671530, guid: cebd9abe20348034fa8d64df56800819, type: 3}

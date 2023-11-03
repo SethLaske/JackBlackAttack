@@ -24,6 +24,8 @@ public class ScriptableCard : ScriptableObject
 
     public Sprite CardSprite;
 
+    public CardFormation CardFormation;
+
     public enum Suit
     {
         Club,

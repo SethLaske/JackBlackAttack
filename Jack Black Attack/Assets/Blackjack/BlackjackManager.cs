@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
@@ -10,15 +11,22 @@ public class BlackjackManager : MonoBehaviour
 {
     public static BlackjackManager Instance;
 
-    [SerializeField]
-    public Hand playerHand { get; private set; }
-    [SerializeField]
-    public Hand dealerHand { get; private set; }
+    [SerializeField] public Hand playerHand { get; private set; }
+    [SerializeField] public Hand dealerHand { get; private set; }
 
+    [SerializeField] private TextMeshProUGUI endText;
+    [SerializeField] private RoomGenerator roomGenerator;
+    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private GameObject hitButton;
+    [SerializeField] private GameObject standButton;
+    [SerializeField] private GameObject newHandButton;
+
+
+    private int betAmount = 10;
     private const int BUST_LIMIT = 21; // Maximum value that you can have before busting
     private const int DEALER_HIT_LIMIT = 16; // Maximum value that dealer can hit on
 
-    private bool handIsActive = false;
+    public bool handIsActive = false;
 
     public event Action OnPlayerCardDraw;
 
@@ -32,6 +40,7 @@ public class BlackjackManager : MonoBehaviour
     private void Start()
     {
         InitializeHands();
+        levelManager.onWaveComplete += OnWaveComplete;
     }
 
     //Deals a new hand to the player
@@ -39,6 +48,16 @@ public class BlackjackManager : MonoBehaviour
 
     public void NewHand()
     {
+        if(PlayerPrefs.GetInt("Player Gold") < betAmount)
+        {
+            Debug.Log("Not enough gold");
+        }
+
+        PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") - betAmount);
+        goldScript.OnGoldPickup();
+
+        endText.text = "";
+
         if(ShoeManager.Instance.needShuffle)
         {
             ShoeManager.Instance.ShuffleShoe();
@@ -50,6 +69,9 @@ public class BlackjackManager : MonoBehaviour
         DealPlayerHand();
 
         handIsActive = true;
+
+        DisableButtons();
+        
     }
 
     public void DealPlayerHand()
@@ -58,14 +80,10 @@ public class BlackjackManager : MonoBehaviour
 
         ClearHand(playerHand);
         GetNewCard(playerHand);
-        GetNewCard(playerHand);
-        OnPlayerCardDraw();
-        if(playerHand.handValue == 21)
-        {
-            Debug.Log("PLAYER BLACKJACK!");
-        }
-    }
+        roomGenerator.SpawnTiles(playerHand.cards[0].CardFormation);
+        OnPlayerCardDraw(); //Displays cards
 
+    }
     //Deals a new hand to the dealer
     public void DealDealerHand()
     {
@@ -86,7 +104,7 @@ public class BlackjackManager : MonoBehaviour
     }
 
     //Gives hand a new card
-    private void GetNewCard(Hand _hand)
+    private ScriptableCard GetNewCard(Hand _hand)
     {
         ScriptableCard _newCard = ShoeManager.Instance.DrawCard();
         _hand.cards.Add(_newCard);
@@ -97,6 +115,8 @@ public class BlackjackManager : MonoBehaviour
         {
             _hand.numSoftAces++;
         }
+
+        return _newCard;
     }
 
 
@@ -140,7 +160,9 @@ public class BlackjackManager : MonoBehaviour
             return;
         }
         Hit(playerHand);
+        roomGenerator.SpawnTiles(playerHand.cards[playerHand.cards.Count - 1].CardFormation); // Spawns the room of the last card drawn
         OnPlayerCardDraw();
+        DisableButtons();
     }
 
     private void RevealDealerCard()
@@ -184,32 +206,81 @@ public class BlackjackManager : MonoBehaviour
     {
         handIsActive = false;
 
+        DisableButtons();
+
         switch(_endState)
         {
             default:
                 Debug.Log("No End State Determined");
+                endText.text = "No End State Determined";
                 break;
 
             case EndStates.PlayerBlackjack:
                 Debug.Log("PlayerBlackjack");
+                endText.text = "Player Blackjack";
+                levelManager.SpawnDoor();
+                PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 5/2); // Pays money back + 3/2 of bet
+                goldScript.OnGoldPickup();
+                RevealDealerCard();
                 break;
             case EndStates.PlayerWin:
                 Debug.Log("PlayerWin");
+                endText.text = "Player Win";
+                PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 2);
+                goldScript.OnGoldPickup();
+                levelManager.SpawnDoor();
                 break;
             case EndStates.PlayerBust:
                 Debug.Log("PlayerBust");
+                endText.text = "Player Bust";
                 RevealDealerCard();
                 break;
             case EndStates.DealerWin:
                 Debug.Log("DealerWin");
+                endText.text = "Dealer Win";
+                levelManager.SpawnDoor();
                 break;
             case EndStates.DealerBust:
                 Debug.Log("DealerBust");
+                endText.text = "Dealer Bust";
+                PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 2);
+                goldScript.OnGoldPickup();
+                levelManager.SpawnDoor();
                 break;
             case EndStates.Push:
-                Debug.Log("DealerPush");
+                Debug.Log("Push");
+                endText.text = "Push";
+                PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount);
+                goldScript.OnGoldPickup();
+                levelManager.SpawnDoor();
                 break;
         }
+    }
+
+    private void OnWaveComplete()
+    {
+        if(playerHand.cards.Count < 2)
+        {
+            PlayerHit();
+            return;
+        }
+
+        if(playerHand.cards.Count == 2 && playerHand.handValue == 21)
+        {
+            EndGame(EndStates.PlayerBlackjack);
+            return;
+        }
+
+        hitButton.SetActive(true);
+        standButton.SetActive(true);
+    }
+
+    private void DisableButtons()
+    {
+        //Disbale Buttons
+        hitButton.SetActive(false);
+        standButton.SetActive(false);
+        newHandButton.SetActive(false);
     }
 
 
