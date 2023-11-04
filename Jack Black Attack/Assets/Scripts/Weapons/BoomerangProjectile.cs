@@ -42,7 +42,7 @@ public class BoomerangProjectile : MonoBehaviour
 
         if (enemyEntity != null)
         {
-            enemyEntity.TakeDamage(damage, transform.position);
+            enemyEntity.TakeDamage(damage);
             return;
             //hitSomething = true;
         }

@@ -31,7 +31,7 @@ public class ProjectileBehavior : MonoBehaviour
 
         if (enemyEntity != null)
         {
-            enemyEntity.TakeDamage(damage, transform.position);
+            enemyEntity.TakeDamage(damage);
             hitSomething = true;
         }
 

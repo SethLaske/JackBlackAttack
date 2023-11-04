@@ -26,34 +26,38 @@ public class Character : Entity
         //Debug.Log("The desired Velocity is: " + desiredVelocity);
         //if (desiredVelocity == null) { return; }
 
-        if (desiredVelocity.x != 0)
+        if (isMovementEnabled)
         {
-            desiredVelocity.x = rb.velocity.x + desiredVelocity.x * accelerationPercent * moveSpeed;
-        }
-        else
-        {
-            desiredVelocity.x = rb.velocity.x * (1 - frictionPercent);
-        }
+            if (desiredVelocity.x != 0)
+            {
+                desiredVelocity.x = rb.velocity.x + desiredVelocity.x * accelerationPercent * moveSpeed;
+            }
+            else
+            {
+                desiredVelocity.x = rb.velocity.x * (1 - frictionPercent);
+            }
 
-        if (desiredVelocity.y != 0)
-        {
-            desiredVelocity.y = rb.velocity.y + desiredVelocity.y * accelerationPercent * moveSpeed;
-        }
-        else
-        {
-            desiredVelocity.y = rb.velocity.y * (1 - frictionPercent);
-        }
+            if (desiredVelocity.y != 0)
+            {
+                desiredVelocity.y = rb.velocity.y + desiredVelocity.y * accelerationPercent * moveSpeed;
+            }
+            else
+            {
+                desiredVelocity.y = rb.velocity.y * (1 - frictionPercent);
+            }
 
-        if (Mathf.Abs(desiredVelocity.x) < .1f) desiredVelocity.x = 0;
-        if (Mathf.Abs(desiredVelocity.y) < .1f) desiredVelocity.y = 0;
-
-        if (desiredVelocity.magnitude > moveSpeed)
-        {
-            desiredVelocity = desiredVelocity.normalized * moveSpeed;
-        }
+            if (Mathf.Abs(desiredVelocity.x) < .1f) desiredVelocity.x = 0;
+            if (Mathf.Abs(desiredVelocity.y) < .1f) desiredVelocity.y = 0;
 
 
-        rb.velocity = desiredVelocity;
+            if (desiredVelocity.magnitude > moveSpeed)
+            {
+                desiredVelocity = desiredVelocity.normalized * moveSpeed;
+            }
+
+
+            rb.velocity = desiredVelocity;
+        }
     }
 
     protected void SnapVelocity(Vector2 desiredVelocity)

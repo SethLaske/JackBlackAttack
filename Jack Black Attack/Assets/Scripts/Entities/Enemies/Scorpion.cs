@@ -16,6 +16,8 @@ public class Scorpion : BaseEnemy
     [SerializeField] private float tailRange;
     [SerializeField] private float tailPullSpeed;
 
+    [SerializeField] private float knockbackForce = 5f;
+
     private Animator animator;
 
     private ScorpionState state;
@@ -131,7 +133,9 @@ public class Scorpion : BaseEnemy
         {
             if (collider.gameObject == player.gameObject)
             {
-                player.TakeDamage(pincerDamage);
+                //player.TakeDamage(pincerDamage);
+                // Knockback TakeDamage
+                player.TakeDamage(pincerDamage, transform.position, knockbackForce);
 
             }
         }
