@@ -87,6 +87,7 @@ public class PlayerDungeonController : Character
         {
             rollDirection = inputDirection.normalized;
             Debug.Log("Roll Enabled");
+            animator.SetTrigger("Roll");
             StartCoroutine(Roll());
         }
         // Block
@@ -208,7 +209,9 @@ public class PlayerDungeonController : Character
     {
         canRoll = false;
         roll = true;
+        directionalArrow.gameObject.SetActive(false);
         yield return new WaitForSeconds(rollDuration); // Roll duration of 0.08
+        directionalArrow.gameObject.SetActive(true);
         roll = false;
         yield return new WaitForSeconds(rollCooldown); // Roll Cooldown of 2 Seconds
         canRoll = true;

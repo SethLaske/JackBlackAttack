@@ -213,6 +213,7 @@ MonoBehaviour:
   pincerDamage: 1
   tailRange: 2
   tailPullSpeed: 3
+  knockbackForce: 5
 --- !u!1 &7741749881739902057
 GameObject:
   m_ObjectHideFlags: 0

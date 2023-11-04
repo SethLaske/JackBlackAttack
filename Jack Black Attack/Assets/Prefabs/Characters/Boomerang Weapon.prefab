@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5363233345156474381}
   - component: {fileID: 5363233345156474418}
   - component: {fileID: 5363233345156474419}
-  - component: {fileID: 5363233345156474380}
   - component: {fileID: 5363233345156474417}
+  - component: {fileID: 5500684189452141254}
   m_Layer: 0
   m_Name: Boomerang Weapon
   m_TagString: Player
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5363233345156474382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5363233345273583399}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: -1408978947
   m_SortingLayer: 2
   m_SortingOrder: 3
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8773585, g: 0.5247174, b: 0.094357364, a: 1}
+  m_Sprite: {fileID: -773028020, guid: fef7952518090524fac3dbe4fc8cedd2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,37 +104,11 @@ MonoBehaviour:
   allowAttackOne: 0
   attackTwoChargeTime: 0
   allowAttackTwo: 0
-  attackBox: {fileID: 5363233345156474380}
+  attackBox: {fileID: 0}
   projectilePrefab: {fileID: 7434086684705066405, guid: 9f9806ebc7c26064187becc6e670c832, type: 3}
   AOEDamage: 20
   projectileAttackCooldown: 1
   LaunchOffset: {fileID: 5363233345273583399}
---- !u!61 &5363233345156474380
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5363233345156474382}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!95 &5363233345156474417
 Animator:
   serializedVersion: 5
@@ -156,6 +130,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &5500684189452141254
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363233345156474382}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.45, y: 0.95}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.22500001, y: 0.475}
+      - {x: -0.22500001, y: -0.475}
+      - {x: -0.11898365, y: -0.47252676}
+      - {x: 0.22500001, y: -0.124978885}
+      - {x: 0.22706257, y: 0.119807705}
+      - {x: -0.1219419, y: 0.475}
 --- !u!1 &5363233345273583392
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5363233345273583392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.85, y: 0.474, z: 0}
+  m_LocalPosition: {x: -0.31, y: 0.474, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     //private PlayerDungeonController player;
     private void Start()
     {
-         PlayerPrefs.SetInt("Player Gold", 0);
+         //PlayerPrefs.SetInt("Player Gold", 0);
         PlayerDungeonController.onTakeDamage += SetPlayerHealthBar;
         InitializePlayerHealthBar(FindObjectOfType<PlayerDungeonController>().HP);
 

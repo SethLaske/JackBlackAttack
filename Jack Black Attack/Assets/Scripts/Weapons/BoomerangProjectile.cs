@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoomerangProjectile : MonoBehaviour
 {
     public Transform thrower;
+    [SerializeField] private float rotationSpeed;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float damage;
     public Vector2 initialDirection;
@@ -53,5 +54,16 @@ public class BoomerangProjectile : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        float currentRotationDegrees = transform.rotation.eulerAngles.z;
+
+        // Calculate the new rotation in degrees
+        float newRotationDegrees = currentRotationDegrees + rotationSpeed * Mathf.Rad2Deg * Time.deltaTime;
+
+        // Apply the new rotation to the object
+        transform.rotation = Quaternion.Euler(0, 0, newRotationDegrees);
     }
 }
