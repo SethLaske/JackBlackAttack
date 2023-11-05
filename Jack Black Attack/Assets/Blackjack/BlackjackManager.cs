@@ -17,6 +17,7 @@ public class BlackjackManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endText;
     [SerializeField] private RoomGenerator roomGenerator;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private CardMenu cardMenu;
     [SerializeField] private GameObject hitButton;
     [SerializeField] private GameObject standButton;
     [SerializeField] private GameObject newHandButton;
@@ -41,6 +42,8 @@ public class BlackjackManager : MonoBehaviour
     {
         InitializeHands();
         levelManager.onWaveComplete += OnWaveComplete;
+
+        cardMenu = CardMenu.Instance;
     }
 
     //Deals a new hand to the player
@@ -70,7 +73,7 @@ public class BlackjackManager : MonoBehaviour
 
         handIsActive = true;
 
-        DisableButtons();
+        
         
     }
 
@@ -80,7 +83,10 @@ public class BlackjackManager : MonoBehaviour
 
         ClearHand(playerHand);
         GetNewCard(playerHand);
-        roomGenerator.SpawnTiles(playerHand.cards[0].CardFormation);
+
+        StartCoroutine(StartClosingMenu());
+        DisableButtons();
+
         OnPlayerCardDraw(); //Displays cards
 
     }
@@ -160,9 +166,12 @@ public class BlackjackManager : MonoBehaviour
             return;
         }
         Hit(playerHand);
-        roomGenerator.SpawnTiles(playerHand.cards[playerHand.cards.Count - 1].CardFormation); // Spawns the room of the last card drawn
-        OnPlayerCardDraw();
+
+        StartCoroutine(StartClosingMenu());
         DisableButtons();
+
+        OnPlayerCardDraw();
+        
     }
 
     private void RevealDealerCard()
@@ -259,11 +268,15 @@ public class BlackjackManager : MonoBehaviour
 
     private void OnWaveComplete()
     {
+        // Case for showing the second player card
         if(playerHand.cards.Count < 2)
         {
-            PlayerHit();
+            Debug.Log("ShowSecondCard");
+            ShowSecondCard();
             return;
         }
+
+        cardMenu.OpenMenu();
 
         if(playerHand.cards.Count == 2 && playerHand.handValue == 21)
         {
@@ -298,6 +311,19 @@ public class BlackjackManager : MonoBehaviour
         PlayerBlackjack, PlayerWin, PlayerBust, DealerWin, DealerBust, Push
     }
 
+    private IEnumerator StartClosingMenu()
+    {
+        yield return new WaitForSeconds(3f);
+        roomGenerator.SpawnTiles(playerHand.cards[playerHand.cards.Count - 1].CardFormation); // Spawns the room of the last card drawn
+        cardMenu.CloseMenu();
+    }
+    
+    private IEnumerator ShowSecondCard()
+    {
+        cardMenu.OpenMenu();
+        yield return new WaitForSeconds(3f);
+        PlayerHit();
+    }
 }
 
 
