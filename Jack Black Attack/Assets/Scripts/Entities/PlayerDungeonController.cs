@@ -203,6 +203,10 @@ public class PlayerDungeonController : Character
                 attackOneTimer = 0;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.K)) {
+            StartCoroutine(KillAll());
+        }
     }
  
     private IEnumerator Roll()
@@ -284,5 +288,28 @@ public class PlayerDungeonController : Character
         else {
             sr.flipX = false;
         }
+    }
+
+    IEnumerator KillAll() {
+        float radius = 1f;
+
+        while (radius < 100) {
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+            foreach (Collider2D collider in colliders)
+            {
+
+                if (collider.gameObject != this.gameObject) {
+                    Entity entity = collider.GetComponent<Entity>();
+                    if (entity != null) { 
+                        entity.TakeDamage(100);
+                    }
+                }
+            }
+
+            radius++;
+            yield return null;
+        }
+    
     }
 }
