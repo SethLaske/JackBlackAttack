@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9bd591bc5bd2f4d4484b8ffa42dcf803
+guid: c9ec081475fcfad4c81947b15da7af2a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,8 +43,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
-  spriteMeshType: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -101,65 +101,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ColosseumTileSet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86691ecb03eb6d14397016ffd3f24e4c
-      internalID: 1457240242
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ColosseumTileSet_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ede834994727dab498dfbdf60c8e4a17
-      internalID: 437809255
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ColosseumTileSet_2
+      name: IMG_0559_0
       rect:
         serializedVersion: 2
         x: 64
@@ -173,56 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1718e43ac5371540908f692aa3ca731
-      internalID: 1665003894
+      spriteID: b6a5a100db23bef42b382a1200084835
+      internalID: 2114638520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c84da27993ec09f46855f46f730eb3c8
-      internalID: -1509251316
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ColosseumTileSet_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d16b17530bab6748b5fbfbf93374928
-      internalID: -2147042731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ColosseumTileSet_5
+      name: IMG_0559_1
       rect:
         serializedVersion: 2
         x: 64
@@ -236,18 +140,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d75a26e0a1b9b58409468da7577a04e8
-      internalID: 1837510014
+      spriteID: 9ec410e673c385f438d1f22d531908cf
+      internalID: -1966179952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_6
+      name: IMG_0559_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 96
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -257,14 +161,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 838bf98a29c937941b4ec43cf8962a97
-      internalID: 438272984
+      spriteID: abf95fbeab4cdb341a46471b73a53395
+      internalID: -86642878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_7
+      name: IMG_0559_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 381504475fb8e37489d8d3b517c0b8fe
+      internalID: -1378052357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_0559_4
       rect:
         serializedVersion: 2
         x: 32
@@ -278,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fec17f0bab476c34289cdc9f5bdaa492
-      internalID: 1975277230
+      spriteID: 245adda54c8c54e4f9a2f90c772f158d
+      internalID: 1967498546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_8
+      name: IMG_0559_5
       rect:
         serializedVersion: 2
         x: 64
@@ -299,18 +224,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d7e888f6eabcbd4c8532acc52cea418
-      internalID: -898662047
+      spriteID: 1812a176651007c49a243ab59caedd42
+      internalID: 316890103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_9
+      name: IMG_0559_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 96
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -320,14 +245,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c5f86be0fe9cb244861caacd998667d
-      internalID: 1387924333
+      spriteID: 4dda98bb6f7e1d64fbfd5db98e62cadb
+      internalID: 1867051225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_10
+      name: IMG_0559_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b51773005b1cb47adb2e7f301dba89
+      internalID: -1748677935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_0559_8
       rect:
         serializedVersion: 2
         x: 32
@@ -341,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 165b1305179b8c04db1b8ec84b7cd545
-      internalID: -913529943
+      spriteID: fcbc283827275044b9d7ee979d2fa661
+      internalID: 1461467063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_11
+      name: IMG_0559_9
       rect:
         serializedVersion: 2
         x: 64
@@ -362,14 +308,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a43ee3ef7b2d5d4b90da3f1081e8260
-      internalID: 1295978149
+      spriteID: 1cde1bf9d4156664f85727bed5acd70f
+      internalID: 243198878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_12
+      name: IMG_0559_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f67e80d535fa35944a78be49b19ce781
+      internalID: 639696927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_0559_11
       rect:
         serializedVersion: 2
         x: 0
@@ -383,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9af883a079b6a1e4996cc2d64a70ae8b
-      internalID: -1117814269
+      spriteID: 667f15145374e4241b90121817c96d80
+      internalID: -485427993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_13
+      name: IMG_0559_12
       rect:
         serializedVersion: 2
         x: 32
@@ -404,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d81f79cc35ec5014f9b70902d6d9a4b2
-      internalID: -592019036
+      spriteID: 70072ac931e130f41865f214a94d1942
+      internalID: 2004084367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_14
+      name: IMG_0559_13
       rect:
         serializedVersion: 2
         x: 64
@@ -425,18 +392,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1dd4f5c74e98b914bbd028ca6d38fea4
-      internalID: -609052720
+      spriteID: 9d34fa6458356af41a4836ee66696519
+      internalID: -2068783157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_15
+      name: IMG_0559_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 96
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -446,14 +413,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e47ffff5a13327c4e8c6509896c2721d
-      internalID: -464485981
+      spriteID: d53708989f81c6f498f513a29458884a
+      internalID: -29532804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_16
+      name: IMG_0559_15
       rect:
         serializedVersion: 2
         x: 32
@@ -467,14 +434,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f384322ae8362fc4e805515e05e5f730
-      internalID: 2024812027
+      spriteID: ef2448d7a3159b6449f3647d90e3f2ab
+      internalID: 665174865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ColosseumTileSet_17
+      name: IMG_0559_16
       rect:
         serializedVersion: 2
         x: 64
@@ -488,8 +455,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6357adee4c90e6b48b10cba9928a46b2
-      internalID: 482507051
+      spriteID: c663493acf990ef44ae9b56d3117c996
+      internalID: 316318407
       vertices: []
       indices: 
       edges: []
@@ -505,24 +472,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ColosseumTileSet_0: 1457240242
-      ColosseumTileSet_1: 437809255
-      ColosseumTileSet_10: -913529943
-      ColosseumTileSet_11: 1295978149
-      ColosseumTileSet_12: -1117814269
-      ColosseumTileSet_13: -592019036
-      ColosseumTileSet_14: -609052720
-      ColosseumTileSet_15: -464485981
-      ColosseumTileSet_16: 2024812027
-      ColosseumTileSet_17: 482507051
-      ColosseumTileSet_2: 1665003894
-      ColosseumTileSet_3: -1509251316
-      ColosseumTileSet_4: -2147042731
-      ColosseumTileSet_5: 1837510014
-      ColosseumTileSet_6: 438272984
-      ColosseumTileSet_7: 1975277230
-      ColosseumTileSet_8: -898662047
-      ColosseumTileSet_9: 1387924333
+      IMG_0559_0: 2114638520
+      IMG_0559_1: -1966179952
+      IMG_0559_10: 639696927
+      IMG_0559_11: -485427993
+      IMG_0559_12: 2004084367
+      IMG_0559_13: -2068783157
+      IMG_0559_14: -29532804
+      IMG_0559_15: 665174865
+      IMG_0559_16: 316318407
+      IMG_0559_2: -86642878
+      IMG_0559_3: -1378052357
+      IMG_0559_4: 1967498546
+      IMG_0559_5: 316890103
+      IMG_0559_6: 1867051225
+      IMG_0559_7: -1748677935
+      IMG_0559_8: 1461467063
+      IMG_0559_9: 243198878
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

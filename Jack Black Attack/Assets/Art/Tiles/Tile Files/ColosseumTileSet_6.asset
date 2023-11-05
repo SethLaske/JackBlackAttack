@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Test1_2
+  m_Name: ColosseumTileSet_6
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -257603533, guid: b3251606de31c074f943581ecd2073e8, type: 3}
+  m_Sprite: {fileID: 1967498546, guid: c9ec081475fcfad4c81947b15da7af2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
