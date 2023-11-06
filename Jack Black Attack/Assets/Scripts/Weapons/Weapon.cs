@@ -6,6 +6,8 @@ public class Weapon : MonoBehaviour
 {
     protected Animator weaponAnimator;
 
+    public bool activeAttack = false;
+
     public float attackOneChargeTime;
     public bool allowAttackOne;
     public float attackTwoChargeTime;

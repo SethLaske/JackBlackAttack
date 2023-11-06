@@ -38,10 +38,12 @@ public class RicWeapon : Weapon
 
     private IEnumerator PerformAttack()
     {
+        activeAttack = true;
         attackBox.enabled = true;
         yield return new WaitForSeconds(attackDuration);
         attackBox.enabled = false;
         Debug.Log("Attack Finished");
+        activeAttack = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

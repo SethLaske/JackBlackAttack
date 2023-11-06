@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f3629bd7c023c44acbe00a949d306a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackOneChargeTime: 0.5
+  attackOneChargeTime: 0.3
   allowAttackOne: 0
   attackTwoChargeTime: 0
   allowAttackTwo: 0

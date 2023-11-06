@@ -83,7 +83,7 @@ public class PlayerDungeonController : Character
         //Check for attacks/other inputs
 
         // Roll
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true && inputDirection != Vector2.zero)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true && inputDirection != Vector2.zero && !isAttacking())
         {
             rollDirection = inputDirection.normalized;
             Debug.Log("Roll Enabled");
@@ -184,7 +184,7 @@ public class PlayerDungeonController : Character
         if (activeWeapon == null) {
             return;
         }
-        if (!isBlocking)
+        if (!isBlocking && !roll)
         {
 
             if (Input.GetMouseButtonDown(0))
@@ -311,5 +311,17 @@ public class PlayerDungeonController : Character
             yield return null;
         }
     
+    }
+
+    private bool isAttacking() {
+        if (activeWeapon == null) {
+            return false;
+        }
+
+        if (activeWeapon.activeAttack == true) {
+            return true;
+        }
+
+        return false;
     }
 }

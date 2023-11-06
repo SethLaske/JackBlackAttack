@@ -33,10 +33,12 @@ public class BoomerangWeapon : Weapon
         allowAttackOne = false;
         weaponAnimator.SetTrigger("AttackOne");
         Debug.Log("Charge Attack");
+        activeAttack = true;
     }
 
     public void EndChargeAttackOne() {
         allowAttackOne = true;
+        activeAttack = false;
     }
     
 
