@@ -45,7 +45,7 @@ public class Scorpion : BaseEnemy
         
         if (state == ScorpionState.TailAttack) {
             player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, tailPullSpeed * Time.deltaTime);
-            Debug.Log("Tail Attack");
+            //Debug.Log("Tail Attack");
         }
 
 
@@ -127,7 +127,7 @@ public class Scorpion : BaseEnemy
     }
 
     public void UsePincerAttack() {
-        Debug.Log("Using Attack");
+        //Debug.Log("Using Attack");
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + attackRange * (directionalArrow.rotation * Vector3.up).normalized, .25f);
         foreach (Collider2D collider in colliders)
         {

@@ -14,7 +14,7 @@ public class CardFormation : MonoBehaviour
 
         foreach (Transform point in spawnPoints) {
             normalizedPoints.Add( new Vector2(point.localPosition.x / initialWidth, point.localPosition.y / initialHeight));
-            Debug.Log("Normalized position: " + new Vector2(point.localPosition.x / initialWidth, point.localPosition.y / initialHeight));
+            //Debug.Log("Normalized position: " + new Vector2(point.localPosition.x / initialWidth, point.localPosition.y / initialHeight));
         }
 
         return normalizedPoints;

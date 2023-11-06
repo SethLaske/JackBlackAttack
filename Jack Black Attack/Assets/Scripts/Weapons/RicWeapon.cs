@@ -24,7 +24,7 @@ public class RicWeapon : Weapon
         {
             anim.SetTrigger("Attack");
             StartCoroutine(PerformAttack());
-            Debug.Log("Base Attack");
+            //Debug.Log("Base Attack");
         }
 
     }
@@ -33,7 +33,7 @@ public class RicWeapon : Weapon
     {
         ShootProjectile();
         StartCoroutine(PerformAttack());
-        Debug.Log("Charge Attack");
+        //Debug.Log("Charge Attack");
     }
 
     private IEnumerator PerformAttack()
@@ -42,7 +42,7 @@ public class RicWeapon : Weapon
         attackBox.enabled = true;
         yield return new WaitForSeconds(attackDuration);
         attackBox.enabled = false;
-        Debug.Log("Attack Finished");
+        //Debug.Log("Attack Finished");
         activeAttack = false;
     }
 

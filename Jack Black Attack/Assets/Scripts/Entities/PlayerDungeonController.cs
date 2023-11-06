@@ -86,7 +86,7 @@ public class PlayerDungeonController : Character
         if (Input.GetKeyDown(KeyCode.LeftShift) && canRoll == true && inputDirection != Vector2.zero && !isAttacking())
         {
             rollDirection = inputDirection.normalized;
-            Debug.Log("Roll Enabled");
+            //Debug.Log("Roll Enabled");
             animator.SetTrigger("Roll");
             StartCoroutine(Roll());
         }

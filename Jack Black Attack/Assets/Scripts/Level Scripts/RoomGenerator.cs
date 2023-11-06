@@ -15,6 +15,8 @@ public class RoomGenerator : MonoBehaviour
 
     private GameObject spawnTileParent;
 
+    [SerializeField] private SpawnTable[] spawnTables;
+
     private void Start()
     {
         //int cardValue = Random.Range(0, allFormations.Length);
@@ -23,6 +25,7 @@ public class RoomGenerator : MonoBehaviour
 
         spawnTileParent = new GameObject();
         spawnTileParent.name = "SpawnTileParent";
+        spawnTables = Resources.LoadAll<SpawnTable>("SpawnTables");
     }
 
     /// <summary>
@@ -44,11 +47,16 @@ public class RoomGenerator : MonoBehaviour
 
         List<Vector2> spawnPositons = spawnFormation.GetSpawnPositions();
 
+        SpawnTable activeSpawnTable = spawnTables[Random.Range(0, spawnTables.Length)];
+        //Debug.Log("Spawned Tile: " + activeSpawnTable.name);
+        //Debug.Log("Total Options: " + (spawnTables.Length - 1));
+
         foreach (Vector2 spawnPosition in spawnPositons) {
             Vector3 tilePosition = transform.position + new Vector3((int)(spawnPosition.x * roomWidth), (int)(spawnPosition.y * roomHeight), 0);
             SpawnTile tile = Instantiate(spawnTile, tilePosition, Quaternion.identity);
             tile.transform.parent = spawnTileParent.transform;
             tile.SetLevelManager(levelManager);
+            tile.SetEnemy(activeSpawnTable.GetSpawnedEnemy());
             tile.SpawnEnemy();
         }
 

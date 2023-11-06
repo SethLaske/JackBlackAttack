@@ -13,13 +13,16 @@ public class SpawnTile : MonoBehaviour
     //Pick-up-able item to add to gold "score"
     public GameObject goldPrefab;
 
-    public BaseEnemy spawnedEnemy; //converted to spawn table
+    private BaseEnemy spawnedEnemy; //converted to spawn table
 
     //Can probably just be set to find the level manager on start
     public void SetLevelManager(LevelManager lm) {
         this.lm = lm;
     }
 
+    public void SetEnemy(BaseEnemy enemy) {
+        spawnedEnemy = enemy;
+    }
     public void SpawnEnemy() { 
         //decide what enemy to spawn
         spawnedEnemy = Instantiate(spawnedEnemy, transform.position, Quaternion.identity);
@@ -27,7 +30,7 @@ public class SpawnTile : MonoBehaviour
     }
 
     public void EnemyDied() {
-        Debug.Log("Spawn Tile Triggered");
+        //Debug.Log("Spawn Tile Triggered");
         spawnGold();
         //Trigger room manager that there is one fewer enemy now
         lm.EnemyDied();
