@@ -242,7 +242,6 @@ public class BlackjackManager : MonoBehaviour
             case EndStates.PlayerBust:
                 Debug.Log("PlayerBust");
                 endText.text = "Player Bust";
-                RevealDealerCard();
                 break;
             case EndStates.DealerWin:
                 Debug.Log("DealerWin");
@@ -280,6 +279,11 @@ public class BlackjackManager : MonoBehaviour
         if(playerHand.cards.Count == 2 && playerHand.handValue == 21)
         {
             EndGame(EndStates.PlayerBlackjack);
+            return;
+        }
+        else if(playerHand.busted)
+        {
+            levelManager.SpawnDoor();
             return;
         }
 

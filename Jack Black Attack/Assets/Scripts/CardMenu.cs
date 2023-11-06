@@ -12,7 +12,6 @@ public class CardMenu : MonoBehaviour
     [SerializeField] float menuMoveAmount = 400f;   // How far the menu travels
 
     private bool menuOpen = true;
-    private bool menuMoving = false;
 
     private float leftClosedPosition;
     private float rightClosedPosition;
@@ -47,20 +46,17 @@ public class CardMenu : MonoBehaviour
     }
     public void CloseMenu()
     {
-        if (menuMoving || !menuOpen) return; // If the menu is currently moving or already open do not attempt to tween again
-        Debug.Log("Close Menu");
-        menuMoving = true;
-        LeftMenu.DOMoveX(leftClosedPosition, menuOpenTime).SetEase(Ease.InOutSine).OnComplete( () => menuMoving = false );
+        if (!menuOpen) return; // If the menu is currently moving or already open do not attempt to tween again
+        LeftMenu.DOMoveX(leftClosedPosition, menuOpenTime).SetEase(Ease.InOutSine);
         RightMenu.DOMoveX(rightClosedPosition, menuOpenTime).SetEase(Ease.InOutSine);
         menuOpen = false;
     }
 
     public void OpenMenu()
     {
-        Debug.Log("Open Menu");
-        if (menuMoving || menuOpen) return; // If the menu is currently moving do not attempt to tween again
-        menuMoving = true;
-        LeftMenu.DOMoveX(leftOpenedPosition, menuOpenTime).SetEase(Ease.InOutSine).OnComplete(() => menuMoving = false);
+
+        if (menuOpen) return; // If the menu is currently moving do not attempt to tween again
+        LeftMenu.DOMoveX(leftOpenedPosition, menuOpenTime).SetEase(Ease.InOutSine);
         RightMenu.DOMoveX(rightOpenedPosition, menuOpenTime).SetEase(Ease.InOutSine);
         menuOpen = true;
     }
