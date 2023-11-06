@@ -271,8 +271,7 @@ public class BlackjackManager : MonoBehaviour
         // Case for showing the second player card
         if(playerHand.cards.Count < 2)
         {
-            Debug.Log("ShowSecondCard");
-            ShowSecondCard();
+            StartCoroutine(ShowSecondCard());
             return;
         }
 
