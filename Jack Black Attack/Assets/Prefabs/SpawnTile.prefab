@@ -99,4 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   goldPrefab: {fileID: 7413729214067601920, guid: 68572bb0bc01ace4a9aa5d22b7989145, type: 3}
-  spawnedEnemy: {fileID: 7741749881723052049, guid: 22a39c9ad0788dc46b0183a7266eb334, type: 3}
+  spawnedEnemy: {fileID: 7612577004524518356, guid: bc35d58ddad7cea48a6dbe21b4c6e7f9, type: 3}

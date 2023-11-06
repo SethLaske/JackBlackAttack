@@ -60,6 +60,8 @@ public class Character : Entity
         }
     }
 
+    
+
     protected void SnapVelocity(Vector2 desiredVelocity)
     {
         rb.velocity = desiredVelocity;
@@ -68,6 +70,17 @@ public class Character : Entity
 
     protected void OrganicRotation(Vector3 directionToFace) { 
         //TODO, add a rotation speed field and slowly turn
+    }
+
+    protected void OrganicRotation(float degreesToTurn)
+    {
+        float currentRotationDegrees = directionalArrow.rotation.eulerAngles.z;
+
+        // Calculate the new rotation in degrees
+        float newRotationDegrees = currentRotationDegrees + degreesToTurn;
+
+        // Apply the new rotation to the object
+        directionalArrow.rotation = Quaternion.Euler(0, 0, newRotationDegrees);
     }
 
     protected void SnapRotation(Vector3 directionToFace)
