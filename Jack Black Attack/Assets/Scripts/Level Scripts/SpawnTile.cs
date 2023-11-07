@@ -14,6 +14,7 @@ public class SpawnTile : MonoBehaviour
     public GameObject goldPrefab;
 
     private BaseEnemy spawnedEnemy; //converted to spawn table
+    [SerializeField] private Transform enemySpawnPosition;
 
     //Can probably just be set to find the level manager on start
     public void SetLevelManager(LevelManager lm) {
@@ -23,6 +24,47 @@ public class SpawnTile : MonoBehaviour
     public void SetEnemy(BaseEnemy enemy) {
         spawnedEnemy = enemy;
     }
+
+    public void ActivateSpawnSequence() {
+        //Rise platform
+        spawnedEnemy = Instantiate(spawnedEnemy, enemySpawnPosition);
+        spawnedEnemy.SetSpawnTile(this);
+        spawnedEnemy.enabled = false;
+        foreach (SpriteRenderer sr in spawnedEnemy.GetComponentsInChildren<SpriteRenderer>()) { 
+            sr.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+        }
+
+        foreach (CircleCollider2D cc in spawnedEnemy.GetComponentsInChildren<CircleCollider2D>())
+        {
+            cc.enabled = false;
+        }
+
+
+        anim.SetTrigger("Raise");
+        
+    }
+
+    public void EnableSpawnedEnemies() {
+        spawnedEnemy.enabled = true;
+        spawnedEnemy.transform.SetParent(null);
+        foreach (SpriteRenderer sr in spawnedEnemy.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.maskInteraction = SpriteMaskInteraction.None;
+        }
+        foreach (CircleCollider2D cc in spawnedEnemy.GetComponentsInChildren<CircleCollider2D>())
+        {
+            cc.enabled = true;
+        }
+    }
+
+    public void ActivateDestroySequence() {
+        //Lower Platform
+        anim.SetTrigger("Lower");
+    }
+    public void FinishDestroySequence() {
+        Destroy(gameObject);
+    }
+
     public void SpawnEnemy() { 
         //decide what enemy to spawn
         spawnedEnemy = Instantiate(spawnedEnemy, transform.position, Quaternion.identity);
@@ -42,7 +84,7 @@ public class SpawnTile : MonoBehaviour
     {
         Vector3 spawnPos = gameObject.transform.position;
 
-        GameObject goldSpawned = Instantiate(goldPrefab, spawnPos + (.5f * Vector3.up), Quaternion.identity);
+        GameObject goldSpawned = Instantiate(goldPrefab, enemySpawnPosition.position + (.5f * Vector3.up), Quaternion.identity);
 
     }
 

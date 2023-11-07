@@ -57,7 +57,9 @@ public class RoomGenerator : MonoBehaviour
             tile.transform.parent = spawnTileParent.transform;
             tile.SetLevelManager(levelManager);
             tile.SetEnemy(activeSpawnTable.GetSpawnedEnemy());
-            tile.SpawnEnemy();
+
+
+            tile.ActivateSpawnSequence();
         }
 
         levelManager.SetEnemyCount(spawnPositons.Count);
@@ -65,9 +67,12 @@ public class RoomGenerator : MonoBehaviour
 
     public void ClearTiles() {
         //ToDo: Remove the spawn tiles via animation
-        foreach (Transform child in spawnTileParent.transform)
+        /*foreach (Transform child in spawnTileParent.transform)
         {
             Destroy(child.gameObject);
+        }*/
+        foreach (SpawnTile spawnTile in spawnTileParent.GetComponentsInChildren<SpawnTile>()) {
+            spawnTile.ActivateDestroySequence();
         }
     }
 }

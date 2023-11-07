@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   goldPrefab: {fileID: 0}
-  spawnedEnemy: {fileID: 0}
+  enemySpawnPosition: {fileID: 0}
 --- !u!212 &196681337
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -989,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6270200975504225151, guid: 95cac00b10e44fe45995fffe1404b514, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6270200975504225151, guid: 95cac00b10e44fe45995fffe1404b514, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2370,6 +2370,7 @@ MonoBehaviour:
   spawnTile: {fileID: 711259673641007195, guid: 4d922b5c1e6c4e04f9647b6c2f96e739, type: 3}
   roomWidth: 16
   roomHeight: 24
+  spawnTables: []
 --- !u!1 &1916919906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,7 +2526,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 711259673641007193, guid: 4d922b5c1e6c4e04f9647b6c2f96e739, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 711259673641007193, guid: 4d922b5c1e6c4e04f9647b6c2f96e739, type: 3}
       propertyPath: m_LocalPosition.x

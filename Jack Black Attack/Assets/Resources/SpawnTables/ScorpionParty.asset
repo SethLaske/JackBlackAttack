@@ -15,6 +15,4 @@ MonoBehaviour:
   spawnPairs:
   - enemy: {fileID: 7741749881723052049, guid: 22a39c9ad0788dc46b0183a7266eb334, type: 3}
     spawnChance: 50
-  - enemy: {fileID: 7612577004524518356, guid: bc35d58ddad7cea48a6dbe21b4c6e7f9, type: 3}
-    spawnChance: 50
-  spawnChancesSum: 100
+  spawnChancesSum: 50
