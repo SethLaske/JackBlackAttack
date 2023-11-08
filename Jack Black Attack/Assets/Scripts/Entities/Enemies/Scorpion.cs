@@ -35,8 +35,8 @@ public class Scorpion : BaseEnemy
 
     // Update is called once per frame
     void Update()
-    {
-
+    {   
+        damageFlash();
         if (state == ScorpionState.PincerAttack)
         {
             SnapVelocity(Vector2.zero);

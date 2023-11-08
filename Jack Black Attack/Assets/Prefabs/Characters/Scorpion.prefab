@@ -210,6 +210,8 @@ MonoBehaviour:
   viewDistance: 4
   fieldOfViewDegrees: 225
   attackRange: 0.75
+  hurtMat: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  spriteObject: {fileID: 7741749881739902057}
   pincerDamage: 1
   tailRange: 2
   tailPullSpeed: 3

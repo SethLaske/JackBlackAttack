@@ -18,11 +18,21 @@ public class BaseEnemy : Character
     //[SerializeField] private float frictionPercent;
 
     //[SerializeField] private Transform directionalArrow;
+     private float HPcomparison;
+    private Color hurtColor = Color.white;
+    public Material hurtMat;
+    private Color defaultColor;
+    private Material defaultMat;
+    SpriteRenderer sr;
+    public GameObject spriteObject; //scorpions sprite renderer is in a different object. Just drag 
 
     protected void EnemyStart() {
         InitializeCharacter();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerDungeonController>();
-        
+        sr = spriteObject.GetComponent<SpriteRenderer>();
+        HPcomparison = HP;
+        defaultMat = sr.material;
+        defaultColor = sr.color;
     }
 
 
@@ -78,6 +88,24 @@ public class BaseEnemy : Character
 
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+    public void damageFlash()
+    {
+        if (HP < HPcomparison ) //means the eney took damage
+        {
+            HPcomparison = HP;
+            sr.material = hurtMat;
+            sr.color = hurtColor;
+            StartCoroutine(waitReset());
+        }
+    }
+    IEnumerator waitReset()
+    {
+         yield return new WaitForSeconds(.15f);
+        Debug.Log("ColorReset");
+        sr.material = defaultMat;
+        sr.color = defaultColor;
+    }
+
 
     // freezes all movement, maybe move to baseEnemies script...
     private void DisableEnemyMovement()
