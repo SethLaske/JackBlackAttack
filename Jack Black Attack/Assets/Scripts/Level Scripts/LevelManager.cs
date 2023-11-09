@@ -9,8 +9,11 @@ public class LevelManager : MonoBehaviour
     private int enemyCount;
     public bool hasSpawned = false;
 
-    public GameObject door;
-    public Transform doorLocation;
+   
+    //public GameObject door;
+
+    [SerializeField] private GameObject victoryGate;
+    [SerializeField] private GameObject defeatGate;
 
     public static int cardNumber;
     public static string cardSuit;
@@ -18,11 +21,16 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        door.SetActive(false);
+        //door.SetActive(false);
         //pass in card suit and number from given card, example rn is 4 of hearts
         //cardSuit = "Hearts";
         //cardNumber = 4; 
         //roomGenerator.StartRoomGeneration(Random.Range(1, 14));
+    }
+
+    public void StartLevel() {
+        victoryGate.SetActive(true);
+        defeatGate.SetActive(true);
     }
 
     // Update is called once per frame
@@ -51,14 +59,26 @@ public class LevelManager : MonoBehaviour
 
             if(!BlackjackManager.Instance.handIsActive)
             {
-                SpawnDoor();
+                //SpawnDoor();
             }
         }
     }
 
+    public void PlayerVictory() {
+        victoryGate.SetActive(false);
+    }
 
-    public void SpawnDoor()
+    public void PlayerPush() {
+        defeatGate.SetActive(false);
+    }
+
+    public void PlayerDefeat() {
+        defeatGate.SetActive(false);
+    }
+
+
+    /*public void SpawnDoor()
     {
         door.SetActive(true);
-    }
+    }*/
 }

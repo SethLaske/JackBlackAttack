@@ -36,6 +36,7 @@ public class Armordilo : BaseEnemy
     // Update is called once per frame
     void Update()
     {
+        damageFlash();
         if (state == ArmordiloState.Searching)
         {
             Search();

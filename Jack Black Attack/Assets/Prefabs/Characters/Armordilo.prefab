@@ -285,6 +285,8 @@ MonoBehaviour:
   viewDistance: 10
   fieldOfViewDegrees: 45
   attackRange: 0
+  hurtMat: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  spriteObject: {fileID: 7612577004507670437}
   rolling: 0
   bounces: 0
   collisionDamage: 10

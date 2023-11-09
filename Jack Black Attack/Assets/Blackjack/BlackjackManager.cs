@@ -227,7 +227,8 @@ public class BlackjackManager : MonoBehaviour
             case EndStates.PlayerBlackjack:
                 Debug.Log("PlayerBlackjack");
                 endText.text = "Player Blackjack";
-                levelManager.SpawnDoor();
+                //levelManager.SpawnDoor();
+                levelManager.PlayerVictory();
                 PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 5/2); // Pays money back + 3/2 of bet
                 goldScript.OnGoldPickup();
                 RevealDealerCard();
@@ -237,30 +238,35 @@ public class BlackjackManager : MonoBehaviour
                 endText.text = "Player Win";
                 PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 2);
                 goldScript.OnGoldPickup();
-                levelManager.SpawnDoor();
+                //levelManager.SpawnDoor();
+                levelManager.PlayerVictory();
                 break;
             case EndStates.PlayerBust:
                 Debug.Log("PlayerBust");
                 endText.text = "Player Bust";
+                
                 break;
             case EndStates.DealerWin:
                 Debug.Log("DealerWin");
                 endText.text = "Dealer Win";
-                levelManager.SpawnDoor();
+                //levelManager.SpawnDoor();
+                levelManager.PlayerDefeat();
                 break;
             case EndStates.DealerBust:
                 Debug.Log("DealerBust");
                 endText.text = "Dealer Bust";
                 PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 2);
                 goldScript.OnGoldPickup();
-                levelManager.SpawnDoor();
+                //levelManager.SpawnDoor();
+                levelManager.PlayerVictory();
                 break;
             case EndStates.Push:
                 Debug.Log("Push");
                 endText.text = "Push";
                 PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount);
                 goldScript.OnGoldPickup();
-                levelManager.SpawnDoor();
+                //levelManager.SpawnDoor();
+                levelManager.PlayerPush();
                 break;
         }
     }
@@ -283,7 +289,7 @@ public class BlackjackManager : MonoBehaviour
         }
         else if(playerHand.busted)
         {
-            levelManager.SpawnDoor();
+            levelManager.PlayerDefeat();
             return;
         }
 
