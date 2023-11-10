@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level Testing.unity
     guid: b56839c3a2d292241b2339852f197734
+  - enabled: 1
+    path: Assets/Scenes/Level Testing W Blackjack.unity
+    guid: 8b15698adaf638847abe8eb7e4d8e9ee
   m_configObjects: {}

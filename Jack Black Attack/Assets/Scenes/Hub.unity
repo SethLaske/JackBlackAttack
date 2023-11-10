@@ -742,7 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  nextScene: Level Testing
+  nextScene: Level Testing W Blackjack
   myCanvas: {fileID: 0}
 --- !u!61 &391949147
 BoxCollider2D:
