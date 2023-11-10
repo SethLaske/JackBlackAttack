@@ -25,12 +25,12 @@ public class PlayerDungeonController : Character
     public Weapon activeWeapon;
     private float attackOneTimer;
     private bool isBlocking;
-    private bool isHoldingShield;
+   private bool isHoldingShield;
     private float shieldHoldDuration = 5.0f;
     private bool shieldOnCooldown = false;
     private float shieldCooldownDuration = 10.0f;
     private float timeShieldHeld = 0.0f;
-
+    [SerializeField] private GameObject shield;
 
     // Roll Variables
     [SerializeField] private bool roll = false;
@@ -55,6 +55,7 @@ public class PlayerDungeonController : Character
         isBlocking = false;
         animator = gameObject.GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        shield.SetActive(false);
     }
 
     // Update is called once per frame
@@ -157,6 +158,8 @@ public class PlayerDungeonController : Character
         {
             rb.velocity = rollDirection * (rollDistance/rollDuration);
         }
+
+        
     }
 
     private void RotateArrow() {
@@ -288,6 +291,8 @@ public class PlayerDungeonController : Character
         else {
             sr.flipX = false;
         }
+
+        shield.SetActive(isBlocking);
     }
 
     IEnumerator KillAll() {
