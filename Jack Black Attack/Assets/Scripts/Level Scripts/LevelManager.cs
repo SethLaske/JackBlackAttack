@@ -76,6 +76,12 @@ public class LevelManager : MonoBehaviour
         defeatGate.SetActive(false);
     }
 
+    public void ResetGates()
+    {
+        defeatGate.SetActive(true);
+        victoryGate.SetActive(true);
+    }
+
 
     /*public void SpawnDoor()
     {
