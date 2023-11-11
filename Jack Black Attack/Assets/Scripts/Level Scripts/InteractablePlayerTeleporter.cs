@@ -12,6 +12,7 @@ public class InteractablePlayerTeleporter : MonoBehaviour
         {
 
             collision.gameObject.transform.position = newLocation.position;
+            BlackjackManager.Instance.NewHand();
         }
     }
 }

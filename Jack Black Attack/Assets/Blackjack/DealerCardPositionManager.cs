@@ -24,7 +24,6 @@ public class DealerCardPositionManager : MonoBehaviour
         handValueText.text = BlackjackManager.Instance.dealerHand.handValue.ToString();
 
         gameObject.transform.DestroyChildren();
-
         Cards.Clear();
 
         List<ScriptableCard> _tempCards = BlackjackManager.Instance.GetDealerHand();
