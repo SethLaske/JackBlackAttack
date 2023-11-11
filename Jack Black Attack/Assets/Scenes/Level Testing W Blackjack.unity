@@ -21179,7 +21179,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.1, y: 0.8}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -21649,11 +21649,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.5
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.9
+      value: -10.4
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21702,6 +21702,14 @@ PrefabInstance:
     - target: {fileID: 4391283237189502671, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: useMouseToRotate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776435655325589606, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776435655325589606, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
