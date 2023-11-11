@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1415570465
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1912502014, guid: 1a0156ddef2c09746a0c87597b5fa0eb, type: 3}
+  m_Sprite: {fileID: -2125784259, guid: de8245d0bd2b0bc4c9cb9fcdce2f6354, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,4 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   goldPrefab: {fileID: 7413729214067601920, guid: 68572bb0bc01ace4a9aa5d22b7989145, type: 3}
-  spawnedEnemy: {fileID: 7612577004524518356, guid: bc35d58ddad7cea48a6dbe21b4c6e7f9, type: 3}
+  enemySpawnPosition: {fileID: 0}
