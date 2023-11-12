@@ -323,4 +323,10 @@ public class Dealer : BaseEnemy
         return base.TakeDamage(damage);
     }
 
+    public override void Die()
+    {
+        deckPool.DestroyDeckPool();
+        base.Die();
+    }
+
 }

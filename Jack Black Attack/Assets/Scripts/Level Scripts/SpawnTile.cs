@@ -11,7 +11,7 @@ public class SpawnTile : MonoBehaviour
     public Animator anim;
 
     //Pick-up-able item to add to gold "score"
-    public GameObject goldPrefab;
+    private GameObject drop;
 
     private BaseEnemy spawnedEnemy; //converted to spawn table
     [SerializeField] private Transform enemySpawnPosition;
@@ -23,6 +23,10 @@ public class SpawnTile : MonoBehaviour
 
     public void SetEnemy(BaseEnemy enemy) {
         spawnedEnemy = enemy;
+
+        if (enemy.dropTable != null) {
+            drop = enemy.dropTable.GetDrop();
+        }
     }
 
     public void ActivateSpawnSequence() {
@@ -73,18 +77,21 @@ public class SpawnTile : MonoBehaviour
 
     public void EnemyDied() {
         //Debug.Log("Spawn Tile Triggered");
-        spawnGold();
+        spawnDrop();
         //Trigger room manager that there is one fewer enemy now
         lm.EnemyDied();
     }
 
     //Method to spawn in gold
     //Called when enemy dies
-    public void spawnGold()
+    public void spawnDrop()
     {
-        Vector3 spawnPos = gameObject.transform.position;
+        if (drop == null) {
+            return;
+        }
 
-        GameObject goldSpawned = Instantiate(goldPrefab, enemySpawnPosition.position + (.5f * Vector3.up), Quaternion.identity);
+        Vector3 spawnPos = gameObject.transform.position;
+        Instantiate(drop, enemySpawnPosition.position + (.5f * Vector3.up), Quaternion.identity);
 
     }
 

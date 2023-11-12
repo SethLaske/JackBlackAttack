@@ -44,5 +44,10 @@ public class DealerDeckPool : MonoBehaviour
         }
     }
 
+    public void DestroyDeckPool() {
+        Destroy(deckParent);
+        
+    }
+
 
 }

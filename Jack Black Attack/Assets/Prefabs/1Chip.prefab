@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7413729214067601948}
   - component: {fileID: 7754542355947149982}
   m_Layer: 0
-  m_Name: Gold Pickup
+  m_Name: 1Chip
   m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

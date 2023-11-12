@@ -66,7 +66,8 @@ public class BlackjackManager : MonoBehaviour
         if(ShoeManager.Instance.needShuffle)
         {
             ShoeManager.Instance.ShuffleShoe();
-            Debug.Log("Shoe Shuffled");
+            levelManager.FinalHand();
+            Debug.Log("Last hand");
         }
 
         DealDealerHand();
@@ -230,7 +231,8 @@ public class BlackjackManager : MonoBehaviour
                 Debug.Log("PlayerBlackjack");
                 endText.text = "Player Blackjack";
                 //levelManager.SpawnDoor();
-                levelManager.PlayerVictory();
+                //levelManager.PlayerVictory();
+                levelManager.HandFinished(EndState.Win);
                 PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 5/2); // Pays money back + 3/2 of bet
                 goldScript.OnGoldPickup();
                 RevealDealerCard();
@@ -241,7 +243,7 @@ public class BlackjackManager : MonoBehaviour
                 PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 2);
                 goldScript.OnGoldPickup();
                 //levelManager.SpawnDoor();
-                levelManager.PlayerVictory();
+                levelManager.HandFinished(EndState.Win);
                 break;
             case EndStates.PlayerBust:
                 Debug.Log("PlayerBust");
@@ -252,7 +254,7 @@ public class BlackjackManager : MonoBehaviour
                 Debug.Log("DealerWin");
                 endText.text = "Dealer Win";
                 //levelManager.SpawnDoor();
-                levelManager.PlayerDefeat();
+                levelManager.HandFinished(EndState.Lose);
                 break;
             case EndStates.DealerBust:
                 Debug.Log("DealerBust");
@@ -260,7 +262,7 @@ public class BlackjackManager : MonoBehaviour
                 PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount * 2);
                 goldScript.OnGoldPickup();
                 //levelManager.SpawnDoor();
-                levelManager.PlayerVictory();
+                levelManager.HandFinished(EndState.Win);
                 break;
             case EndStates.Push:
                 Debug.Log("Push");
@@ -268,7 +270,7 @@ public class BlackjackManager : MonoBehaviour
                 PlayerPrefs.SetInt("Player Gold", PlayerPrefs.GetInt("Player Gold") + betAmount);
                 goldScript.OnGoldPickup();
                 //levelManager.SpawnDoor();
-                levelManager.PlayerPush();
+                levelManager.HandFinished(EndState.Push);
                 break;
         }
     }
@@ -291,7 +293,7 @@ public class BlackjackManager : MonoBehaviour
         }
         else if(playerHand.busted)
         {
-            levelManager.PlayerDefeat();
+            levelManager.HandFinished(EndState.Lose);
             return;
         }
 

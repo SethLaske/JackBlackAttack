@@ -26,6 +26,8 @@ public class BaseEnemy : Character
     SpriteRenderer sr;
     public GameObject spriteObject; //scorpions sprite renderer is in a different object. Just drag 
 
+    public DropTable dropTable;
+
     protected void EnemyStart() {
         InitializeCharacter();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerDungeonController>();

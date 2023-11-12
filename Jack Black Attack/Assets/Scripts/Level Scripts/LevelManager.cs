@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum EndState { 
+    Win,
+    Lose,
+    Push
+}
+
+
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private RoomGenerator roomGenerator;
@@ -19,8 +27,13 @@ public class LevelManager : MonoBehaviour
     public static string cardSuit;
     public event Action onWaveComplete;
     // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject exitTile;
+    private bool activateExit;
+
+    void Awake()
     {
+        activateExit = false;
+        exitTile.SetActive(false);
         //door.SetActive(false);
         //pass in card suit and number from given card, example rn is 4 of hearts
         //cardSuit = "Hearts";
@@ -64,15 +77,41 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void PlayerVictory() {
+    public void HandFinished(EndState endState) {
+
+        if (activateExit == true) {
+            ResetGates();
+            exitTile.SetActive(true);
+            return;
+        }
+
+        switch (endState) {
+            case EndState.Win:
+                PlayerVictory();
+                break;
+            case EndState.Lose:
+                PlayerDefeat();
+                break;
+            case EndState.Push:
+                PlayerPush();
+                break;
+            default:
+                PlayerPush();
+                break;
+
+        }
+
+    }
+
+    private void PlayerVictory() {
         victoryGate.SetActive(false);
     }
 
-    public void PlayerPush() {
+    private void PlayerPush() {
         defeatGate.SetActive(false);
     }
 
-    public void PlayerDefeat() {
+    private void PlayerDefeat() {
         defeatGate.SetActive(false);
     }
 
@@ -82,6 +121,9 @@ public class LevelManager : MonoBehaviour
         victoryGate.SetActive(true);
     }
 
+    public void FinalHand() {
+        activateExit = true;
+    }
 
     /*public void SpawnDoor()
     {
