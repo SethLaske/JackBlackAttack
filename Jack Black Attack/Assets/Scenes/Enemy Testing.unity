@@ -466,7 +466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  goldPrefab: {fileID: 1108608940}
   enemySpawnPosition: {fileID: 0}
 --- !u!212 &196681337
 SpriteRenderer:
@@ -4768,6 +4767,7 @@ MonoBehaviour:
   attackRange: 2
   hurtMat: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   spriteObject: {fileID: 564211173}
+  dropTable: {fileID: 0}
 --- !u!58 &564211176
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7298,6 +7298,7 @@ MonoBehaviour:
   attackRange: 2
   hurtMat: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   spriteObject: {fileID: 1449543599}
+  dropTable: {fileID: 0}
 --- !u!58 &1449543601
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7854,7 +7855,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  goldPrefab: {fileID: 1108608940}
   enemySpawnPosition: {fileID: 0}
 --- !u!212 &1562771830
 SpriteRenderer:
