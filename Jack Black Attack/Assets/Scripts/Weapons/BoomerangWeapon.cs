@@ -19,7 +19,7 @@ public class BoomerangWeapon : Weapon
 
         StartCoroutine(ProjectileCooldown());
 
-        Debug.Log("Base Attack");
+        //Debug.Log("Base Attack");
     }
 
     IEnumerator ProjectileCooldown() {
@@ -32,7 +32,7 @@ public class BoomerangWeapon : Weapon
         //StartCoroutine(PerformAttack());
         allowAttackOne = false;
         weaponAnimator.SetTrigger("AttackOne");
-        Debug.Log("Charge Attack");
+        //Debug.Log("Charge Attack");
         activeAttack = true;
     }
 

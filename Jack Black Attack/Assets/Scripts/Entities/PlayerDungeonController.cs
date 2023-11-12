@@ -56,6 +56,8 @@ public class PlayerDungeonController : Character
         animator = gameObject.GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         shield.SetActive(false);
+
+        InitWeapon();
     }
 
     // Update is called once per frame
@@ -113,6 +115,23 @@ public class PlayerDungeonController : Character
             isHoldingShield = false;
             StartCoroutine(ShieldCooldown());
         }
+
+
+        if (Input.GetKeyDown(KeyCode.E)) {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, .75f);
+            foreach (Collider2D collider in colliders)
+            {
+                Weapon testWeapon = collider.GetComponent<Weapon>();
+                if (testWeapon != null && testWeapon != activeWeapon)
+                {
+                    DropWeapon();
+                    AddWeapon(testWeapon);
+                    Destroy(collider.gameObject);
+                    break;
+                }
+
+            }
+        }
     }
 
     private void ApplyMovement() {
@@ -126,34 +145,7 @@ public class PlayerDungeonController : Character
         }
         //Debug.Log("The user input direction is: " + inputDirection);
         OrganicVelocity(inputDirection);
-        /*//X Velocity
-        if (inputDirection.x != 0)
-        {
-            setVelocityVector.x = rb.velocity.x + inputDirection.x * accelerationPercent * moveSpeed;
-        }
-        else {
-            setVelocityVector.x = rb.velocity.x * (1 - frictionPercent);
-        }
-
-        //Y Velocity
-        if (inputDirection.y != 0)
-        {
-            setVelocityVector.y = rb.velocity.y + inputDirection.y * accelerationPercent * moveSpeed;
-        }
-        else
-        {
-            setVelocityVector.y = rb.velocity.y * (1 - frictionPercent);
-        }
-        
-        if (Mathf.Abs(setVelocityVector.x) < .1f) setVelocityVector.x = 0;
-        if (Mathf.Abs(setVelocityVector.y) < .1f) setVelocityVector.y = 0;
-
-        if (setVelocityVector.magnitude > moveSpeed) {
-            setVelocityVector = setVelocityVector.normalized * moveSpeed;
-        }
-
-
-        rb.velocity = setVelocityVector;*/
+       
         if (roll)
         {
             rb.velocity = rollDirection * (rollDistance/rollDuration);
@@ -175,10 +167,6 @@ public class PlayerDungeonController : Character
             }
         }
 
-        /*if (directionToFace == Vector3.zero) return;
-
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
-        directionalArrow.rotation = targetRotation;*/
         SnapRotation(directionToFace);
 
     }
@@ -328,5 +316,37 @@ public class PlayerDungeonController : Character
         }
 
         return false;
+    }
+    private void InitWeapon() {
+        string weaponName = PlayerPrefs.GetString("ChosenWeapon");
+
+        if (!string.IsNullOrEmpty(weaponName))
+        {
+            Weapon weapon = Resources.Load<GameObject>("Weapons/" + weaponName).GetComponent<Weapon>();
+
+            if (weapon != null)
+            {
+                AddWeapon(weapon);
+            }
+        }
+    }
+    private void AddWeapon(Weapon newWeapon) {
+        if (activeWeapon != null) {
+            Destroy(activeWeapon);
+        }
+
+        //Instantiating in the case the weapon hasnt been instantiated already
+        activeWeapon = Instantiate(newWeapon, directionalArrow);
+        activeWeapon.SetAsHeldWeapon();
+
+        PlayerPrefs.SetString("ChosenWeapon", activeWeapon.weaponName);
+    }
+
+    private void DropWeapon() {
+        if (activeWeapon == null) {
+            return;
+        }
+        activeWeapon.SetAsItem();
+        activeWeapon = null;
     }
 }
