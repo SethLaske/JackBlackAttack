@@ -604,7 +604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 5183697913186191329}
-  goldPrefab: {fileID: 7413729214067601920, guid: 68572bb0bc01ace4a9aa5d22b7989145, type: 3}
   enemySpawnPosition: {fileID: 3885213160703736365}
 --- !u!1 &7945139536531307832
 GameObject:
