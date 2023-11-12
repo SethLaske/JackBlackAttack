@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void ChargedAttackOne()
     {
+
     }
 
    /* public virtual void BaseAttackTwo()
