@@ -322,7 +322,14 @@ public class PlayerDungeonController : Character
 
         if (!string.IsNullOrEmpty(weaponName))
         {
-            Weapon weapon = Resources.Load<GameObject>("Weapons/" + weaponName).GetComponent<Weapon>();
+            GameObject weaponPrefab = Resources.Load<GameObject>("Weapons/" + weaponName);
+
+            if (weaponPrefab == null)
+            {
+                return;
+            }
+
+            Weapon weapon = weaponPrefab.GetComponent<Weapon>();
 
             if (weapon != null)
             {
