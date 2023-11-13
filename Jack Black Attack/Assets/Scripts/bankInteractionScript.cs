@@ -29,16 +29,17 @@ public class bankInteractionScript : MonoBehaviour
 
     public void Start()
     {
-        goldValue = PlayerPrefs.GetInt("Player Gold"); 
-        balance = PlayerPrefs.GetInt("stored gold"); 
+        goldValue = PlayerPrefs.GetInt("Player Gold");
+        balance = PlayerPrefs.GetInt("stored gold");
         balanceOutput.SetText("Balance: " + balance);
+        PlayerPrefs.SetInt("stored gold", 1000); // TEMPORARY FOR BANK STUFF, DELETE LATER
         playerGold.SetText("Player Gold: " + goldValue);
     }
 
     public void Deposit()
     {
-        goldValue = PlayerPrefs.GetInt("Player Gold"); 
-        balance = PlayerPrefs.GetInt("stored gold"); 
+        goldValue = PlayerPrefs.GetInt("Player Gold");
+        balance = PlayerPrefs.GetInt("stored gold");
 
         string depositAmountText = depositField.text;
 
@@ -52,7 +53,7 @@ public class bankInteractionScript : MonoBehaviour
             depositField.text = ("");
             depositFeedback.SetText("Not a number - Enter value");
         }
-        else if(amount <= goldValue)
+        else if (amount <= goldValue)
         {
             depositField.text = ("");
             depositFeedback.SetText("Deposited: " + amount + " - Enter value");
@@ -60,7 +61,9 @@ public class bankInteractionScript : MonoBehaviour
             goldValue -= amount;
             PlayerPrefs.SetInt("Player Gold", goldValue);
             PlayerPrefs.SetInt("stored gold", balance);
-        } else {
+        }
+        else
+        {
             depositField.text = ("");
             depositFeedback.SetText("Failed to deposit - Enter value");
         }
@@ -70,15 +73,15 @@ public class bankInteractionScript : MonoBehaviour
 
     public void Withdraw()
     {
-        goldValue = PlayerPrefs.GetInt("Player Gold"); 
-        balance = PlayerPrefs.GetInt("stored gold"); 
+        goldValue = PlayerPrefs.GetInt("Player Gold");
+        balance = PlayerPrefs.GetInt("stored gold");
 
         string withdrawAmountText = withdrawField.text;
 
         if (string.IsNullOrEmpty(withdrawAmountText))
         {
             withdrawField.text = ("");
-            withdrawFeedback.SetText("Enter value...");      
+            withdrawFeedback.SetText("Enter value...");
         }
         else if (!int.TryParse(withdrawAmountText, out int amount))
         {
@@ -87,15 +90,15 @@ public class bankInteractionScript : MonoBehaviour
         }
         else if (amount <= balance)
         {
-            withdrawField.text = ("");       
+            withdrawField.text = ("");
             withdrawFeedback.SetText("Withdrew: " + amount + " - Enter value");
             balance -= amount;
-            goldValue += amount;         
+            goldValue += amount;
             PlayerPrefs.SetInt("Player Gold", goldValue);
             PlayerPrefs.SetInt("stored gold", balance);
         }
         else
-        { 
+        {
             withdrawField.text = ("");
             withdrawFeedback.SetText("Failed to withdraw - Enter value");
         }
