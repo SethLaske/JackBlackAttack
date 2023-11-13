@@ -22,7 +22,7 @@ public class PlayerDungeonController : Character
 
     [SerializeField] private bool useMouseToRotate;
 
-    public Weapon activeWeapon;
+    [HideInInspector] public Weapon activeWeapon;
     private float attackOneTimer;
     private bool isBlocking;
    private bool isHoldingShield;
