@@ -47,16 +47,19 @@ public class bankInteractionScript : MonoBehaviour
         {
             depositField.text = ("");
             depositFeedback.SetText("Enter value...");
+            StartCoroutine(RevertTextAfterDelay(depositField, depositFeedback));
         }
         else if (!int.TryParse(depositAmountText, out int amount))
         {
             depositField.text = ("");
-            depositFeedback.SetText("Not a number - Enter value");
+            depositFeedback.SetText("Not a number...");
+            StartCoroutine(RevertTextAfterDelay(depositField, depositFeedback));
         }
         else if (amount <= goldValue)
         {
             depositField.text = ("");
-            depositFeedback.SetText("Deposited: " + amount + " - Enter value");
+            depositFeedback.SetText("Deposited: " + amount);
+            StartCoroutine(RevertTextAfterDelay(depositField, depositFeedback));
             balance += amount;
             goldValue -= amount;
             PlayerPrefs.SetInt("Player Gold", goldValue);
@@ -65,7 +68,8 @@ public class bankInteractionScript : MonoBehaviour
         else
         {
             depositField.text = ("");
-            depositFeedback.SetText("Failed to deposit - Enter value");
+            depositFeedback.SetText("Failed to deposit...");
+            StartCoroutine(RevertTextAfterDelay(depositField, depositFeedback));
         }
         balanceOutput.SetText("Balance: " + balance);
         playerGold.SetText("Player Gold: " + goldValue);
@@ -86,12 +90,14 @@ public class bankInteractionScript : MonoBehaviour
         else if (!int.TryParse(withdrawAmountText, out int amount))
         {
             withdrawField.text = ("");
-            withdrawFeedback.SetText("Not a number - Enter value");
+            withdrawFeedback.SetText("Not a number...");
+            StartCoroutine(RevertTextAfterDelay(withdrawField, withdrawFeedback));
         }
         else if (amount <= balance)
         {
             withdrawField.text = ("");
-            withdrawFeedback.SetText("Withdrew: " + amount + " - Enter value");
+            withdrawFeedback.SetText("Withdrew: " + amount);
+            StartCoroutine(RevertTextAfterDelay(withdrawField, withdrawFeedback));
             balance -= amount;
             goldValue += amount;
             PlayerPrefs.SetInt("Player Gold", goldValue);
@@ -100,9 +106,17 @@ public class bankInteractionScript : MonoBehaviour
         else
         {
             withdrawField.text = ("");
-            withdrawFeedback.SetText("Failed to withdraw - Enter value");
+            withdrawFeedback.SetText("Failed to withdraw...");
+            StartCoroutine(RevertTextAfterDelay(withdrawField, withdrawFeedback));
         }
         balanceOutput.SetText("Balance: " + balance);
         playerGold.SetText("Player Gold: " + goldValue);
+    }
+
+    IEnumerator RevertTextAfterDelay(TMP_InputField clear, TextMeshProUGUI buttonText)
+    {
+        yield return new WaitForSeconds(1.5f);
+        clear.text = ("");
+        buttonText.SetText("Enter value...");
     }
 }
