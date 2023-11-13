@@ -7,7 +7,6 @@ using Cinemachine;
 public class InteractablePlayerTeleporter : MonoBehaviour
 {
     [SerializeField] private Transform newLocation;
-
     [SerializeField] private CinemachineVirtualCamera arenaCamera;
     [SerializeField] private CinemachineVirtualCamera sideRoomCamera;
     private GameObject player;
@@ -26,7 +25,6 @@ public class InteractablePlayerTeleporter : MonoBehaviour
             BlackjackManager.Instance.NewHand();
         }
     }*/
-
     private void Update()
     {
         if (player != null && Input.GetKeyDown(KeyCode.E))
@@ -35,9 +33,7 @@ public class InteractablePlayerTeleporter : MonoBehaviour
             player.transform.position = newLocation.position;
             BlackjackManager.Instance.NewHand();
 
-            //arenaCamera.gameObject.SetActive(true);
-            //sideRoomCamera.gameObject.SetActive(false);
-            //arenaCamera.gameObject.transform.position = newLocation.position;
+            UpdateCameras(newLocation.position);
         }
     }
 
@@ -57,5 +53,12 @@ public class InteractablePlayerTeleporter : MonoBehaviour
 
             player = null;
         }
+    }
+
+    private void UpdateCameras(Vector3 newPosition)
+    {
+        arenaCamera.Priority = 10;
+        sideRoomCamera.Priority = 10;
+        arenaCamera.gameObject.transform.position = newLocation.position;
     }
 }
