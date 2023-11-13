@@ -67,6 +67,7 @@ SpriteAtlas:
   - {fileID: -29532804, guid: c9ec081475fcfad4c81947b15da7af2a, type: 3}
   - {fileID: 665174865, guid: c9ec081475fcfad4c81947b15da7af2a, type: 3}
   - {fileID: 316318407, guid: c9ec081475fcfad4c81947b15da7af2a, type: 3}
+  - {fileID: 21300000, guid: d9b8736f86197424282da46de65a359b, type: 3}
   m_PackedSpriteNamesToIndex:
   - IMG_0559_1
   - IMG_0559_0
@@ -85,6 +86,7 @@ SpriteAtlas:
   - IMG_0559_14
   - IMG_0559_15
   - IMG_0559_16
+  - Sand
   m_RenderDataMap: {}
   m_Tag: Tile Atlas
   m_IsVariant: 0
