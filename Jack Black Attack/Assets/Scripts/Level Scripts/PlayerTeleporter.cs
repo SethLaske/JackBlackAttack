@@ -23,7 +23,7 @@ public class PlayerTeleporter : MonoBehaviour
     }
 
     private void UpdateCameras(Vector3 newPosition)
-    {
+    {   
         arenaCamera.Priority = 9;
         sideRoomCamera.Priority = 10;
         sideRoomCamera.gameObject.transform.position = newPosition;
