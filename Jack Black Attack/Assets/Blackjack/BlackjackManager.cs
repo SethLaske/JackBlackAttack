@@ -23,7 +23,7 @@ public class BlackjackManager : MonoBehaviour
     [SerializeField] private GameObject newHandButton;
 
 
-    private int betAmount = 10;
+    public int betAmount = 10;
     private const int BUST_LIMIT = 21; // Maximum value that you can have before busting
     private const int DEALER_HIT_LIMIT = 16; // Maximum value that dealer can hit on
 

@@ -1539,6 +1539,7 @@ MonoBehaviour:
   victoryGate: {fileID: 0}
   defeatGate: {fileID: 0}
   exitTile: {fileID: 0}
+  enterHandTile: {fileID: 0}
 --- !u!4 &404921027
 Transform:
   m_ObjectHideFlags: 0
@@ -1815,7 +1816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &483178460
 MonoBehaviour:
   m_ObjectHideFlags: 0
