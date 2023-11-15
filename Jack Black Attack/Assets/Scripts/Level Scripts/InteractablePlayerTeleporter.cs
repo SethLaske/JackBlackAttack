@@ -25,35 +25,20 @@ public class InteractablePlayerTeleporter : MonoBehaviour
             BlackjackManager.Instance.NewHand();
         }
     }*/
-    private void Update()
-    {
-        if (player != null && Input.GetKeyDown(KeyCode.E))
-        {
-
-            player.transform.position = newLocation.position;
-            BlackjackManager.Instance.NewHand();
-
-            UpdateCameras(newLocation.position);
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
 
-            player = collision.gameObject;
+            collision.transform.position = newLocation.position;
+            BlackjackManager.Instance.NewHand();
+
+            UpdateCameras(newLocation.position);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-
-            player = null;
-        }
-    }
+   
 
     private void UpdateCameras(Vector3 newPosition)
     {

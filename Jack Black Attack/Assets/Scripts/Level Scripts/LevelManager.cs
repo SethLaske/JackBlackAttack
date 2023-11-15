@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     {
         activateExit = false;
         exitTile.SetActive(false);
-        enterHandTile.SetActive(true);
+        enterHandTile.SetActive(false);
         //door.SetActive(false);
         //pass in card suit and number from given card, example rn is 4 of hearts
         //cardSuit = "Hearts";
@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void CloseEnterance() {
-        enterHandTile.SetActive(false);
+        enterHandTile.SetActive(true);
     }
     // Update is called once per frame
     /* void Update()
