@@ -22,7 +22,7 @@ public class PlayerDungeonController : Character
 
     [SerializeField] private bool useMouseToRotate;
 
-    public Weapon activeWeapon;
+    [HideInInspector] public Weapon activeWeapon;
     private float attackOneTimer;
     private bool isBlocking;
    private bool isHoldingShield;
@@ -322,7 +322,14 @@ public class PlayerDungeonController : Character
 
         if (!string.IsNullOrEmpty(weaponName))
         {
-            Weapon weapon = Resources.Load<GameObject>("Weapons/" + weaponName).GetComponent<Weapon>();
+            GameObject weaponPrefab = Resources.Load<GameObject>("Weapons/" + weaponName);
+
+            if (weaponPrefab == null)
+            {
+                return;
+            }
+
+            Weapon weapon = weaponPrefab.GetComponent<Weapon>();
 
             if (weapon != null)
             {
