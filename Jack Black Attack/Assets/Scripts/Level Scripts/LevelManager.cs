@@ -28,12 +28,14 @@ public class LevelManager : MonoBehaviour
     public event Action onWaveComplete;
     // Start is called before the first frame update
     [SerializeField] private GameObject exitTile;
+    [SerializeField] private GameObject enterHandTile;
     private bool activateExit;
 
     void Awake()
     {
         activateExit = false;
         exitTile.SetActive(false);
+        enterHandTile.SetActive(false);
         //door.SetActive(false);
         //pass in card suit and number from given card, example rn is 4 of hearts
         //cardSuit = "Hearts";
@@ -46,6 +48,9 @@ public class LevelManager : MonoBehaviour
         defeatGate.SetActive(true);
     }
 
+    public void CloseEnterance() {
+        enterHandTile.SetActive(true);
+    }
     // Update is called once per frame
     /* void Update()
      {
@@ -99,6 +104,12 @@ public class LevelManager : MonoBehaviour
                 PlayerPush();
                 break;
 
+        }
+
+        if (PlayerPrefs.GetInt("Player Gold") < BlackjackManager.Instance.betAmount)
+        {
+            Debug.Log("Not enough gold to continue");
+            CloseEnterance();
         }
 
     }

@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class Item : MonoBehaviour
 {
 
-    public enum InteractionType {NONE, PickUp, Examine, Door, Bank};
-    public InteractionType type; 
+    public enum InteractionType { NONE, PickUp, Examine, Door, Bank, Store };
+    public InteractionType type;
     public string nextScene;
 
     public Canvas myCanvas;
@@ -21,7 +21,7 @@ public class Item : MonoBehaviour
 
     public void Interact()
     {
-        switch(type)
+        switch (type)
         {
             case InteractionType.PickUp:
                 Debug.Log("PICK UP");
@@ -35,6 +35,10 @@ public class Item : MonoBehaviour
             case InteractionType.Bank:
                 myCanvas.gameObject.SetActive(true);
                 Debug.Log("Bank");
+                break;
+            case InteractionType.Store:
+                myCanvas.gameObject.SetActive(true);
+                Debug.Log("Shop");
                 break;
             default:
                 Debug.Log("NULL ITEM");
