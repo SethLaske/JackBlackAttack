@@ -845,7 +845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6488493185893232493, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6488493185893232493, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2431,6 +2431,10 @@ PrefabInstance:
       propertyPath: sideRoomCamera
       value: 
       objectReference: {fileID: 508497005}
+    - target: {fileID: 1785454089, guid: 15de168116008ce4abdce130629a9972, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2434280319963333091, guid: 15de168116008ce4abdce130629a9972, type: 3}
       propertyPath: m_Name
       value: Side Room
@@ -3978,7 +3982,7 @@ Transform:
   - {fileID: 572485012}
   - {fileID: 985021580}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1852498267
 MonoBehaviour:
@@ -4063,7 +4067,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1977968794
 GameObject:
@@ -4568,7 +4572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_LocalPosition.x

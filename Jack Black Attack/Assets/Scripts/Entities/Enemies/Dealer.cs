@@ -131,7 +131,7 @@ public class Dealer : BaseEnemy
                 }
             }
 
-            Debug.Log("The angle for card: " + i + " to the next card is: " + angleToNextDeck);
+            //Debug.Log("The angle for card: " + i + " to the next card is: " + angleToNextDeck);
             decks[i].transform.RotateAround(transform.position, Vector3.forward, Mathf.Max(angleToNextDeck/(360/decks.Count), 1) * deckRotationSpeed * Time.deltaTime);
             //decks[i].transform.RotateAround(transform.position, Vector3.forward, deckRotationSpeed * Time.deltaTime); 
         }    
@@ -151,12 +151,30 @@ public class Dealer : BaseEnemy
         }
         else {
             fleeDestination = Vector3.zero;
+
+            int randomValue = (Random.Range(0, 2) == 0) ? 1 : -1;
+            if (CanSeePlayer()) {
+
+                Vector2 direction = player.transform.position - transform.position;
+                direction = new Vector2(randomValue * direction.y, randomValue * -1 * direction.x);
+
+                RaycastHit2D hit = Physics2D.Raycast(player.transform.position, direction);
+
+                // Check if the ray hits something
+                if (hit.collider != null)
+                {
+                    // Get the position where the ray makes contact
+                    fleeDestination = hit.point - direction.normalized * -1;
+                }
+
+               
+            }
         }
 
         //Need more enemies and cases for when this is the last enemy. Just using this to test for now
-        fleeDestination = Vector3.zero;
+        //fleeDestination = Vector3.zero;
 
-        Debug.Log("Dealer entering flee to: " + fleeDestination);
+        //Debug.Log("Dealer entering flee to: " + fleeDestination);
 
         SnapVelocity((fleeDestination - transform.position).normalized * moveSpeed * 1.5f);
         SnapRotation((fleeDestination - transform.position));
@@ -171,6 +189,7 @@ public class Dealer : BaseEnemy
                 return;
             }
 
+            
             EnterIdle();
             return;
         }
@@ -186,16 +205,17 @@ public class Dealer : BaseEnemy
     }
 
     private void EnterShuffle() {
-        Debug.Log("Starting to shuffle");
+        //Debug.Log("Starting to shuffle");
         state = DealerState.Shuffle;
 
         chargeTimer = shuffleTime;
 
         SnapVelocity(Vector2.zero);
-        SnapRotation(-1 * (player.transform.position - transform.position));
+        //SnapRotation(-1 * (player.transform.position - transform.position));
     }
 
     private void Shuffle() {
+        SnapVelocity(Vector2.zero);
         if (isChargeDone()) {
 
             AddDeck();
@@ -211,7 +231,7 @@ public class Dealer : BaseEnemy
             return;
         }
 
-        Debug.Log("Starting to melee");
+        //Debug.Log("Starting to melee");
         state = DealerState.MeleeAttack;
 
         chargeTimer = meleeChargeTime;
@@ -258,7 +278,7 @@ public class Dealer : BaseEnemy
             return;
         }
 
-        Debug.Log("Starting to melee");
+        //Debug.Log("Starting to melee");
         state = DealerState.RangeAttack;
 
         chargeTimer = rangedChargeTime;
