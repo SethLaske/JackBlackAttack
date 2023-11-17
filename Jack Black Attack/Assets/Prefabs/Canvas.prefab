@@ -383,7 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealthBar: {fileID: 4742572886301824056}
   goldText: {fileID: 5306672065161131702}
-  HealthBar: {fileID: 0}
+  HealthBar: {fileID: 2630553692685956963}
 --- !u!1 &1642216975321441910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverMenu: {fileID: 6488493185174869623}
   coinsText: {fileID: 1368033523}
-  deathMenuDelay: 2
+  deathMenuDelay: 0
 --- !u!1 &6488493185979588633
 GameObject:
   m_ObjectHideFlags: 0
