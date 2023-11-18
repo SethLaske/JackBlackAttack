@@ -39,6 +39,9 @@ public class shopInteractionScript : MonoBehaviour
     public TextMeshProUGUI ownTrident;
     void Start()
     {
+        PlayerPrefs.SetInt("boomerang", 0);
+        PlayerPrefs.SetInt("pool stick", 0);
+        PlayerPrefs.SetInt("trident", 0);
         updateDisplay();
     }
 
@@ -97,7 +100,7 @@ public class shopInteractionScript : MonoBehaviour
         int price = boomerangPrice;
         if (goldValue >= boomerangPrice)
         {
-            PlayerPrefs.SetString("ChosenWeapon", "BoomerangWeapon");
+            PlayerPrefs.SetString("ChosenWeapon", "Boomerang");
             goldValue -= boomerangPrice;
             PlayerPrefs.SetInt("boomerang", 1);
             boomerang.interactable = false;
@@ -105,7 +108,7 @@ public class shopInteractionScript : MonoBehaviour
         }
         else if (goldValue + bankedGold >= boomerangPrice)
         {
-            PlayerPrefs.SetString("ChosenWeapon", "BoomerangWeapon");
+            PlayerPrefs.SetString("ChosenWeapon", "Boomerang");
             price -= goldValue;
             PlayerPrefs.SetInt("Player Gold", 0);
             PlayerPrefs.SetInt("stored gold", bankedGold - price);
@@ -123,7 +126,7 @@ public class shopInteractionScript : MonoBehaviour
         int price = poolStickPrice;
         if (goldValue >= poolStickPrice)
         {
-            PlayerPrefs.SetString("ChosenWeapon", "RicWeapon");
+            PlayerPrefs.SetString("ChosenWeapon", "PoolStick");
             goldValue -= poolStickPrice;
             PlayerPrefs.SetInt("pool stick", 1);
             poolStick.interactable = false;
@@ -131,7 +134,7 @@ public class shopInteractionScript : MonoBehaviour
         }
         else if (goldValue + bankedGold >= poolStickPrice)
         {
-            PlayerPrefs.SetString("ChosenWeapon", "RicWeapon");
+            PlayerPrefs.SetString("ChosenWeapon", "PoolStick");
             price -= goldValue;
             PlayerPrefs.SetInt("Player Gold", 0);
             PlayerPrefs.SetInt("stored gold", bankedGold - price);
@@ -148,7 +151,7 @@ public class shopInteractionScript : MonoBehaviour
         int price = tridentPrice;
         if (goldValue >= tridentPrice)
         {
-            PlayerPrefs.SetString("ChosenWeapon", "TridentWeapon");
+            PlayerPrefs.SetString("ChosenWeapon", "Trident");
             goldValue -= tridentPrice;
             PlayerPrefs.SetInt("trident", 1);
             trident.interactable = false;
@@ -156,7 +159,7 @@ public class shopInteractionScript : MonoBehaviour
         }
         else if (goldValue + bankedGold >= tridentPrice)
         {
-            PlayerPrefs.SetString("ChosenWeapon", "TridentWeapon");
+            PlayerPrefs.SetString("ChosenWeapon", "Trident");
             price -= goldValue;
             PlayerPrefs.SetInt("Player Gold", 0);
             PlayerPrefs.SetInt("stored gold", bankedGold - price);
