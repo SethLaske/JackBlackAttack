@@ -11,7 +11,7 @@ public class CardMenu : MonoBehaviour
     [SerializeField] float menuOpenTime = 1f;       // How long in seconds menu takes to open
     [SerializeField] float menuMoveAmount = 400f;   // How far the menu travels
 
-    private bool menuOpen = true;
+    [SerializeField] private bool menuOpen = false;
 
     private float leftClosedPosition;
     private float rightClosedPosition;
@@ -27,10 +27,10 @@ public class CardMenu : MonoBehaviour
 
     private void Start()
     {
-        leftClosedPosition = LeftMenu.position.x - menuMoveAmount;
-        rightClosedPosition = RightMenu.position.x + menuMoveAmount;
-        leftOpenedPosition = LeftMenu.position.x;
-        rightOpenedPosition = RightMenu.position.x; 
+        leftOpenedPosition = LeftMenu.position.x + menuMoveAmount;
+        rightOpenedPosition = RightMenu.position.x - menuMoveAmount;
+        leftClosedPosition = LeftMenu.position.x;
+        rightClosedPosition = RightMenu.position.x; 
     }
 
     public void ButtonClick()

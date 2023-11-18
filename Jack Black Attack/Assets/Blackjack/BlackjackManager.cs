@@ -52,7 +52,8 @@ public class BlackjackManager : MonoBehaviour
     public void NewHand()
     {
         levelManager.ResetGates();
-
+        cardMenu.OpenMenu();
+        
         if(PlayerPrefs.GetInt("Player Gold") < betAmount)
         {
             Debug.Log("Not enough gold");
