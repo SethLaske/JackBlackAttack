@@ -32,7 +32,7 @@ public class bankInteractionScript : MonoBehaviour
         goldValue = PlayerPrefs.GetInt("Player Gold");
         balance = PlayerPrefs.GetInt("stored gold");
         balanceOutput.SetText("Balance: " + balance);
-        PlayerPrefs.SetInt("stored gold", 50); // TEMPORARY FOR BANK STUFF, DELETE LATER
+        //PlayerPrefs.SetInt("stored gold", 50); // TEMPORARY FOR BANK STUFF, DELETE LATER
         playerGold.SetText("Player Gold: " + goldValue);
     }
 
