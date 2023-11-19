@@ -65,6 +65,7 @@ public class PlayerDungeonController : Character
     {
         CheckUserInput();
         CheckAttacks();
+        damageFlash();
         //check surroundings
     }
 

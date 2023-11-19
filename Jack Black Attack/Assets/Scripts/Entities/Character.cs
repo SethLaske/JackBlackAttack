@@ -6,6 +6,15 @@ public class Character : Entity
 {
     protected Rigidbody2D rb;
 
+     private float HPcomparison;
+    private Color hurtColor = Color.white;
+    public Material hurtMat;
+    private Color defaultColor;
+    private Material defaultMat;
+    SpriteRenderer sr;
+    public GameObject spriteObject;
+     //scorpions sprite renderer is in a different object. Just drag 
+
     [SerializeField] protected float moveSpeed;
 
     [SerializeField] private float accelerationPercent;
@@ -16,6 +25,10 @@ public class Character : Entity
     {
         InitializeEntity();
         rb = GetComponent<Rigidbody2D>();
+        sr = spriteObject.GetComponent<SpriteRenderer>();
+        HPcomparison = HP;
+        defaultMat = sr.material;
+        defaultColor = sr.color;
     }
 
 
@@ -59,6 +72,7 @@ public class Character : Entity
             rb.velocity = desiredVelocity;
         }
     }
+    
 
     
 
@@ -89,6 +103,23 @@ public class Character : Entity
 
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
         directionalArrow.rotation = targetRotation;
+    }
+    public void damageFlash()
+    {
+        if (HP < HPcomparison ) //means the eney took damage
+        {
+            HPcomparison = HP;
+            sr.material = hurtMat;
+            sr.color = hurtColor;
+            StartCoroutine(waitReset());
+        }
+    }
+    IEnumerator waitReset()
+    {
+         yield return new WaitForSeconds(.15f);
+        Debug.Log("ColorReset");
+        sr.material = defaultMat;
+        sr.color = defaultColor;
     }
 
 

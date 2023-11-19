@@ -18,23 +18,12 @@ public class BaseEnemy : Character
     //[SerializeField] private float frictionPercent;
 
     //[SerializeField] private Transform directionalArrow;
-     private float HPcomparison;
-    private Color hurtColor = Color.white;
-    public Material hurtMat;
-    private Color defaultColor;
-    private Material defaultMat;
-    SpriteRenderer sr;
-    public GameObject spriteObject; //scorpions sprite renderer is in a different object. Just drag 
 
     public DropTable dropTable;
 
     protected void EnemyStart() {
         InitializeCharacter();
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerDungeonController>();
-        sr = spriteObject.GetComponent<SpriteRenderer>();
-        HPcomparison = HP;
-        defaultMat = sr.material;
-        defaultColor = sr.color;
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerDungeonController>();  
     }
 
 
@@ -89,23 +78,6 @@ public class BaseEnemy : Character
         Gizmos.DrawLine(transform.position, transform.position + viewDistance * (initialRotation * Quaternion.Euler(0f, 0f, 0f) * Vector3.up));
 
         Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
-    public void damageFlash()
-    {
-        if (HP < HPcomparison ) //means the eney took damage
-        {
-            HPcomparison = HP;
-            sr.material = hurtMat;
-            sr.color = hurtColor;
-            StartCoroutine(waitReset());
-        }
-    }
-    IEnumerator waitReset()
-    {
-         yield return new WaitForSeconds(.15f);
-        Debug.Log("ColorReset");
-        sr.material = defaultMat;
-        sr.color = defaultColor;
     }
 
 

@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
+  hurtMat: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  spriteObject: {fileID: 4391283237189502670}
   moveSpeed: 5
   accelerationPercent: 0.1
   frictionPercent: 0.1
