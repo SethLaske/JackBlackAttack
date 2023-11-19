@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class CardMenu : MonoBehaviour
 {
-    [SerializeField] Transform LeftMenu;
-    [SerializeField] Transform RightMenu;
+    [SerializeField] RectTransform LeftMenu;
+    [SerializeField] RectTransform RightMenu;
     [SerializeField] float menuOpenTime = 1f;       // How long in seconds menu takes to open
     [SerializeField] float menuMoveAmount = 400f;   // How far the menu travels
 
     [SerializeField] private bool menuOpen = false;
+    [SerializeField] private Ease ease;
 
     private float leftClosedPosition;
     private float rightClosedPosition;
@@ -23,14 +24,6 @@ public class CardMenu : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        leftOpenedPosition = LeftMenu.position.x + menuMoveAmount;
-        rightOpenedPosition = RightMenu.position.x - menuMoveAmount;
-        leftClosedPosition = LeftMenu.position.x;
-        rightClosedPosition = RightMenu.position.x; 
     }
 
     public void ButtonClick()
@@ -47,8 +40,10 @@ public class CardMenu : MonoBehaviour
     public void CloseMenu()
     {
         if (!menuOpen) return; // If the menu is currently moving or already open do not attempt to tween again
-        LeftMenu.DOMoveX(leftClosedPosition, menuOpenTime).SetEase(Ease.InOutSine);
-        RightMenu.DOMoveX(rightClosedPosition, menuOpenTime).SetEase(Ease.InOutSine);
+        //LeftMenu.pivot = new Vector2(1,0.5f);
+        //RightMenu.pivot = new Vector2(0,0.5f);
+        LeftMenu.DOPivotX(1, menuOpenTime).SetEase(ease);
+        RightMenu.DOPivotX(0, menuOpenTime).SetEase(ease);
         menuOpen = false;
     }
 
@@ -56,8 +51,10 @@ public class CardMenu : MonoBehaviour
     {
 
         if (menuOpen) return; // If the menu is currently moving do not attempt to tween again
-        LeftMenu.DOMoveX(leftOpenedPosition, menuOpenTime).SetEase(Ease.InOutSine);
-        RightMenu.DOMoveX(rightOpenedPosition, menuOpenTime).SetEase(Ease.InOutSine);
+        //LeftMenu.pivot = new Vector2(0,0.5f);
+        //RightMenu.pivot = new Vector2(1,0.5f);
+        LeftMenu.DOPivotX(0, menuOpenTime).SetEase(ease);
+        RightMenu.DOPivotX(1, menuOpenTime).SetEase(ease);
         menuOpen = true;
     }
 }
