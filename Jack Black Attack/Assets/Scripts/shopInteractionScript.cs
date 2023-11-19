@@ -16,7 +16,6 @@ public class shopInteractionScript : MonoBehaviour
     //Prices
 
     public int boomerangPrice;
-    public int poolStickPrice;
     public int tridentPrice;
 
     //Price display
@@ -39,16 +38,7 @@ public class shopInteractionScript : MonoBehaviour
     public TextMeshProUGUI ownTrident;
     void Start()
     {
-        PlayerPrefs.SetInt("boomerang", 0);
-        PlayerPrefs.SetInt("pool stick", 0);
-        PlayerPrefs.SetInt("trident", 0);
         updateDisplay();
-    }
-
-
-    void Update()
-    {
-
     }
 
 
@@ -63,31 +53,47 @@ public class shopInteractionScript : MonoBehaviour
         {
             displayBoomerangPrice.SetText("Boomerang - " + boomerangPrice + " gold");
         }
-        else
+        else if (PlayerPrefs.GetInt("boomerang") == 1 && PlayerPrefs.GetString("ChosenWeapon").Equals("Boomerang"))
         {
             displayBoomerangPrice.SetText("Boomerang - " + " sold out");
             boomerang.interactable = false;
-            ownBoomerang.SetText("OWNED");
+            ownBoomerang.SetText("EQUIPPED");
         }
-        if (PlayerPrefs.GetInt("pool stick") == 0)
+        else
         {
-            displayPoolStickPrice.SetText("Pool Stick - " + poolStickPrice + " gold");
+            displayBoomerangPrice.SetText("Boomerang - " + " sold out");
+            boomerang.interactable = true;
+            ownBoomerang.SetText("SWAP");
+        }
+
+        if (PlayerPrefs.GetInt("pool stick") == 1 && PlayerPrefs.GetString("ChosenWeapon").Equals("PoolStick"))
+        {
+            displayPoolStickPrice.SetText("Pool Stick - " + " sold out");
+            ownPoolStick.SetText("EQUIPPED");
+            poolStick.interactable = false;
         }
         else
         {
             displayPoolStickPrice.SetText("Pool Stick - " + " sold out");
-            poolStick.interactable = false;
-            ownPoolStick.SetText("OWNED");
+            poolStick.interactable = true;
+            ownPoolStick.SetText("SWAP");
         }
+
         if (PlayerPrefs.GetInt("trident") == 0)
         {
             displayTridentPrice.SetText("Trident - " + tridentPrice + " gold");
         }
-        else
+        else if (PlayerPrefs.GetInt("trident") == 1 && PlayerPrefs.GetString("ChosenWeapon").Equals("Trident"))
         {
             displayTridentPrice.SetText("Trident - " + " sold out");
             trident.interactable = false;
-            ownTrident.SetText("OWNED");
+            ownTrident.SetText("EQUIPPED");
+        }
+        else
+        {
+            displayTridentPrice.SetText("Trident - " + " sold out");
+            trident.interactable = true;
+            ownTrident.SetText("SWAP");
         }
     }
     public void exit()
@@ -98,7 +104,12 @@ public class shopInteractionScript : MonoBehaviour
     public void purchaseBoomerang()
     {
         int price = boomerangPrice;
-        if (goldValue >= boomerangPrice)
+        if (PlayerPrefs.GetInt("boomerang") == 1 && !(PlayerPrefs.GetString("ChosenWeapon").Equals("Boomerang")))
+        {
+            PlayerPrefs.SetString("ChosenWeapon", "Boomerang");
+            ownBoomerang.SetText("EQUIPPED");
+        }
+        else if (goldValue >= boomerangPrice)
         {
             PlayerPrefs.SetString("ChosenWeapon", "Boomerang");
             goldValue -= boomerangPrice;
@@ -123,33 +134,24 @@ public class shopInteractionScript : MonoBehaviour
 
     public void purchasePoolStick()
     {
-        int price = poolStickPrice;
-        if (goldValue >= poolStickPrice)
+        if (PlayerPrefs.GetInt("pool stick") == 1)
         {
             PlayerPrefs.SetString("ChosenWeapon", "PoolStick");
-            goldValue -= poolStickPrice;
-            PlayerPrefs.SetInt("pool stick", 1);
+            ownPoolStick.SetText("EQUIPPED");
             poolStick.interactable = false;
-            ownPoolStick.SetText("OWNED");
         }
-        else if (goldValue + bankedGold >= poolStickPrice)
-        {
-            PlayerPrefs.SetString("ChosenWeapon", "PoolStick");
-            price -= goldValue;
-            PlayerPrefs.SetInt("Player Gold", 0);
-            PlayerPrefs.SetInt("stored gold", bankedGold - price);
-            PlayerPrefs.SetInt("pool stick", 1);
-            poolStick.interactable = false;
-            ownPoolStick.SetText("OWNED");
-        }
-
         updateDisplay();
     }
 
     public void purchaseTrident()
     {
         int price = tridentPrice;
-        if (goldValue >= tridentPrice)
+        if (PlayerPrefs.GetInt("trident") == 1 && !(PlayerPrefs.GetString("ChosenWeapon").Equals("Trident")))
+        {
+            PlayerPrefs.SetString("ChosenWeapon", "Trident");
+            ownTrident.SetText("EQUIPPED");
+        }
+        else if (goldValue >= tridentPrice)
         {
             PlayerPrefs.SetString("ChosenWeapon", "Trident");
             goldValue -= tridentPrice;

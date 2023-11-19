@@ -16,6 +16,10 @@ public class StartMenuScript : MonoBehaviour
         PlayerPrefs.SetInt("stored gold", 50);
 
         //Reset all other player prefs here
+        PlayerPrefs.SetInt("boomerang", 0);
+        PlayerPrefs.SetInt("pool stick", 1);
+        PlayerPrefs.SetInt("trident", 0);
+
 
         SceneManager.LoadScene("Hub");
     }
