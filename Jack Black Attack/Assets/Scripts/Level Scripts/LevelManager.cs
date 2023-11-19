@@ -20,48 +20,30 @@ public class LevelManager : MonoBehaviour
    
     //public GameObject door;
 
-    [SerializeField] private GameObject victoryGate;
-    [SerializeField] private GameObject defeatGate;
+    [SerializeField] private Gate victoryGate;
+    [SerializeField] private Gate defeatGate;
 
     public static int cardNumber;
     public static string cardSuit;
     public event Action onWaveComplete;
     // Start is called before the first frame update
-    [SerializeField] private GameObject exitTile;
-    [SerializeField] private GameObject enterHandTile;
+    [SerializeField] private GameObject dungeonExitTile;
+    [SerializeField] private Gate enterHandGate;
     private bool activateExit;
 
     void Awake()
     {
         activateExit = false;
-        exitTile.SetActive(false);
-        enterHandTile.SetActive(false);
-        //door.SetActive(false);
-        //pass in card suit and number from given card, example rn is 4 of hearts
-        //cardSuit = "Hearts";
-        //cardNumber = 4; 
-        //roomGenerator.StartRoomGeneration(Random.Range(1, 14));
+        dungeonExitTile.SetActive(false);
+        enterHandGate.CloseGate();
+        CheckPlayerGold();
     }
 
     public void StartLevel() {
-        victoryGate.SetActive(true);
-        defeatGate.SetActive(true);
+        victoryGate.CloseGate();
+        defeatGate.CloseGate();
     }
 
-    public void CloseEnterance() {
-        enterHandTile.SetActive(true);
-    }
-    // Update is called once per frame
-    /* void Update()
-     {
-         //constantly updates the number of enemies in the room
-         enemyCount = GameObject.FindGameObjectsWithTag("enemy").Length;
-         if (enemyCount == 0 && !hasSpawned)
-         {
-             SpawnDoor();
-             hasSpawned = true;
-         }
-     }*/
 
     public void SetEnemyCount(int count) {
         enemyCount = count;
@@ -86,7 +68,7 @@ public class LevelManager : MonoBehaviour
 
         if (activateExit == true) {
             ResetGates();
-            exitTile.SetActive(true);
+            dungeonExitTile.SetActive(true);
             return;
         }
 
@@ -106,38 +88,41 @@ public class LevelManager : MonoBehaviour
 
         }
 
+        CheckPlayerGold();
+
+    }
+
+    private void CheckPlayerGold() {
         if (PlayerPrefs.GetInt("Player Gold") < BlackjackManager.Instance.betAmount)
         {
-            Debug.Log("Not enough gold to continue");
-            CloseEnterance();
+            //Debug.Log("Not enough gold to continue");
+            enterHandGate.CloseGate();
         }
-
+        else {
+            enterHandGate.OpenGate();
+        }
     }
 
     private void PlayerVictory() {
-        victoryGate.SetActive(false);
+        victoryGate.OpenGate();
     }
 
     private void PlayerPush() {
-        defeatGate.SetActive(false);
+        defeatGate.OpenGate();
     }
 
     private void PlayerDefeat() {
-        defeatGate.SetActive(false);
+        defeatGate.OpenGate();
     }
 
     public void ResetGates()
     {
-        defeatGate.SetActive(true);
-        victoryGate.SetActive(true);
+        defeatGate.CloseGate();
+        victoryGate.CloseGate();
     }
 
     public void FinalHand() {
         activateExit = true;
     }
 
-    /*public void SpawnDoor()
-    {
-        door.SetActive(true);
-    }*/
 }
