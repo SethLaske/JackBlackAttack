@@ -36,6 +36,8 @@ public class Armordilo : BaseEnemy
     // Update is called once per frame
     void Update()
     {
+        if (playerAlive)
+        {
         damageFlash();
         if (state == ArmordiloState.Searching)
         {
@@ -50,6 +52,7 @@ public class Armordilo : BaseEnemy
         else if (state == ArmordiloState.Stuned) {
             Stunned();
             return;
+        }
         }
     }
 

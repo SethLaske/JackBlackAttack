@@ -63,17 +63,23 @@ public class PlayerDungeonController : Character
     // Update is called once per frame
     void Update()
     {
+        if (playerAlive)
+        {
         CheckUserInput();
         CheckAttacks();
-        damageFlash();
+        }
         //check surroundings
     }
 
     private void FixedUpdate()
     {
+        if(playerAlive)
+        {
         ApplyMovement();
         RotateArrow();
         UpdateAnimator();
+        damageFlash();
+        }
     }
 
     private void CheckUserInput()
@@ -245,28 +251,10 @@ public class PlayerDungeonController : Character
 
     public override void Die()
     {
-        Debug.Log("YOU DIED");
         onPlayerDeath?.Invoke();
-
     }
 
-     private void DisablePlayerMovement()
-    {
-        alive = false;
-        moveSpeed = 0;
-    }
-     private void EnablePlayerMovement()
-    {
-        alive = true;
-    }
-    private void OnEnable()
-    {
-        PlayerDungeonController.onPlayerDeath += DisablePlayerMovement;
-    }
-    private void OnDisable()
-    {
-        PlayerDungeonController.onPlayerDeath -= DisablePlayerMovement;
-    }
+
 
     private void UpdateAnimator() {
         animator.SetInteger("XMovement", (int)inputDirection.x);

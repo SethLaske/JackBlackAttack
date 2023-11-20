@@ -2785,8 +2785,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 34.16038}
-  m_SizeDelta: {x: 1297.3582, y: 238.5531}
+  m_AnchoredPosition: {x: 2.858, y: 34.16}
+  m_SizeDelta: {x: 1303.074, y: 401.855}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6488493184985080818
 CanvasRenderer:
@@ -2984,7 +2984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverMenu: {fileID: 6488493185174869623}
   coinsText: {fileID: 1368033523}
-  deathMenuDelay: 0
+  deathMenuDelay: 2
 --- !u!1 &6488493185979588633
 GameObject:
   m_ObjectHideFlags: 0

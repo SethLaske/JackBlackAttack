@@ -13,6 +13,7 @@ public class Character : Entity
     private Material defaultMat;
     SpriteRenderer sr;
     public GameObject spriteObject;
+    protected bool playerAlive = true;
      //scorpions sprite renderer is in a different object. Just drag 
 
     [SerializeField] protected float moveSpeed;
@@ -120,6 +121,24 @@ public class Character : Entity
         Debug.Log("ColorReset");
         sr.material = defaultMat;
         sr.color = defaultColor;
+    }
+    private void DisableCharacterMovement()
+    {
+        moveSpeed = 0;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        playerAlive = false;
+    }
+     private void EnableCharacterMovement()
+    {
+        playerAlive = true;
+    }
+    private void OnEnable()
+    {
+        PlayerDungeonController.onPlayerDeath += DisableCharacterMovement;
+    }
+    private void OnDisable()
+    {
+        PlayerDungeonController.onPlayerDeath -= DisableCharacterMovement;
     }
 
 

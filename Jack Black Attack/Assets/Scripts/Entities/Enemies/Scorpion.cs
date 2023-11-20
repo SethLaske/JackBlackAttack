@@ -36,6 +36,8 @@ public class Scorpion : BaseEnemy
     // Update is called once per frame
     void Update()
     {   
+        if (playerAlive) //freezes them in place so that a player death animation can occur uninteruppted
+        {
         damageFlash();
         if (state == ScorpionState.PincerAttack)
         {
@@ -123,6 +125,7 @@ public class Scorpion : BaseEnemy
 
             OrganicVelocity(wanderMove);
             SnapRotation(wanderMove);*/
+        }
         }
     }
 

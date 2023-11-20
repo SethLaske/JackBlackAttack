@@ -31,12 +31,13 @@ public class deathUI : MonoBehaviour
 
    public void restartLevel()
    {
-        Debug.Log("RESTART");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Scene may need to be changed
    }
    IEnumerator waitDeathUi()
     {   
         yield return new WaitForSeconds(deathMenuDelay);
+        Time.timeScale = 0;
         Setup(PlayerPrefs.GetInt("Player Gold"));
         GameOverMenu.SetActive(true); //game over menu pops up after delay seconds but player is frozen immediately
     }
