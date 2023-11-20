@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: de8245d0bd2b0bc4c9cb9fcdce2f6354
+guid: de6984ff308a1034bad64fb9f6741242
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,10 +44,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,64 +105,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Clubs_PokerChips_0
+      name: Red Velvet Rope_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 60
-        width: 28
-        height: 28
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8977bf488ea31d843ac2eeaf99a0b2f9
-      internalID: 570356494
+      spriteID: c2fbe72840c7b3c45bbf5027bbf01d74
+      internalID: -1572757326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Clubs_PokerChips_1
+      name: Red Velvet Rope_1
       rect:
         serializedVersion: 2
-        x: 55
-        y: 60
-        width: 28
-        height: 28
+        x: 16
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5c96ea8d0e0bbe479605985cb7a357a
-      internalID: -1740552603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Clubs_PokerChips_2
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 63
-        width: 22
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19d8c2c8bb1a65446af5f4b45dcedb29
-      internalID: -2125784259
+      spriteID: 7fe5cf3feb115094f9bc8e2852ad5aae
+      internalID: -790189965
       vertices: []
       indices: 
       edges: []
@@ -178,9 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Clubs_PokerChips_0: 570356494
-      Clubs_PokerChips_1: -1740552603
-      Clubs_PokerChips_2: -2125784259
+      Red Velvet Rope_0: -1572757326
+      Red Velvet Rope_1: -790189965
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
