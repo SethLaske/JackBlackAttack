@@ -105,6 +105,12 @@ public class Character : Entity
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToFace);
         directionalArrow.rotation = targetRotation;
     }
+    public override bool TakeDamage(float damage)
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.PlayerDamage);
+        return base.TakeDamage(damage);
+    }
+
     public void damageFlash()
     {
         if (HP < HPcomparison ) //means the eney took damage

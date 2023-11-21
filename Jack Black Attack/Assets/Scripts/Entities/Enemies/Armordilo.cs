@@ -114,6 +114,8 @@ public class Armordilo : BaseEnemy
             entity.TakeDamage(collisionDamage);
         }
 
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.ArmordiloRoll);
+
         bounces--;
         if (bounces <= 0) {
             //Transition to stunned

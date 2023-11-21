@@ -27,12 +27,14 @@ public class SoundManager : SingletonPersistent<SoundManager>
 
     public enum Sounds
     {
-        CannonAttack,
-        Hit,
-        Thunder,
-        Attack1,
-        Attack2,
-        Attack3
+        PlayerDamage,
+        PoolStickSwipe,
+        PoolStickProjectile,
+        Boomerang,
+        TridentStab,
+        TridentThrow,
+        ScorpionPincer,
+        ArmordiloRoll
     }
 
     //Use this for sounds that may be repeated very quickly Ex: a bunch of towers shooting

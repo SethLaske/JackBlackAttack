@@ -18,7 +18,7 @@ public class BoomerangWeapon : Weapon
         ShootProjectile();
 
         StartCoroutine(ProjectileCooldown());
-
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.Boomerang);
         //Debug.Log("Base Attack");
     }
 
@@ -34,6 +34,7 @@ public class BoomerangWeapon : Weapon
         weaponAnimator.SetTrigger("AttackOne");
         //Debug.Log("Charge Attack");
         activeAttack = true;
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.Boomerang);
     }
 
     public void EndChargeAttackOne() {

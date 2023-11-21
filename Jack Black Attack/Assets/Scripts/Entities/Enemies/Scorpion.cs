@@ -142,6 +142,7 @@ public class Scorpion : BaseEnemy
 
             }
         }
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.ScorpionPincer);
     }
 
     public void ReturnToIdle() {

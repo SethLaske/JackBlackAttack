@@ -25,6 +25,7 @@ public class RicWeapon : Weapon
             anim.SetTrigger("Attack");
             StartCoroutine(PerformAttack());
             //Debug.Log("Base Attack");
+            SoundManager.Instance.PlaySound(SoundManager.Sounds.PoolStickSwipe);
         }
 
     }

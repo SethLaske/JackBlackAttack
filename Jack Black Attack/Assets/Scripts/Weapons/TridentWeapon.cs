@@ -29,6 +29,7 @@ public class TridentWeapon : Weapon
     {
         if (activeAttack || !hasWeapon) return;
         StartCoroutine(PerformAttack());
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.TridentStab);
 
     }
     private IEnumerator PerformAttack()
@@ -45,6 +46,7 @@ public class TridentWeapon : Weapon
     {
         if (activeAttack || !hasWeapon) return;
         StartCoroutine(ThrowWeapon());
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.TridentThrow);
     }
 
     private IEnumerator ThrowWeapon()

@@ -39,7 +39,7 @@ public class ProjectileBehavior : MonoBehaviour
         {
             return;
         }
-
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.PoolStickProjectile);
         Destroy(gameObject);
     }
 }
