@@ -517,7 +517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508497004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02999878, y: 0.03000319, z: -10}
+  m_LocalPosition: {x: 0.02999878, y: 0.03000307, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -776,7 +776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.85112, y: 0.030010104, z: -10}
+  m_LocalPosition: {x: 0.02999878, y: 0.03000307, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1127,6 +1127,10 @@ PrefabInstance:
       propertyPath: sideRoomCamera
       value: 
       objectReference: {fileID: 508497005}
+    - target: {fileID: 2216342203856118205, guid: 15de168116008ce4abdce130629a9972, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2434280319424519762, guid: 15de168116008ce4abdce130629a9972, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
       value: 4
@@ -11022,11 +11026,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.74
+      value: -37.62
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.07
+      value: 5.25
       objectReference: {fileID: 0}
     - target: {fileID: 4391283237189502666, guid: 88857f11b0c288e4097b2144bde943f5, type: 3}
       propertyPath: m_LocalPosition.z
