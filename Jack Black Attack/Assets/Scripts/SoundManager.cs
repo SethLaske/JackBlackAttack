@@ -3,27 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class SoundManager : SingletonPersistent<SoundManager>
 {
     public SoundAudioClip[] soundAudioClipsArray;
-
-
-    //private GameObject[] soundAudioClips;
 
     [SerializeField]
     private Queue<GameObject> soundAudioClipsQueue;
 
     [SerializeField]
     private int maxAudioSources = 10;
-
-    private void Start()
-    {
-        //soundAudioClips = new GameObject[maxAudioSources];
-
-        soundAudioClipsQueue = new Queue<GameObject>(maxAudioSources);
-    }
 
     public enum Sounds
     {
@@ -40,10 +29,17 @@ public class SoundManager : SingletonPersistent<SoundManager>
     //Use this for sounds that may be repeated very quickly Ex: a bunch of towers shooting
     public void PlaySound(Sounds _sound)
     {
+        if (soundAudioClipsQueue == null)
+        {
+            soundAudioClipsQueue = new Queue<GameObject>(maxAudioSources);
+        }
+
+        Debug.Log("Number of Audio Sources: " + soundAudioClipsQueue.Count);
+
         GameObject soundGameObject;
         AudioSource audioSource;
         //Create Audio Source Game Object
-        if (soundAudioClipsQueue.Count <= maxAudioSources)
+        if (soundAudioClipsQueue.Count < maxAudioSources)
         {
             soundGameObject = new GameObject("Sound");
             soundAudioClipsQueue.Enqueue(soundGameObject);
