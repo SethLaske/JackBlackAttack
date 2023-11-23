@@ -15,6 +15,6 @@ MonoBehaviour:
   CardSuit: 1
   CardFace: 11
   CardValue: 10
-  NumInDeck: 2
-  CardSprite: {fileID: 21300000, guid: 000c7d158b22a8344a1b87e161fe2178, type: 3}
+  NumInDeck: 1
+  CardSprite: {fileID: -771943579, guid: 69ff5bce367f94a42825e457238943f8, type: 3}
   CardFormation: {fileID: 8666656468929595033, guid: c4a37b820aabd0e45825b7a64c5c86a6, type: 3}

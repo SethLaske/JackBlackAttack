@@ -345,6 +345,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 91140591, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: CardSpace
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 91140591, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: FirstTrans
       value: 
       objectReference: {fileID: 1714062502}
@@ -357,13 +361,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1275023047}
     - target: {fileID: 1849517033, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: CardSpace
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849517033, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: FirstTrans
       value: 
       objectReference: {fileID: 1712597632}
+    - target: {fileID: 1849517033, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: backOfCard
+      value: 
+      objectReference: {fileID: -590882657, guid: 69ff5bce367f94a42825e457238943f8, type: 3}
     - target: {fileID: 2132470746, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1275023047}
+    - target: {fileID: 3314266892165515963, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 6134679082349673581, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -459,6 +475,10 @@ PrefabInstance:
     - target: {fileID: 6488493185893232493, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655014137337881155, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
@@ -785,7 +805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02999878, y: 0.03000307, z: -10}
+  m_LocalPosition: {x: 0.13111496, y: 0.029999733, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
