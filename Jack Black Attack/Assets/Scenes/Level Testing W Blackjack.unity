@@ -346,7 +346,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 91140591, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: CardSpace
-      value: 125
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 91140591, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: FirstTrans
@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 1275023047}
     - target: {fileID: 1849517033, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: CardSpace
-      value: 125
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1849517033, guid: ddb31ef4caed4224f8726f9583ab930c, type: 3}
       propertyPath: FirstTrans
