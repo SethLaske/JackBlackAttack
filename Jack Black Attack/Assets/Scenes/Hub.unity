@@ -1403,8 +1403,8 @@ MonoBehaviour:
   hasSpawned: 0
   victoryGate: {fileID: 0}
   defeatGate: {fileID: 0}
-  exitTile: {fileID: 0}
-  enterHandTile: {fileID: 0}
+  dungeonExitTile: {fileID: 0}
+  enterHandGate: {fileID: 0}
 --- !u!4 &404921027
 Transform:
   m_ObjectHideFlags: 0
@@ -5190,7 +5190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: withdraw
+  m_text: Withdraw
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

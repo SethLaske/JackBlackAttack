@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,6 +47,15 @@ public class PlayerDungeonController : Character
 
     private Animator animator;
     private SpriteRenderer sr;
+
+    [Header ("Screen Shake")]
+    [SerializeField] private float shakeDuration = 0.2f; // Duration of the screen shake
+    [SerializeField] private float shakeAmplitude = 0.5f; // Intensity of the screen shake
+    [SerializeField] private float shakeFrequency = 2.0f; // Frequency of the screen shake
+
+    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    private float shakeTimer;
+
     void Awake()
     {
         alive = true;//can set to false above any script we want to disable after death, like check attacks
@@ -65,8 +75,8 @@ public class PlayerDungeonController : Character
     {
         if (playerAlive)
         {
-        CheckUserInput();
-        CheckAttacks();
+            CheckUserInput();
+            CheckAttacks();
         }
         //check surroundings
     }
@@ -75,10 +85,11 @@ public class PlayerDungeonController : Character
     {
         if(playerAlive)
         {
-        ApplyMovement();
-        RotateArrow();
-        UpdateAnimator();
-        damageFlash();
+            ApplyMovement();
+            RotateArrow();
+            UpdateAnimator();
+            damageFlash();
+            ScreenShake();
         }
     }
 
@@ -344,5 +355,30 @@ public class PlayerDungeonController : Character
         }
         activeWeapon.SetAsItem();
         activeWeapon = null;
+    }
+
+    public override bool TakeDamage(float damage, Vector3 attackPosition, float knockbackForce)
+    {
+        shakeTimer = shakeDuration;
+        return base.TakeDamage(damage, attackPosition, knockbackForce);
+    }
+
+    private void ScreenShake() {
+        if (shakeTimer > 0)
+        {
+            shakeTimer -= Time.deltaTime;
+
+            // Set the noise parameters for the virtual camera
+            CinemachineBasicMultiChannelPerlin noise = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            noise.m_AmplitudeGain = shakeAmplitude;
+            noise.m_FrequencyGain = shakeFrequency;
+
+            // If the timer reaches zero, reset the noise parameters
+            if (shakeTimer <= 0)
+            {
+                noise.m_AmplitudeGain = 0f;
+                noise.m_FrequencyGain = 0f;
+            }
+        }
     }
 }

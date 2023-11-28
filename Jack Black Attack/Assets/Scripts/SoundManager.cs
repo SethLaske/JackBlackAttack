@@ -23,7 +23,8 @@ public class SoundManager : SingletonPersistent<SoundManager>
         TridentStab,
         TridentThrow,
         ScorpionPincer,
-        ArmordiloRoll
+        ArmordiloRoll,
+        DealerAttack
     }
 
     //Use this for sounds that may be repeated very quickly Ex: a bunch of towers shooting

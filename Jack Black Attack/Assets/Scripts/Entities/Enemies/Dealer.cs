@@ -262,6 +262,7 @@ public class Dealer : BaseEnemy
 
             }
         }
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.DealerAttack);
 
 
 
@@ -302,7 +303,7 @@ public class Dealer : BaseEnemy
     private void EndRanged()
     {
         rangedAttack.Play();
-
+        SoundManager.Instance.PlaySound(SoundManager.Sounds.DealerAttack);
 
 
 

@@ -111,7 +111,8 @@ public class Armordilo : BaseEnemy
         Entity entity = collision.GetComponent<Entity>();
 
         if (entity != null) {
-            entity.TakeDamage(collisionDamage);
+            entity.TakeDamage(collisionDamage, transform.position, 5);
+            //entity.TakeDamage(collisionDamage);
         }
 
         SoundManager.Instance.PlaySound(SoundManager.Sounds.ArmordiloRoll);

@@ -666,9 +666,9 @@ ParticleSystem:
     angle: 15
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 1
+    radiusThickness: 0.39
     donutRadius: 0.2
-    m_Position: {x: 0, y: -0.5, z: 0}
+    m_Position: {x: 0, y: -0.14, z: 0}
     m_Rotation: {x: -0, y: 0, z: 45}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
@@ -978,7 +978,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 16
+        scalar: 12
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5007,7 +5007,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96fa1877b148ab419362c81c1f86c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 80
+  hurtMat: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  spriteObject: {fileID: 4467720854061012365}
   moveSpeed: 3
   accelerationPercent: 0.1
   frictionPercent: 0.1
@@ -5016,8 +5018,6 @@ MonoBehaviour:
   viewDistance: 15
   fieldOfViewDegrees: 270
   attackRange: 2
-  hurtMat: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  spriteObject: {fileID: 4467720854061012365}
   dropTable: {fileID: 11400000, guid: 2b72e9efa33b39c449a8ce1b41ba3412, type: 2}
   decks: []
   deckCount: 0
