@@ -32,7 +32,7 @@ public class deathUI : MonoBehaviour
    public void restartLevel()
    {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Scene may need to be changed
+        SceneManager.LoadScene("Start"); //Scene may need to be changed
    }
    IEnumerator waitDeathUi()
     {   

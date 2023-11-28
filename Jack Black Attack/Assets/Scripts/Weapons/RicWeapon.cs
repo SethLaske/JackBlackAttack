@@ -7,7 +7,7 @@ public class RicWeapon : Weapon
     public Collider2D attackBox;
     public GameObject projectilePrefab;
     public float damage = 10.0f;
-    public float attackDuration = 0.2f;
+    public AnimationClip swingAnimation;
     public float projectileSpeed = 6.0f;
     public float projectileLifetime = 2.0f;
     public Transform LaunchOffset;
@@ -18,9 +18,21 @@ public class RicWeapon : Weapon
     {
         anim = GetComponent<Animator>();
     }
+
+    private void OnDisable()
+    {
+        SetAsHeldWeapon();
+    }
+
+    private void OnEnable()
+    {
+        canAttack = true;
+        Debug.Log("Weapon Enabling");
+    }
+
     protected override void BaseAttackOne()
     {
-        if(canAttack)
+        if(!activeAttack)
         {
             anim.SetTrigger("Attack");
             StartCoroutine(PerformAttack());
@@ -41,7 +53,7 @@ public class RicWeapon : Weapon
     {
         activeAttack = true;
         attackBox.enabled = true;
-        yield return new WaitForSeconds(attackDuration);
+        yield return new WaitForSeconds(swingAnimation.length);
         attackBox.enabled = false;
         //Debug.Log("Attack Finished");
         activeAttack = false;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class TridentWeapon : Weapon
 {
 
-    [SerializeField] private float attackDuration;
+    [SerializeField] private AnimationClip attackAnimation;
     [SerializeField] private Collider2D attackBox;
     [SerializeField] private Collider2D pickupBox;
     [SerializeField] private float throwForce = 20f;
@@ -37,7 +37,7 @@ public class TridentWeapon : Weapon
         weaponAnimator.SetTrigger("Attack");
         activeAttack = true;
         attackBox.enabled = true;
-        yield return new WaitForSeconds(attackDuration);
+        yield return new WaitForSeconds(attackAnimation.length);
         attackBox.enabled = false;
         activeAttack = false;
     }

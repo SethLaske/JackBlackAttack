@@ -141,8 +141,8 @@ MonoBehaviour:
   allowAttackTwo: 0
   attackBox: {fileID: 7660489380172464686}
   projectilePrefab: {fileID: 981096751316800565, guid: 462d8ecae8d05ad4dbc63c1347fae711, type: 3}
-  damage: 10
-  attackDuration: 0.2
+  damage: 20
+  swingAnimation: {fileID: 7400000, guid: dbe1bde1915853f4da1f29232ca8daf3, type: 2}
   projectileSpeed: 6
   projectileLifetime: 2
   LaunchOffset: {fileID: 8318917975795647541}

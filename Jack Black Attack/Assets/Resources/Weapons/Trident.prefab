@@ -109,12 +109,12 @@ MonoBehaviour:
   allowAttackOne: 0
   attackTwoChargeTime: 0
   allowAttackTwo: 0
-  attackDuration: 0.1666667
+  attackAnimation: {fileID: 7400000, guid: 88525f21810da464f92f6745b57a8eb3, type: 2}
   attackBox: {fileID: 7254801226985296374}
   pickupBox: {fileID: 7254801226985296376}
   throwForce: 20
   throwDistance: 0.25
-  damage: 10
+  damage: 15
 --- !u!95 &7254801226985296375
 Animator:
   serializedVersion: 5
