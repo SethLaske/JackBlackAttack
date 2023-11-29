@@ -29,12 +29,17 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject dungeonExitTile;
     [SerializeField] private Gate enterHandGate;
+    [SerializeField] private GameObject victoryPointer;
+    [SerializeField] private GameObject defeatPointer;
     private bool activateExit;
+    
 
     void Awake()
     {
         activateExit = false;
         dungeonExitTile.SetActive(false);
+        victoryPointer.SetActive(false);
+        defeatPointer.SetActive(false);
         enterHandGate.CloseGate();
         CheckPlayerGold();
     }
@@ -51,6 +56,10 @@ public class LevelManager : MonoBehaviour
 
     public void EnemyDied() {
         enemyCount--;
+        if(enemyCount == 3)
+        {
+            //activate pointers
+        }
         if (enemyCount == 0)
         {
             roomGenerator.ClearTiles();
@@ -105,20 +114,25 @@ public class LevelManager : MonoBehaviour
 
     private void PlayerVictory() {
         victoryGate.OpenGate();
+        victoryPointer.SetActive(true);
     }
 
     private void PlayerPush() {
         defeatGate.OpenGate();
+        defeatPointer.SetActive(true);
     }
 
     private void PlayerDefeat() {
         defeatGate.OpenGate();
+        defeatPointer.SetActive(true);
     }
 
     public void ResetGates()
     {
         defeatGate.CloseGate();
         victoryGate.CloseGate();
+        victoryPointer.SetActive(false);
+        defeatPointer.SetActive(false);
     }
 
     public void FinalHand() {
