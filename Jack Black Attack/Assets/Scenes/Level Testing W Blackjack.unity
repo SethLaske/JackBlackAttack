@@ -1242,8 +1242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849038b98c7ba4d46b288052871acdec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCamera: {fileID: 519420031}
-  pointer: {fileID: 872422409}
 --- !u!114 &872422412
 MonoBehaviour:
   m_ObjectHideFlags: 0
