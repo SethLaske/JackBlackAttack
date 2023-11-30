@@ -214,7 +214,7 @@ public class PlayerDungeonController : Character
         }
 
         if (Input.GetKeyDown(KeyCode.K)) {
-            StartCoroutine(KillAll());
+            //StartCoroutine(KillAll());
         }
     }
  
