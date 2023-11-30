@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private RoomGenerator roomGenerator;
     private int enemyCount;
     public bool hasSpawned = false;
-
+    public static bool enemyOnScreen;
    
     //public GameObject door;
 
@@ -33,6 +33,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject defeatPointer;
     private bool activateExit;
     
+ public static bool PointerOn = false;
+    
 
     void Awake()
     {
@@ -42,6 +44,7 @@ public class LevelManager : MonoBehaviour
         defeatPointer.SetActive(false);
         enterHandGate.CloseGate();
         CheckPlayerGold();
+        PointerOn = false;
     }
 
     public void StartLevel() {
@@ -56,12 +59,10 @@ public class LevelManager : MonoBehaviour
 
     public void EnemyDied() {
         enemyCount--;
-        if(enemyCount == 3)
-        {
-            //activate pointers
-        }
+        
         if (enemyCount == 0)
         {
+            PointerOn = false;
             roomGenerator.ClearTiles();
             onWaveComplete();
             hasSpawned = true;
@@ -70,6 +71,14 @@ public class LevelManager : MonoBehaviour
             {
                 //SpawnDoor();
             }
+        }
+        else if(enemyCount <= 3)
+        {
+            PointerOn = true;
+        }
+        else
+        {
+            PointerOn = false;
         }
     }
 

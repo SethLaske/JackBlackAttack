@@ -11,12 +11,15 @@ public class PlayerTeleporter : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera arenaCamera;
     [SerializeField] private CinemachineVirtualCamera sideRoomCamera;
+    [SerializeField] private GameObject Pointer;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             collision.gameObject.transform.position = newLocation.position;
+            Pointer.SetActive(false);
 
             UpdateCameras(newLocation.position);
         }

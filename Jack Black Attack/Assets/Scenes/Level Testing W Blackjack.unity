@@ -866,6 +866,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1852498266}
     m_Modifications:
     - target: {fileID: 2103412281486549308, guid: 95cac00b10e44fe45995fffe1404b514, type: 3}
+      propertyPath: Pointer
+      value: 
+      objectReference: {fileID: 832027841}
+    - target: {fileID: 2103412281486549308, guid: 95cac00b10e44fe45995fffe1404b514, type: 3}
       propertyPath: arenaCamera
       value: 
       objectReference: {fileID: 31294552}
@@ -925,6 +929,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6827770749947001677, guid: 95cac00b10e44fe45995fffe1404b514, type: 3}
+      propertyPath: Pointer
+      value: 
+      objectReference: {fileID: 1871733713}
     - target: {fileID: 6827770749947001677, guid: 95cac00b10e44fe45995fffe1404b514, type: 3}
       propertyPath: arenaCamera
       value: 
@@ -1139,6 +1147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1933265441}
   offScreenThreshhold: 0
+  isEnemy: 0
 --- !u!212 &832027844
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11728,6 +11737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 752532939}
   offScreenThreshhold: 0
+  isEnemy: 0
 --- !u!212 &1871733715
 SpriteRenderer:
   m_ObjectHideFlags: 0
